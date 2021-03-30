@@ -1,0 +1,45 @@
+#about {
+  width: 100%;
+  max-width: 1400px;
+  height: 90vh;
+  text-align: center;
+  align-items: center;
+  background-repeat: "no-repeat";
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#about-content {
+  width: 80%;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.header-m {
+  margin: 75px;
+  font-size: 2.75rem;
+  letter-spacing: 0.2em;
+  text-shadow: white 0px 0px 1rem;
+}
+
+.text-m {
+  margin: 0 75px 75px 75px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.6;
+  text-shadow: white 0px 0px 1rem;
+}
+
+.header-sm {
+  margin: 40px;
+  font-size: 2.25rem;
+  letter-spacing: 0.2em;
+}
+
+.text-sm {
+  margin: 0 40px 40px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.6;
+}

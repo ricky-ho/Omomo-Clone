@@ -1,0 +1,68 @@
+#home {
+  width: 100%;
+  text-align: center;
+}
+
+#video-container {
+  margin: 25px auto;
+  height: 500px;
+  max-width: 1400px;
+}
+
+#video-container video {
+  width: 100%;
+  height: 100%;
+}
+
+#home-text-container {
+  box-sizing: unset;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  padding: 25px 0;
+  color: #fff;
+  background: #596c5a;
+}
+
+.home-text-m {
+  max-width: 1400px;
+  font-size: 2rem;
+  margin: 0 125px;
+  font-weight: bold;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.home-text-sm {
+  font-size: 1.45rem;
+  margin: 0 40px;
+  font-weight: bold;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+#gallery {
+  margin: 100px;
+  max-width: 1400px;
+}
+
+.gallery-item {
+  height: 100%;
+  margin: 10px;
+}
+
+.gallery-item > img {
+  width: 100%;
+  height: 100%;
+}
+
+#link-to-menu p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  max-width: 1400px;
+}
+
+#link-to-menu div {
+  padding: 20px;
+}
