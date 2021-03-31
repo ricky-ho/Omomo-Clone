@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar/";
+import Header from "./components/Navbar/";
 import Footer from "./components/Footer/";
 import Home from "./components/pages/Home/";
 import About from "./components/pages/About/";
@@ -87,7 +87,7 @@ const App = () => {
   return (
     <div className="app-wrapper">
       <ScrollToTop />
-      <Navbar smallDisplay={smallDisplay} />
+      <Header smallDisplay={smallDisplay} />
       <Switch>
         <Route
           exact

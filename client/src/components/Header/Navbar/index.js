@@ -1,23 +1,18 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import BarsMenu from "./BarsMenu";
 
 import { FaShoppingCart } from "react-icons/fa";
-import OmomoLogo from "../../images/omomo-logo-blk.svg";
-
 import "./style.css";
 
-const Navbar = ({ smallDisplay }) => {
-  const [showSidebar, setShowSidebar] = useState(false);
-
-  return smallDisplay ? (
-    <BarsMenu sidebar={showSidebar} setShowSidebar={setShowSidebar} />
-  ) : (
+const Navbar = () => {
+  return (
     <header className="flex center-items">
       <nav className="navbar flex">
         <div className="nav-logo">
           <Link to="/">
-            <img src={OmomoLogo} alt="Omomo Tea Shoppe Logo" />
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.jpg"
+              alt="Omomo Tea Shoppe Logo"
+            />
           </Link>
         </div>
         <ul className="nav-links comm-text flex">

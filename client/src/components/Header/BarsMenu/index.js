@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
 
-import OmomoLogo from "../../../images/omomo-logo-blk.svg";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { MenuLinkData } from "../../Links.js";
+import "./style.css";
 
 const BarsMenu = ({ sidebar, setShowSidebar }) => {
   return (
@@ -10,7 +10,10 @@ const BarsMenu = ({ sidebar, setShowSidebar }) => {
       <div className="navbar flex">
         <div className="nav-logo">
           <Link to="/">
-            <img src={OmomoLogo} alt="Omomo Tea Shoppe Logo" />
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.jpg"
+              alt="Omomo Tea Shoppe Logo"
+            />
           </Link>
         </div>
         <div className="menu-icon flex center-items">

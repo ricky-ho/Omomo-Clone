@@ -1,0 +1,59 @@
+.menu-icon {
+  margin-right: 50px;
+}
+
+.menu-icon > .fa {
+  cursor: pointer;
+}
+
+.nav-menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  background: #596c5a;
+  z-index: 100;
+  transition: 0.5s;
+  box-shadow: -5px 0 10px -5px #111111;
+}
+
+.active {
+  right: 0;
+  transition: 0.5s;
+}
+
+.nav-menu ul {
+  list-style: none;
+  font-size: 2rem;
+  margin-top: 4rem;
+  width: 100%;
+}
+
+#nav-menu-toggle {
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  color: #fff;
+}
+
+#nav-menu-toggle > .fa:hover {
+  color: #000;
+}
+
+.nav-menu-link {
+  text-decoration: none;
+  padding: 10px;
+  margin: 25px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-menu-link:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+.nav-menu-link p {
+  color: #fff;
+  text-align: center;
+}
