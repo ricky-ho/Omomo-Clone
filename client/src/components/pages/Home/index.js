@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HomeMenuData } from "../../Data";
-import OmomoVideo from "../../../videos/omomo.mp4";
 import "./style.css";
 
 const Home = ({ smallDisplay }) => {
@@ -9,7 +7,10 @@ const Home = ({ smallDisplay }) => {
     <main id="home" className="center-items flex-col">
       <div id="video-container" className="flex">
         <video autoPlay loop muted>
-          <source src={OmomoVideo} type="video/mp4"></source>
+          <source
+            src="https://res.cloudinary.com/ricky-ho/video/upload/v1617152704/Omomo/omomo_txxfqq.mp4"
+            type="video/mp4"
+          ></source>
         </video>
       </div>
       <div id="home-text-container" className="center-items flex">
@@ -24,13 +25,36 @@ const Home = ({ smallDisplay }) => {
       </div>
       <div className="flex center-items">
         <div id="gallery" className="flex-col">
-          {HomeMenuData.map((item, index) => {
-            return (
-              <div className="gallery-item" key={index}>
-                <img src={item.imgPath} alt={item.name} />
-              </div>
-            );
-          })}
+          <div className="gallery-item">
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617147142/Omomo/Oreo_Brulee_GMT-500.jpg"
+              alt="OREO BRULEE GREEN MILK TEA"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617147141/Omomo/Jasmine_C-500.jpg"
+              alt="Jasmine Creamomo"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617147142/Omomo/Uji_GMT-500.jpg"
+              alt="Uji Green Milk Tea"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617147114/Omomo/Cafe_Latte-500.jpg"
+              alt="Cafe Latte"
+            />
+          </div>
+          <div className="gallery-item">
+            <img
+              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617147147/Omomo/Strawberry_Green_Tea-500.jpg"
+              alt="Strawberry Green Tea"
+            />
+          </div>
         </div>
       </div>
       <div id="link-to-menu" className="flex-col center-items margin-bot-100">

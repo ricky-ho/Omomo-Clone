@@ -1,5 +1,4 @@
 import React from "react";
-import Banner from "../../../images/banner.jpeg";
 
 import "./style.css";
 
@@ -9,7 +8,7 @@ const About = ({ smallDisplay }) => {
       id="about"
       className="flex-col center-items"
       style={{
-        backgroundImage: `url(${Banner})`,
+        backgroundImage: `url(https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/banner_ga9buw.jpg)`,
       }}
     >
       <div id="about-content" className="flex-col center-items">

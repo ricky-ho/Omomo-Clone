@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaTimes } from "react-icons/fa";
 import "./style.css";
 
-function Modal({ smallDisplay, item, toggleModal, addToCart }) {
+function Modal({ item, toggleModal, addToCart }) {
   const modalRef = useRef();
   const [quantity, setQuantity] = useState(1);
 

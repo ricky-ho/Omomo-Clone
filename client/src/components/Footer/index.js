@@ -1,7 +1,5 @@
 import React from "react";
 
-import FooterLogo from "../../images/omomo-footer-logo.svg";
-
 import "./style.css";
 
 function Footer({ smallDisplay }) {
@@ -9,7 +7,10 @@ function Footer({ smallDisplay }) {
     <footer className="flex-col center-items">
       <div className="footer-container flex-col">
         <div className="footer-logo flex">
-          <img src={FooterLogo} alt="Omomo footer logo" />
+          <img
+            src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.jpg"
+            alt="Omomo footer logo"
+          ></img>
         </div>
         <div
           className={`comm-text margin-bot-25
