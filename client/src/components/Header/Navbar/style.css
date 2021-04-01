@@ -2,7 +2,7 @@ header {
   width: 100%;
 }
 
-.navbar {
+#navbar {
   justify-content: space-between;
   width: 100%;
   max-width: 1400px;
@@ -15,7 +15,7 @@ header {
   width: 50px;
 }
 
-.nav-links {
+#navbar ul {
   font-size: 1.1rem;
   list-style: none;
   margin: 0 10px;
@@ -32,15 +32,15 @@ header {
   border: 1px solid #d6d6d6;
 }
 
+.link-black:hover {
+  background: #000;
+  color: #fff;
+}
+
 .link-brown {
   background: #db9768;
   color: #fff;
   border: 1px solid #ca7d45;
-}
-
-.link-black:hover {
-  background: #000;
-  color: #fff;
 }
 
 .link-brown:hover {

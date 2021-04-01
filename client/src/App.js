@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./components/Navbar/";
+import Header from "./components/Header/";
 import Footer from "./components/Footer/";
 import Home from "./components/pages/Home/";
 import About from "./components/pages/About/";
@@ -12,7 +12,6 @@ import ScrollToTop from "./components/pages/ScrollToTop";
 import "./App.css";
 
 /* TODO 
-  - Fix navbar responsiveness
   - BarMenu : Click off screen closes menu
   - Persist cart state
   - Retrieve menu data from API

@@ -8,7 +8,7 @@ function Footer({ smallDisplay }) {
       <div className="footer-container flex-col">
         <div className="footer-logo flex">
           <img
-            src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.jpg"
+            src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-footer-logo_diiygs.svg"
             alt="Omomo footer logo"
           ></img>
         </div>
