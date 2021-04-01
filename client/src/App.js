@@ -11,12 +11,17 @@ import ScrollToTop from "./components/pages/ScrollToTop";
 
 import "./App.css";
 
+/* Improvements to react-shopping-cart 
+  - Moving images to an image CDN for image optimization
+  - Caching menu data 
+  - 
+*/
+
 /* TODO 
-  - BarMenu : Click off screen closes menu
-  - Persist cart state
+  - Persist cart state through LocalStorage
   - Retrieve menu data from API
+    - Save menu data in cache to prevent re-fetching everytime we load menu page
   - Create more modular code/components
-  
 */
 
 const App = () => {
@@ -37,7 +42,7 @@ const App = () => {
     const _cartItems = [...cartItems];
     let inCart = false;
     _cartItems.forEach((cartItem) => {
-      if (cartItem.id === item.id) {
+      if (cartItem._id === item._id) {
         if (cartItem.count + quantity < 10) {
           cartItem.count += quantity;
         } else {
@@ -57,7 +62,9 @@ const App = () => {
     item.count -= 1;
     let _cartItems = [...cartItems];
     if (item.count === 0) {
-      _cartItems = [...cartItems].filter((cartItem) => cartItem.id !== item.id);
+      _cartItems = [...cartItems].filter(
+        (cartItem) => cartItem._id !== item._id
+      );
     }
     calculateTotals(_cartItems);
     setCartItems(_cartItems);

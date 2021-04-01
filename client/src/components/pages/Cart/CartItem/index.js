@@ -12,7 +12,7 @@ const CartItems = ({
     return (
       <div
         className={`flex ${smallDisplay ? "cart-item-sm" : "cart-item"}`}
-        key={item.id}
+        key={item._id}
       >
         <div className="cart-item-image-container">
           <img src={item.imgMenu} alt={item.name} />

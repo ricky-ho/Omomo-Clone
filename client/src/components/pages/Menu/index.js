@@ -40,7 +40,7 @@ const Menu = ({ smallDisplay, addToCart }) => {
               item={item}
               toggleModal={toggleModal}
               handleClick={clickedMenuItem}
-              key={item.id}
+              key={item._id}
             />
           );
         })}
