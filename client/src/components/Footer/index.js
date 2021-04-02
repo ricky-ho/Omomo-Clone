@@ -1,4 +1,5 @@
 import React from "react";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 import "./style.css";
 
@@ -69,7 +70,7 @@ function Footer({ smallDisplay }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa fa-instagram" style={{ fontSize: "40px" }}></i>
+              <FaInstagram size="40px" />
             </a>
             <a
               className="social-icon"
@@ -77,13 +78,13 @@ function Footer({ smallDisplay }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa fa-facebook" style={{ fontSize: "40px" }}></i>
+              <FaFacebook size="40px" />
             </a>
           </div>
         </div>
         <div>
           <p className="copyright">
-            All Copyrights go to © OMOMO Tea Shoppe 2020. This project is merely
+            All Copyrights go to © OMOMO Tea Shoppe 2021. This project is merely
             for educational purposes.
           </p>
         </div>
