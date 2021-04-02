@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../../Modal/";
+import Modal from "../../components/Modal";
 import MenuItem from "./MenuItem/";
 import "./style.css";
 

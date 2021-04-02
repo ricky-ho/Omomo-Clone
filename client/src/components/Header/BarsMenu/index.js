@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { BarMenuLinks } from "../../links.js";
+import { BarMenuLinks } from "../../../utils/links";
 import "./style.css";
 
 const BarsMenu = ({ sidebar, setShowSidebar }) => {

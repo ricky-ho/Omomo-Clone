@@ -3,11 +3,11 @@ import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header/";
 import Footer from "./components/Footer/";
-import Home from "./components/pages/Home/";
-import About from "./components/pages/About/";
-import Menu from "./components/pages/Menu/";
-import Cart from "./components/pages/Cart/";
-import ScrollToTop from "./components/pages/ScrollToTop";
+import Home from "./pages/Home/";
+import About from "./pages/About/";
+import Menu from "./pages/Menu/";
+import Cart from "./pages/Cart/";
+import ScrollToTop from "./pages/ScrollToTop";
 import useSmallDisplay from "./utils/useSmallDisplay";
 
 import "./App.css";
