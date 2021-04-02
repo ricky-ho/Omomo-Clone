@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header/";
@@ -8,6 +8,7 @@ import About from "./components/pages/About/";
 import Menu from "./components/pages/Menu/";
 import Cart from "./components/pages/Cart/";
 import ScrollToTop from "./components/pages/ScrollToTop";
+import useSmallDisplay from "./utils/useSmallDisplay";
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ import "./App.css";
 
 /* TODO 
   - Persist cart state through LocalStorage
+  - Change cart logic to be more practical
   - Retrieve menu data from API
     - Save menu data in cache to prevent re-fetching everytime we load menu page
   - Create more modular code/components
@@ -26,12 +28,7 @@ import "./App.css";
 
 const App = () => {
   /* Display */
-  const [smallDisplay, setsmallDisplay] = useState(window.innerWidth < 850);
-  const updateDisplay = () => setsmallDisplay(window.innerWidth < 850);
-  useEffect(() => {
-    window.addEventListener("resize", updateDisplay);
-    return () => window.removeEventListener("resize", updateDisplay);
-  });
+  const smallDisplay = useSmallDisplay();
 
   /* Cart Functionality */
   const [cartItems, setCartItems] = useState([]);
