@@ -1,104 +1,64 @@
 .modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  font-family: Commissioner, monospace;
+  background: rgba(50, 50, 50, 0.5);
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  width: 375px;
-  height: 575px;
+  width: 500px;
+  height: 90%;
   background: #fff;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  overflow-y: scroll;
+}
+
+/* MODAL-CONTENT SCROLLBAR */
+.modal-content::-webkit-scrollbar {
+  background: rgb(230, 230, 230);
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgb(230, 230, 230);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #6d8f6f;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 15px;
+  box-shadow: inset -3px -3px 5px 0 #5c775e;
+}
+/***************************/
+
+.modal-content--sm {
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
 }
 
 #item-cover {
-  height: 500px;
-}
-
-#item-cover > img {
   width: 100%;
-  height: 100%;
+  height: 400px;
 }
 
-#modal-actions {
-  width: 100%;
-  border-top: 1px solid #c1c1c1;
+#item-name {
+  font-size: 1.35rem;
+  padding: 20px 20px 0 20px;
+  letter-spacing: 1px;
+  word-spacing: 5px;
 }
 
-#quantity-form {
-  width: 125px;
-  margin: 15px 15px 0 15px;
-  border: 1px solid #a1a1a1;
-}
-
-#quantity-form .btn {
-  cursor: pointer;
-  outline: none;
-  width: 100%;
-  font-size: 2rem;
-  padding: 3px;
-  text-align: center;
-  border: none;
-  background: #fff;
-  color: #c1c1c1;
-}
-
-#quantity-form .btn:hover {
-  color: #3f3f3f;
-  background: #e4e4e4;
-}
-
-#quantity-display {
-  width: 50px;
-}
-
-#quantity-display input {
-  outline: none;
-  border: none;
-  width: 40px;
-  height: 100%;
-  font-size: 1.25rem;
-  text-align: center;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-#add-to-cart {
-  width: 100%;
-  height: 45px;
-  margin: 15px 15px 0 0;
-}
-
-#add-to-cart button {
-  cursor: pointer;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  border: none;
-  font-size: 1.5rem;
-  color: #fff;
-  background: #7a9c7c;
-}
-
-#add-to-cart button:hover {
-  background: #628564;
-}
-
-#close-btn {
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-#close-btn .fa:hover {
-  color: #c50000;
+#item-description {
+  color: #777777;
+  padding: 20px 20px 0 20px;
 }

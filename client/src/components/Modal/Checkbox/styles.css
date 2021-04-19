@@ -1,0 +1,26 @@
+.form-group-header h2 {
+  font-size: 1.25rem;
+  margin: 10px 0 5px;
+}
+
+.form-group-header p {
+  color: #777777;
+  margin-bottom: 10px;
+}
+
+.option-label {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px 15px 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.option-label p {
+  color: #777777;
+}
+
+.option-input {
+  cursor: pointer;
+  margin-right: 15px;
+}

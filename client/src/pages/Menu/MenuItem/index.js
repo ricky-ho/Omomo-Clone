@@ -3,11 +3,7 @@ import "./style.css";
 
 const MenuItem = ({ smallDisplay, item, toggleModal, handleClick }) => {
   return (
-    <div
-      className={`menu-item flex-col ${
-        smallDisplay ? "margin-bot-50" : "margin-bot-25"
-      }`}
-    >
+    <div className={`${smallDisplay ? "menu-item--sm" : "menu-item"}`}>
       <img
         src={item.imgMenu}
         alt={item.name}
@@ -16,9 +12,9 @@ const MenuItem = ({ smallDisplay, item, toggleModal, handleClick }) => {
           handleClick(item);
         }}
       />
-      <div className="menu-item-description comm-text">
+      <div className="menu-item-description">
         <p className="menu-item-name">{item.name}</p>
-        <p className="menu-item-price font-brown">{item.price.toFixed(2)}</p>
+        <p className="menu-item-price">{item.price.toFixed(2)}</p>
       </div>
     </div>
   );

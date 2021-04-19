@@ -1,96 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "./components/Header/";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/";
 import Home from "./pages/Home/";
 import About from "./pages/About/";
 import Menu from "./pages/Menu/";
-import Cart from "./pages/Cart/";
+import Locations from "./pages/Locations";
+import Cart from "./components/Cart";
+import CartIcon from "./components/Cart/CartIcon";
 import ScrollToTop from "./pages/ScrollToTop";
 import useSmallDisplay from "./utils/useSmallDisplay";
+import {
+  addToCart,
+  calculateTotalCartItems,
+  removeFromCart,
+} from "./utils/cart";
 
 import "./App.css";
 
 /* Improvements to react-shopping-cart 
-  - Moving images to an image CDN for image optimization
-  - Caching menu data 
-  - 
+  - Moved images to an image CDN for image optimization/compression
+  - Caching menu data in sessionStorage
+  - Caching cart state in localStorage
+  - Added options property to items 
 */
 
 /* TODO 
-  - Persist cart state through LocalStorage
-  - Change cart logic to be more practical
-  - Retrieve menu data from API
-    - Save menu data in cache to prevent re-fetching everytime we load menu page
-  - Create more modular code/components
+  - MENU:
+    - handle API error
+  * Add 404 Error page
+  * Add Locations page 
+  * Create more modular code/components and optimize code
+    - ModalForm, Footer
+  - Improve accessibility
+  ? Improve CSS use (grid, clamp, etc...)
 */
 
 const App = () => {
-  /* Display */
+  const CART_LIMIT = 10;
   const smallDisplay = useSmallDisplay();
 
-  /* Cart Functionality */
-  const [cartItems, setCartItems] = useState([]);
-  const [totalItems, setTotalItems] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [cartQuantity, setCartQuantity] = useState(0);
+  const [showCart, setShowCart] = useState(false);
 
-  const addToCart = (item, quantity) => {
-    const _cartItems = [...cartItems];
-    let inCart = false;
-    _cartItems.forEach((cartItem) => {
-      if (cartItem._id === item._id) {
-        if (cartItem.count + quantity < 10) {
-          cartItem.count += quantity;
-        } else {
-          cartItem.count = 10;
-        }
-        inCart = true;
-      }
-    });
-    if (!inCart) {
-      _cartItems.push({ ...item, count: quantity });
-    }
-    calculateTotals(_cartItems);
-    setCartItems(_cartItems);
-  };
+  useEffect(() => {
+    const prev_cart = localStorage.getItem("cart");
+    if (prev_cart) setCart(JSON.parse(prev_cart));
+  }, []);
 
-  const decrementItemQuantity = (item) => {
-    item.count -= 1;
-    let _cartItems = [...cartItems];
-    if (item.count === 0) {
-      _cartItems = [...cartItems].filter(
-        (cartItem) => cartItem._id !== item._id
-      );
-    }
-    calculateTotals(_cartItems);
-    setCartItems(_cartItems);
-  };
+  useEffect(() => {
+    const quantity = calculateTotalCartItems(cart);
+    setCartQuantity(quantity);
+  }, [cart]);
 
-  const incrementItemQuantity = (item) => {
-    if (item.count < 10) {
-      item.count += 1;
-      let _cartItems = [...cartItems];
-      calculateTotals(_cartItems);
-      setCartItems(_cartItems);
+  const handleAddToCart = (item, quantity) => {
+    if (cartQuantity < 10) {
+      const newCart = addToCart(cart, item, quantity);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      setCart(newCart);
     }
   };
 
-  const calculateTotals = (cartItems) => {
-    let runningPrice = 0;
-    let runningItems = 0;
-    cartItems.forEach((item) => {
-      runningPrice += item.count * item.price;
-      runningItems += item.count;
-    });
-    setTotalItems(runningItems);
-    setTotalPrice(runningPrice);
+  const handleRemoveFromCart = (index) => {
+    const newCart = removeFromCart(cart, index);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    setCart(newCart);
   };
 
   return (
     <div className="app-wrapper">
       <ScrollToTop />
-      <Header smallDisplay={smallDisplay} />
+      <Navbar
+        smallDisplay={smallDisplay}
+        cartQuantity={cartQuantity}
+        setShowCart={setShowCart}
+      />
       <Switch>
         <Route
           exact
@@ -104,23 +90,30 @@ const App = () => {
         <Route
           path="/menu"
           render={() => (
-            <Menu smallDisplay={smallDisplay} addToCart={addToCart} />
-          )}
-        />
-        <Route
-          path="/cart"
-          render={() => (
-            <Cart
+            <Menu
               smallDisplay={smallDisplay}
-              cartItems={cartItems}
-              decrementItemQuantity={decrementItemQuantity}
-              incrementItemQuantity={incrementItemQuantity}
-              totalItems={totalItems}
-              totalPrice={totalPrice}
+              cartLimit={CART_LIMIT}
+              cartQuantity={cartQuantity}
+              handleAddToCart={handleAddToCart}
             />
           )}
         />
+        <Route
+          path="/locations"
+          render={() => <Locations smallDisplay={smallDisplay} />}
+        />
       </Switch>
+      <Cart
+        smallDisplay={smallDisplay}
+        cart={cart}
+        cartQuantity={cartQuantity}
+        handleRemoveFromCart={handleRemoveFromCart}
+        showCart={showCart}
+        setShowCart={setShowCart}
+      />
+      {smallDisplay && (
+        <CartIcon setShowCart={setShowCart} cartQuantity={cartQuantity} />
+      )}
       <Footer smallDisplay={smallDisplay} />
     </div>
   );

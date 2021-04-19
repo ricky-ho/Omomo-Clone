@@ -1,24 +1,40 @@
 .menu-item {
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   width: 225px;
   min-width: 110px;
-  margin: 0 15px;
+  margin: 0 15px 25px 15px;
 }
 
-.menu-item img {
+.menu-item--sm {
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  margin-bottom: 35px;
+}
+
+.menu-item img,
+.menu-item--sm img {
   width: 100%;
 }
 
-.menu-item img:hover {
+.menu-item img:hover,
+.menu-item--sm img:hover {
   cursor: pointer;
   opacity: 0.6;
 }
 
 .menu-item-description {
+  font-family: Commissioner, monospace;
   font-size: 1rem;
   text-align: center;
 }
 
 .menu-item-name {
   padding: 5px;
+}
+
+.menu-item-price {
+  color: #db9768;
 }

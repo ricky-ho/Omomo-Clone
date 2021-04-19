@@ -1,90 +1,98 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaTimes } from "react-icons/fa";
+import { cloneDeep } from "lodash";
+
+import {
+  options as defaultOptions,
+  calculateItemPrice,
+  appendOptionsAndQuantity,
+} from "../../utils/options";
+import ModalForm from "./ModalForm";
+import ModalActions from "./ModalActions";
 import "./style.css";
 
-function Modal({ item, toggleModal, addToCart }) {
-  const modalRef = useRef();
-  const [quantity, setQuantity] = useState(1);
+function Modal({
+  smallDisplay,
+  toggleModal,
+  item,
+  cartLimit,
+  cartQuantity,
+  handleAddToCart,
+}) {
+  const coverStyle = {
+    backgroundImage: `url(${item.imgModal})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
+
+  const [totalPrice, setTotalPrice] = useState(item.price);
+  const [itemQuantity, setItemQuantity] = useState(1);
+  const [options, setOptions] = useState(defaultOptions);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     document.body.style.paddingRight = "17px";
     return () => {
       document.body.style.overflow = "unset";
-      document.body.style.paddingRight = "0px";
+      document.body.style.paddingRight = "0";
     };
   }, []);
 
-  const increment = () => {
-    setQuantity(quantity + 1);
-  };
+  useEffect(() => {
+    const newPrice = calculateItemPrice(item, options);
+    setTotalPrice(newPrice);
+  }, [options, itemQuantity, item]);
 
-  const decrement = () => {
-    setQuantity(quantity - 1);
-  };
+  const handleOptionsChange = (groupIndex, limit, selectedIndex) => {
+    const newOptions = cloneDeep(options);
+    const optionGroup = newOptions[groupIndex].opts;
 
-  const closeModal = (e) => {
-    if (modalRef.current === e.target) {
-      toggleModal();
+    if (!limit) {
+      let selected = optionGroup[selectedIndex].selected;
+      optionGroup[selectedIndex].selected = !selected;
+    } else {
+      optionGroup.forEach((opt) => (opt.selected = false));
+      optionGroup[selectedIndex].selected = true;
     }
+    setOptions(newOptions);
+  };
+
+  const handleClick = () => {
+    appendOptionsAndQuantity(item, options, totalPrice);
+    handleAddToCart(item, itemQuantity);
+    toggleModal();
+  };
+
+  const modalRef = useRef();
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) toggleModal();
   };
 
   return (
-    <div
-      ref={modalRef}
-      onClick={closeModal}
-      className="modal flex center-items"
-    >
-      <div className="modal-content">
-        <div id="close-btn" onClick={() => toggleModal()}>
-          <FaTimes className="fa" size="30px" />
+    <div ref={modalRef} onClick={closeModal} className="modal">
+      <div
+        className={`modal-content ${smallDisplay ? "modal-content--sm" : ""}`}
+      >
+        <div className="flex-col">
+          <div id="item-cover" className="flex" style={coverStyle} />
+          <h2 id="item-name">{item.name}</h2>
+          <p id="item-description">{item.description}</p>
+          <ModalForm
+            cartLimit={cartLimit}
+            cartQuantity={cartQuantity}
+            itemQuantity={itemQuantity}
+            handleQuantityChange={setItemQuantity}
+            options={options}
+            handleOptionsChange={handleOptionsChange}
+          />
         </div>
-        <div id="item-cover" className="flex">
-          <img src={item.imgModal} alt={item.name}></img>
-        </div>
-        <div id="modal-actions" className="flex">
-          <div id="quantity-form" className="flex">
-            <button
-              type="button"
-              onClick={decrement}
-              className="btn"
-              disabled={quantity <= 1}
-            >
-              -
-            </button>
-            <div id="quantity-display">
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                className="quantity"
-                min={1}
-                max={10}
-                value={quantity}
-                readOnly
-              ></input>
-            </div>
-            <button
-              type="button"
-              onClick={increment}
-              className="btn"
-              disabled={quantity >= 10}
-            >
-              +
-            </button>
-          </div>
-          <div id="add-to-cart">
-            <button
-              type="button"
-              onClick={() => {
-                toggleModal();
-                addToCart(item, quantity);
-              }}
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
+        <ModalActions
+          cartLimit={cartLimit}
+          cartQuantity={cartQuantity}
+          itemQuantity={itemQuantity}
+          totalPrice={totalPrice}
+          toggleModal={toggleModal}
+          handleClick={handleClick}
+        />
       </div>
     </div>
   );

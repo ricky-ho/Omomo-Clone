@@ -1,55 +1,68 @@
 import React, { useState, useEffect } from "react";
+
 import Modal from "../../components/Modal";
 import MenuItem from "./MenuItem/";
+import Loader from "../../components/Loader";
 import "./style.css";
 
-const Menu = ({ smallDisplay, addToCart }) => {
+const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [Menu, setMenu] = useState([]);
-  const [showModal, setshowModal] = useState(false);
+
+  const fetchAndSetMenuData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/drinks");
+      const data = await response.json();
+      sessionStorage.setItem("menu", JSON.stringify(data));
+      setMenu(data);
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
-    async function getMenu() {
-      try {
-        const response = await fetch("/api/drinks");
-        const data = await response.json();
-        setMenu(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    getMenu();
+    const menuData = sessionStorage.getItem("menu");
+    if (!menuData) fetchAndSetMenuData();
+    else setMenu(JSON.parse(menuData));
   }, []);
 
-  const toggleModal = () => {
-    setshowModal(!showModal);
-  };
+  const [showModal, setshowModal] = useState(false);
+  const toggleModal = () => setshowModal(!showModal);
 
   const [clickedItem, setclickedItem] = useState(null);
-
-  const clickedMenuItem = (item) => {
-    setclickedItem(item);
-  };
+  const clickedMenuItem = (item) => setclickedItem(item);
 
   return (
     <main id="menu">
-      <div className={smallDisplay ? "flex-col center-items" : "flex"}>
-        {Menu.map((item) => {
-          return (
-            <MenuItem
-              smallDisplay={smallDisplay}
-              item={item}
-              toggleModal={toggleModal}
-              handleClick={clickedMenuItem}
-              key={item._id}
-            />
-          );
-        })}
-      </div>
+      {!isLoading ? (
+        <div
+          className={`${smallDisplay ? "menu-wrapper--sm" : "menu-wrapper"}`}
+        >
+          {Menu.map((item) => {
+            return (
+              <MenuItem
+                key={item._id}
+                smallDisplay={smallDisplay}
+                item={item}
+                toggleModal={toggleModal}
+                handleClick={clickedMenuItem}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <Loader />
+      )}
       {showModal && (
         <Modal
+          smallDisplay={smallDisplay}
           toggleModal={toggleModal}
           item={clickedItem}
-          addToCart={addToCart}
+          cartLimit={cartLimit}
+          cartQuantity={cartQuantity}
+          handleAddToCart={handleAddToCart}
         />
       )}
     </main>

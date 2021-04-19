@@ -1,9 +1,15 @@
 footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   background: #596c5a;
 }
 
-.footer-container {
+.footer-content-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1400px;
   padding: 0 50px;
@@ -12,44 +18,49 @@ footer {
 }
 
 .footer-logo {
+  display: flex;
   box-sizing: unset;
   padding: 50px 0;
   height: 75px;
 }
 
 .footer-content {
-  flex: 1;
-  padding: 20px;
+  display: flex;
+  font-family: Commissioner, monospace;
 }
 
-.footer-content > a {
+.footer-content section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content a {
   color: #fff;
 }
 
-.footer-content-title {
+.footer-section-title {
   letter-spacing: 2px;
   padding-bottom: 20px;
   font-size: 1.25rem;
 }
 
-.footer-content-sub-title {
-  padding-bottom: 10px;
+.footer-location-item {
+  margin-bottom: 30px;
+}
+
+.footer-location-item h4 {
+  margin-bottom: 10px;
   font-size: 0.9rem;
-}
-
-.footer-content-text {
-  padding-bottom: 30px;
-}
-
-.border-top {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .border-right {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.copyright {
+#copyright {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
   padding: 10px 0 30px;
@@ -60,4 +71,10 @@ footer {
   width: 36px;
   height: 40px;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .footer-content-container {
+    padding: 0 25px;
+  }
 }

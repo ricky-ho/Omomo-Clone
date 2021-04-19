@@ -1,0 +1,21 @@
+#cart-items {
+  width: 100%;
+  margin-bottom: 168px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* CART-ITEMS SCROLLBAR */
+#cart-items::-webkit-scrollbar {
+  background: inherit;
+}
+
+#cart-items::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+#cart-items::-webkit-scrollbar-thumb {
+  background: rgb(207, 207, 207);
+  border-radius: 15px;
+}
+/************************/
