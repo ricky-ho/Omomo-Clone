@@ -1,9 +1,8 @@
-/\* Improvements to react-shopping-cart
+## Changes from react-shopping-cart
 
-- Moved images to an image CDN for image optimization/ compression
-- Caching cart state in localStorage
-- Added options property to items
-- Added locations page
+- Moved images to a CDN (https://cloudinary.com/) to serve compressed images
+- Cached shopping cart state in localStorage
+- Added drink options (such as sweetness, toppings, etc)
+- Added Locations page
 - Added 404 error page
-- Removed cart page to use cart modal
-  \*/
+- Removed Cart page to use a pop-up Cart modal
