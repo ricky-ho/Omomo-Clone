@@ -10,14 +10,14 @@ const Navbar = ({ smallDisplay, cartQuantity, setShowCart }) => {
   return (
     <header>
       <nav id="navbar">
-        <div className="nav-logo">
-          <Link to="/">
-            <img
-              src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.svg"
-              alt="Omomo Tea Shoppe Logo"
-            />
-          </Link>
-        </div>
+        <Link to="/">
+          <img
+            src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.svg"
+            alt="Go to Home page"
+            className="nav-logo"
+          />
+        </Link>
+
         {smallDisplay ? (
           <BarsMenu />
         ) : (
@@ -31,13 +31,11 @@ const Navbar = ({ smallDisplay, cartQuantity, setShowCart }) => {
                 </li>
               );
             })}
-            <li
-              id="cart-toggle"
-              onClick={() => {
-                setShowCart(true);
-              }}
-            >
-              <FaShoppingCart size="25px" />
+            <li id="cart-toggle" onClick={() => setShowCart(true)}>
+              <FaShoppingCart
+                size="25px"
+                aria-label="Icon to open shopping cart"
+              />
               <div className="nav-quantity-icon">
                 <p>{cartQuantity}</p>
               </div>

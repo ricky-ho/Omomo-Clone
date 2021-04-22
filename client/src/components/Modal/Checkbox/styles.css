@@ -1,5 +1,5 @@
 .form-group-header h2 {
-  font-size: 1.25rem;
+  font-size: var(--size-small);
   margin: 10px 0 5px;
 }
 

@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+
+import Gallery from "../../components/Gallery";
 import "./style.css";
 
 const Home = ({ smallDisplay }) => {
   return (
     <main id="home">
-      <div className="home-banner">
+      <section className="home-banner">
         {smallDisplay ? <div className="overlay"></div> : null}
         <div className="home-banner-content">
           <h1>PURE, HONEST, AND SIMPLE!</h1>
@@ -12,52 +14,42 @@ const Home = ({ smallDisplay }) => {
             <p>FIND LOCATIONS</p>
           </Link>
         </div>
-      </div>
+      </section>
 
-      <div id="home-text-container">
+      <section id="home-text-container">
         <p className={`${smallDisplay ? "home-text-sm" : "home-text-m"}`}>
           {`We're a tea shop specializing in bringing you the best quality teas,
           creating memorable experiences with every sip.`}
         </p>
-      </div>
-      <div id="gallery-container">
-        <div id="gallery">
-          <div className="gallery-item">
-            <img
-              src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147142/Omomo/Oreo_Brulee_GMT-500.jpg"
-              alt="OREO BRULEE GREEN MILK TEA"
-            />
-          </div>
-          <div className="gallery-item">
-            <img
-              src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147141/Omomo/Jasmine_C-500.jpg"
-              alt="Jasmine Creamomo"
-            />
-          </div>
-          <div className="gallery-item">
-            <img
-              src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147142/Omomo/Uji_GMT-500.jpg"
-              alt="Uji Green Milk Tea"
-            />
-          </div>
-          <div className="gallery-item">
-            <img
-              src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147114/Omomo/Cafe_Latte-500.jpg"
-              alt="Cafe Latte"
-            />
-          </div>
-          <div className="gallery-item">
-            <img
-              src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147147/Omomo/Strawberry_Green_Tea-500.jpg"
-              alt="Strawberry Green Tea"
-            />
-          </div>
-        </div>
-      </div>
+      </section>
+
+      <section id="home-banner2">
+        <img
+          src="https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1440w.jpg"
+          alt="Coconut Matcha Tea banner"
+          srcSet="https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1440w.jpg 1440w, https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-500w.jpg 500w"
+          sizes="100vw"
+          loading="lazy"
+        />
+      </section>
+
+      <section id="home-about">
+        <h2 className={`about-header ${smallDisplay ? "about-header-sm" : ""}`}>
+          ABOUT OMOMO
+        </h2>
+        <p className={`about-text ${smallDisplay ? "about-text-sm" : ""}`}>
+          Our mission is to create high quality drinks without compromising
+          quality. All of our drinks come with a guarantee that the finest
+          ingredients are being used. Pure, honest, and simple.
+        </p>
+      </section>
+
+      <Gallery />
+
       <div id="menu-link-container">
-        <h2>{`VIEW OUR FULL MENU`}</h2>
-        <Link id="menu-link" to="/menu">
-          <p>{`Menu`}</p>
+        <h3>VIEW OUR FULL MENU</h3>
+        <Link to="/menu" className="link link-black">
+          <p>Menu</p>
         </Link>
       </div>
     </main>

@@ -23,9 +23,9 @@ const Checkbox = ({ id, optionGroup, handleOptionsChange }) => {
                   className="option-input"
                   type="checkbox"
                   value={index}
-                  onChange={() => {
-                    handleOptionsChange(id, limit, index, options);
-                  }}
+                  onChange={() =>
+                    handleOptionsChange(id, limit, index, options)
+                  }
                   checked={opt.selected ? true : false}
                 />
                 <span>{opt.label}</span>

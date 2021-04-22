@@ -3,38 +3,29 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 15px;
-  right: 15px;
-  width: 65px;
-  height: 65px;
+  bottom: 25px;
+  width: 50%;
+  height: 50px;
   outline: none;
   border: none;
-  border-radius: 50%;
-  color: #000;
-  background: #85ad88;
-  box-shadow: inset -3px -3px 10px 0 #638665, 5px 5px 15px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  color: rgb(0, 0, 0);
+  background: #7ca17f;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
 
 #toggle-cart:hover {
-  transform: scale(1.05);
-  background: #608162;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: var(--color-4);
 }
 
-.fa-shopping-cart {
-  position: relative;
+#toggle-cart p {
+  font-size: var(--size-Small);
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-.quantity-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 13px;
-  right: 10px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  font-size: 0.65rem;
-  color: #000;
-  background: #fff;
+#toggle-cart span {
+  letter-spacing: 0;
 }

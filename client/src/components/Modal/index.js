@@ -20,8 +20,6 @@ function Modal({
 }) {
   const coverStyle = {
     backgroundImage: `url(${item.imgModal})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
   };
 
   const [totalPrice, setTotalPrice] = useState(item.price);
@@ -30,10 +28,8 @@ function Modal({
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = "17px";
     return () => {
       document.body.style.overflow = "unset";
-      document.body.style.paddingRight = "0";
     };
   }, []);
 
@@ -64,11 +60,16 @@ function Modal({
 
   const modalRef = useRef();
   const closeModal = (e) => {
-    if (modalRef.current === e.target) toggleModal();
+    if (modalRef.current === e.target || e.key === "Escape") toggleModal();
   };
 
   return (
-    <div ref={modalRef} onClick={closeModal} className="modal">
+    <div
+      ref={modalRef}
+      onClick={closeModal}
+      onKeyDown={closeModal}
+      className="modal"
+    >
       <div
         className={`modal-content ${smallDisplay ? "modal-content--sm" : ""}`}
       >

@@ -17,40 +17,35 @@ const Cart = ({
   const [totalCartPrice, setTotalCartPrice] = useState(0);
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
+  useEffect(() => {
     const totalPrice = calculateTotalCartPrice(cart);
     setTotalCartPrice(totalPrice);
   }, [cart]);
 
-  useEffect(() => {
-    if (showCart) {
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = "17px";
-    } else {
-      document.body.style.overflow = "unset";
-      document.body.style.paddingRight = "0";
-    }
-  }, [showCart]);
-
   const wrapperRef = useRef();
   const closeCart = (e) => {
-    if (wrapperRef.current === e.target) setShowCart(false);
+    if (wrapperRef.current === e.target) setShowCart(!showCart);
   };
 
   return (
     <div
       ref={wrapperRef}
-      className={`cart-container ${showCart ? "container-active" : ""}`}
+      className={`cart-container`}
       onClick={(e) => closeCart(e)}
     >
-      <div
-        className={`cart
-          ${smallDisplay ? "cart-sm" : ""} 
-          ${showCart ? "cart-active" : ""}
-          `}
-      >
+      <div className={`cart ${smallDisplay ? "cart-sm" : ""}`}>
         <section id="cart-header">
           <h2>Shopping Cart</h2>
-          <FaTimes className="close-btn" onClick={() => setShowCart(false)} />
+          <FaTimes
+            className="close-btn"
+            onClick={() => setShowCart(!showCart)}
+          />
         </section>
         {cartQuantity > 0 ? (
           <>

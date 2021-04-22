@@ -42,16 +42,18 @@ function Footer({ smallDisplay }) {
               href="https://www.instagram.com/omomoteashoppe/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Icon link to Omomo's Instagram page"
             >
-              <FaInstagram size="40px" />
+              <FaInstagram size="40px" aria-hidden="true" />
             </a>
             <a
               className="social-icon"
               href="https://www.facebook.com/omomoteashop/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Icon link to Omomo's Facebook page"
             >
-              <FaFacebook size="40px" />
+              <FaFacebook size="40px" aria-hidden="true" />
             </a>
           </section>
         </div>

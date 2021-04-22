@@ -4,10 +4,6 @@ export const barmenuLinks = [
     path: "/",
   },
   {
-    title: "ABOUT",
-    path: "/about",
-  },
-  {
     title: "MENU",
     path: "/menu",
   },
@@ -18,10 +14,6 @@ export const barmenuLinks = [
 ];
 
 export const menuLinks = [
-  {
-    title: "ABOUT",
-    path: "/about",
-  },
   {
     title: "MENU",
     path: "/menu",

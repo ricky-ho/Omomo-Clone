@@ -5,10 +5,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   width: 100%;
   height: 100%;
-  font-family: Commissioner, monospace;
+  font-family: var(--font-primary), monospace;
   background: rgba(50, 50, 50, 0.5);
 }
 
@@ -18,7 +18,7 @@
   position: relative;
   width: 500px;
   height: 90%;
-  background: #fff;
+  background: var(--color-secondary);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
   overflow-y: scroll;
 }
@@ -33,10 +33,9 @@
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-  background: #6d8f6f;
+  background: var(--color-4);
   border: 1px solid rgb(230, 230, 230);
   border-radius: 15px;
-  box-shadow: inset -3px -3px 5px 0 #5c775e;
 }
 /***************************/
 
@@ -49,16 +48,18 @@
 #item-cover {
   width: 100%;
   height: 400px;
+  background-size: cover;
+  background-position: center;
 }
 
 #item-name {
-  font-size: 1.35rem;
+  font-size: var(--size-Small);
   padding: 20px 20px 0 20px;
   letter-spacing: 1px;
   word-spacing: 5px;
 }
 
 #item-description {
-  color: #777777;
+  color: rgb(119, 119, 119);
   padding: 20px 20px 0 20px;
 }

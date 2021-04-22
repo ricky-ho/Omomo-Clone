@@ -5,6 +5,7 @@
   width: 100%;
   max-width: 1440px;
   text-align: center;
+  font-family: var(--font-primary), monospace;
 }
 
 .home-banner {
@@ -13,6 +14,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  max-height: 850px;
   margin-top: -100px;
   background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/v1618608401/Omomo/OmomoHeroBanner_tidbjw.jpg");
   background-position: 25%;
@@ -28,7 +30,7 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 60%);
-  z-index: -1;
+  z-index: -100;
 }
 
 .home-banner-content {
@@ -38,13 +40,13 @@
   align-items: flex-start;
   text-align: left;
   margin-left: 3rem;
-  font-family: Commissioner, monospace;
   width: 375px;
 }
 
 .home-banner-content h1 {
-  font-size: 3rem;
+  font-size: var(--size-xlarge);
   margin-bottom: 1rem;
+  text-shadow: 0 0 10px #fff;
 }
 
 .home-banner-content .link {
@@ -61,45 +63,54 @@
   font-weight: bold;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family: Commissioner, monospace;
-  color: #fff;
-  background: #596c5a;
+  padding: 50px 0;
+  color: rgb(255, 255, 255);
+  background: var(--color-4);
 }
 
 .home-text-m {
-  max-width: 1400px;
-  font-size: 2rem;
-  padding: 50px 0;
+  max-width: 1440px;
+  font-size: var(--size-large);
   margin: 0 125px;
 }
 
 .home-text-sm {
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  padding: 25px 0;
+  font-size: clamp(var(--size-small), 3vw, var(--size-medium));
   margin: 0 50px;
 }
 
-#gallery-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 100px;
-}
-
-#gallery {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-}
-
-.gallery-item {
+#home-banner2,
+#home-banner2 img {
   width: 100%;
-  max-width: 350px;
-  margin-bottom: 25px;
 }
 
-.gallery-item img {
+#home-about {
   width: 100%;
+  padding: 25px 0;
+}
+
+.about-header {
+  margin: 50px;
+  font-size: var(--size-Large);
+  letter-spacing: 0.3rem;
+  color: var(--color-3);
+}
+
+.about-text {
+  margin: 0 150px 50px 150px;
+  font-size: var(--size-Medium);
+  font-weight: bold;
+  line-height: 2;
+}
+
+.about-header-sm {
+  margin: 30px 50px !important;
+  font-size: clamp(var(--size-medium), 5vw, var(--size-Large));
+}
+
+.about-text-sm {
+  margin: 0 50px 0 50px !important;
+  font-size: clamp(var(--size-small), 3vw, var(--size-Small));
 }
 
 #menu-link-container {
@@ -109,32 +120,13 @@
   align-items: center;
   margin: 25px;
   margin-bottom: 100px;
-  font-family: Cuprum, sans-serif;
-  color: #db9768;
 }
 
-#menu-link-container h2 {
-  max-width: 1400px;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+#menu-link-container h3 {
+  font-size: clamp(var(--size-medium), 5vw, var(--size-Large));
   letter-spacing: 3px;
   margin-bottom: 25px;
-}
-
-#menu-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  margin: 0 20px;
-  width: 150px;
-  height: 50px;
-  color: #000;
-  border: 1px solid #d6d6d6;
-}
-
-#menu-link:hover {
-  background: #000;
-  color: #fff;
+  color: var(--color-3);
 }
 
 /********************************************/
@@ -144,6 +136,7 @@
     margin-top: -75px;
     justify-content: center;
     align-items: center;
+    background-position: center;
   }
 
   .home-banner-content {
@@ -155,6 +148,10 @@
   }
 
   .home-banner-content h1 {
-    font-size: 1.75rem;
+    font-size: var(--size-Medium);
+  }
+
+  #home-about {
+    padding: 0;
   }
 }

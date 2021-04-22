@@ -1,9 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Commissioner&family=Cuprum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Commissioner&display=swap");
 
-/* :root {
-  --color-primary: #000;
-  --color-secondary: #
-} */
+:root {
+  --color-primary: rgb(0, 0, 0);
+  --color-secondary: rgb(255, 255, 255);
+  --color-3: rgb(219, 151, 104);
+  --color-4: rgb(95, 117, 97);
+  --font-primary: Commissioner;
+  --size-xlarge: 3rem;
+  --size-Large: 2.5rem;
+  --size-large: 2rem;
+  --size-Medium: 1.75rem;
+  --size-medium: 1.5rem;
+  --size-Small: 1.25rem;
+  --size-small: 1rem;
+  --size-smaller: 0.9rem;
+  --size-xsmall: 0.75rem;
+}
 
 * {
   margin: 0;
@@ -30,43 +42,54 @@ button {
   flex-direction: column;
 }
 
-.font-brown {
-  color: #db9768;
-}
-
-.comm-text {
-  font-family: Commissioner, monospace;
-}
-
 .link {
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: var(--font-xsmall);
   margin: 0 15px;
   width: 150px;
   height: 50px;
 }
 
 .link-black {
-  color: #000;
+  color: var(--color-primary);
   border: 1px solid #d6d6d6;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-secondary);
 }
 
 .link-black:hover {
-  background: #000;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .link-brown {
-  background: #db9768;
-  color: #fff;
+  background: var(--color-3);
+  color: var(--color-secondary);
   border: 1px solid #ca7d45;
 }
 
 .link-brown:hover {
-  background: #596c5a;
+  background: var(--color-4);
   border: 1px solid #485849;
+}
+
+/**************************************/
+.visible-enter {
+  opacity: 0.5;
+}
+
+.visible-enter-active {
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+
+.visible-exit {
+  opacity: 0.5;
+}
+
+.visible-exit-active {
+  opacity: 0;
+  transition: opacity 0.2s linear;
 }

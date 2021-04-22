@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
-import Modal from "../../components/Modal";
 import MenuItem from "./MenuItem/";
-import Loader from "../../components/Loader";
+import Modal from "../../components/Modal";
+import menu from "../../utils/menu";
 import "./style.css";
 
 const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [Menu, setMenu] = useState([]);
-
-  const fetchAndSetMenuData = async () => {
-    try {
-      setIsLoading(true);
-      const response = await fetch("/api/drinks");
-      const data = await response.json();
-      sessionStorage.setItem("menu", JSON.stringify(data));
-      setMenu(data);
-      setIsLoading(false);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    const menuData = sessionStorage.getItem("menu");
-    if (!menuData) fetchAndSetMenuData();
-    else setMenu(JSON.parse(menuData));
-  }, []);
-
   const [showModal, setshowModal] = useState(false);
   const toggleModal = () => setshowModal(!showModal);
 
@@ -36,12 +15,13 @@ const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {
 
   return (
     <main id="menu">
-      {!isLoading ? (
-        <div
-          className={`${smallDisplay ? "menu-wrapper--sm" : "menu-wrapper"}`}
-        >
-          {Menu.map((item) => {
-            return (
+      <div className="menu-container">
+        {menu.map((row, index) => (
+          <div
+            key={index}
+            className={`${smallDisplay ? "menu-list" : "menu-row"}`}
+          >
+            {row.map((item) => (
               <MenuItem
                 key={item._id}
                 smallDisplay={smallDisplay}
@@ -49,13 +29,17 @@ const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {
                 toggleModal={toggleModal}
                 handleClick={clickedMenuItem}
               />
-            );
-          })}
-        </div>
-      ) : (
-        <Loader />
-      )}
-      {showModal && (
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <CSSTransition
+        in={showModal}
+        timeout={300}
+        classNames="visible"
+        unmountOnExit
+      >
         <Modal
           smallDisplay={smallDisplay}
           toggleModal={toggleModal}
@@ -64,7 +48,7 @@ const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {
           cartQuantity={cartQuantity}
           handleAddToCart={handleAddToCart}
         />
-      )}
+      </CSSTransition>
     </main>
   );
 };

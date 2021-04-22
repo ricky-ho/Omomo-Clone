@@ -11,7 +11,12 @@ const ModalActions = ({
 }) => {
   return (
     <div id="modal-actions">
-      <button id="modal-close" type="button" onClick={() => toggleModal()}>
+      <button
+        id="modal-close"
+        type="button"
+        onClick={() => toggleModal()}
+        aria-label="Close modal"
+      >
         <FaTimes size="30px" />
       </button>
       <button

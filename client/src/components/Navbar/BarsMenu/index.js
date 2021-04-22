@@ -16,7 +16,7 @@ const BarsMenu = () => {
   return (
     <>
       <div className="menu-icon" onClick={() => setShowSidebar(!showSidebar)}>
-        <FaBars className="fa-bars" />
+        <FaBars className="fa-bars" aria-label="Icon to open navigation menu" />
       </div>
 
       <div
@@ -29,14 +29,13 @@ const BarsMenu = () => {
             id="nav-menu-toggle"
             onClick={() => setShowSidebar(!showSidebar)}
           >
-            <FaTimes size="45px" />
+            <FaTimes size="45px" aria-label="Close navigation menu" />
           </div>
           <ul>
             {barmenuLinks.map((item, index) => {
               return (
-                <li className="nav-menu-link">
+                <li key={index} className="nav-menu-link">
                   <Link
-                    key={index}
                     to={item.path}
                     onClick={() => setShowSidebar(!showSidebar)}
                   >

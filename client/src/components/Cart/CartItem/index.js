@@ -4,9 +4,7 @@ import "./style.css";
 const CartItem = ({ smallDisplay, index, item, handleRemoveFromCart }) => {
   return (
     <article className="product-card">
-      <div className="product-image">
-        <img src={item.imgMenu} alt={item.name} />
-      </div>
+      <img src={item.imgMenu} alt={item.name} className="product-image" />
       <section className="product-info">
         <div className="info-row info-head">
           <h1>{item.name}</h1>

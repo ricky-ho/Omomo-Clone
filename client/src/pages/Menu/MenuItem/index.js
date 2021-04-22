@@ -6,11 +6,12 @@ const MenuItem = ({ smallDisplay, item, toggleModal, handleClick }) => {
     <div className={`${smallDisplay ? "menu-item--sm" : "menu-item"}`}>
       <img
         src={item.imgMenu}
-        alt={item.name}
+        alt={`Open ${item.name} pop-up`}
         onClick={() => {
           toggleModal();
           handleClick(item);
         }}
+        role="button"
       />
       <div className="menu-item-description">
         <p className="menu-item-name">{item.name}</p>

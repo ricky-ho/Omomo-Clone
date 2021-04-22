@@ -8,16 +8,16 @@
 }
 
 #product-options li p {
-  font-size: 0.9rem;
+  font-size: var(--size-smaller);
 }
 
 #product-options .label {
-  color: #000;
+  color: rgb(0, 0, 0);
   width: 125px;
 }
 
 #product-options .price {
-  color: #db9768;
+  color: var(--color-3);
 }
 
 @media screen and (max-width: 480px) {

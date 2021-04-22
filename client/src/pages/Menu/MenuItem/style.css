@@ -1,17 +1,18 @@
 .menu-item {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  width: 225px;
-  min-width: 110px;
-  margin: 0 15px 25px 15px;
+  width: 100%;
+  max-width: 225px;
+  margin: 0 15px;
+  outline: none;
 }
 
 .menu-item--sm {
   display: flex;
   flex-direction: column;
-  width: 225px;
+  width: 250px;
   margin-bottom: 35px;
+  outline: none;
 }
 
 .menu-item img,
@@ -26,8 +27,8 @@
 }
 
 .menu-item-description {
-  font-family: Commissioner, monospace;
-  font-size: 1rem;
+  font-family: var(--font-primary), monospace;
+  font-size: var(--font-small);
   text-align: center;
 }
 
@@ -36,5 +37,5 @@
 }
 
 .menu-item-price {
-  color: #db9768;
+  color: var(--color-3);
 }

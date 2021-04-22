@@ -1,12 +1,10 @@
 .cart-container {
   position: fixed;
   top: 0;
-  right: -100%;
-  z-index: 100;
   width: 100%;
   height: 100%;
-  z-index: 100;
-  font-family: Commissioner, monospace;
+  z-index: 200;
+  font-family: var(--font-primary), monospace;
   background: rgba(50, 50, 50, 0.5);
 }
 
@@ -14,28 +12,18 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: -100%;
   top: 0;
+  right: 0;
   height: 100vh;
   width: clamp(450px, 50%, 500px);
   padding: 20px 20px 0 20px;
-  background: #fff;
-  z-index: 200;
+  background: rgb(255, 255, 255);
+  z-index: 250;
   overflow-x: hidden;
-  transition: 0.5s;
 }
 
 .cart-sm {
   width: 100%;
-}
-
-.container-active {
-  right: 0;
-}
-
-.cart-active {
-  right: 0;
-  transition: 0.5s;
 }
 
 #cart-header {
@@ -43,11 +31,11 @@
   position: relative;
   padding-bottom: 25px;
   margin-bottom: 15px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 #cart-header h2 {
-  font-size: 1.2rem;
+  font-size: var(--size-Small);
 }
 
 #cart-actions {
@@ -68,29 +56,30 @@
 }
 
 #cart-actions h3 + p {
-  font-size: 1.2rem;
+  font-size: var(--size-Small);
 }
 
 #cart-checkout {
   width: 100%;
   height: 50px;
   margin-bottom: 25px;
-  font-size: 1.25rem;
+  font-size: var(--size-Small);
   font-weight: bold;
   border: none;
   outline: none;
-  background: #6d8f6f;
+  background: var(--color-4);
 }
 
 #cart-checkout:hover {
-  background: #597a5b;
+  color: rgb(255, 255, 255);
+  background: rgb(98, 133, 100);
 }
 
 #continue-shopping {
   border: none;
   outline: none;
   background: inherit;
-  font-size: 1.05rem;
+  font-size: var(--size-small);
 }
 
 #continue-shopping:hover {
@@ -106,5 +95,5 @@
 }
 
 .close-btn:hover {
-  color: #c50000;
+  color: rgb(197, 0, 0);
 }
