@@ -1,18 +1,14 @@
 import { Switch, Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-import Home from "./pages/Home/";
-import Menu from "./pages/Menu/";
-import Locations from "./pages/Locations";
-import ErrorPage from "./pages/Error";
-
+import { Home, Menu, Locations, ErrorPage } from "./pages";
+import useSmallDisplay from "./hooks/useSmallDisplay";
+import useCart from "./hooks/useCart";
+import ScrollToTop from "./utils/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/";
 import Cart from "./components/Cart";
 import CartIcon from "./components/Cart/CartIcon";
-import ScrollToTop from "./utils/ScrollToTop";
-import useSmallDisplay from "./hooks/useSmallDisplay";
-import useCart from "./hooks/useCart";
 import "./App.css";
 
 const App = () => {

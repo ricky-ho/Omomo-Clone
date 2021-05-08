@@ -49,20 +49,24 @@ function Modal({
       className="modal"
     >
       <div
-        className={`modal-content ${smallDisplay ? "modal-content--sm" : ""}`}
+        className={`${
+          smallDisplay ? "modal-content-sm--wrapper" : "modal-content--wrapper "
+        }`}
       >
-        <div className="flex-col">
-          <div id="item-cover" className="flex" style={itemCover} />
-          <h2 id="item-name">{item.name}</h2>
-          <p id="item-description">{item.description}</p>
-          <ModalForm
-            cartLimit={cartLimit}
-            cartQuantity={cartQuantity}
-            itemQuantity={itemQuantity}
-            handleQuantityChange={setItemQuantity}
-            options={options}
-            handleOptionsChange={handleOptionsChange}
-          />
+        <div className="modal-content">
+          <div className="flex-col">
+            <div id="item-cover" className="flex" style={itemCover} />
+            <h2 id="item-name">{item.name}</h2>
+            <p id="item-description">{item.description}</p>
+            <ModalForm
+              cartLimit={cartLimit}
+              cartQuantity={cartQuantity}
+              itemQuantity={itemQuantity}
+              handleQuantityChange={setItemQuantity}
+              options={options}
+              handleOptionsChange={handleOptionsChange}
+            />
+          </div>
         </div>
         <ModalActions
           cartLimit={cartLimit}
