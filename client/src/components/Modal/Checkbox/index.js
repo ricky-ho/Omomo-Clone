@@ -1,7 +1,7 @@
 import "./styles.css";
 
 const Checkbox = ({ id, optionGroup, handleOptionsChange }) => {
-  const { name, label, limit, opts: options } = optionGroup;
+  const { name, label, limit, opts } = optionGroup;
 
   return (
     <section className="form-group">
@@ -10,7 +10,7 @@ const Checkbox = ({ id, optionGroup, handleOptionsChange }) => {
         {!limit ? <p>Select all that apply</p> : null}
       </div>
       <div className="flex-col">
-        {options.map((opt, index) => {
+        {opts.map((opt, index) => {
           return (
             <label
               className="option-label"
@@ -23,9 +23,7 @@ const Checkbox = ({ id, optionGroup, handleOptionsChange }) => {
                   className="option-input"
                   type="checkbox"
                   value={index}
-                  onChange={() =>
-                    handleOptionsChange(id, limit, index, options)
-                  }
+                  onChange={() => handleOptionsChange(id, limit, index)}
                   checked={opt.selected ? true : false}
                 />
                 <span>{opt.label}</span>

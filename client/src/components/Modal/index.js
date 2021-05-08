@@ -1,11 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { cloneDeep } from "lodash";
+import React, { useEffect, useRef } from "react";
 
-import {
-  options as defaultOptions,
-  calculateItemPrice,
-  appendOptionsAndQuantity,
-} from "../../utils/options";
+import useItem from "../../hooks/useItem";
+import { appendOptionsAndQuantity } from "../../utils/options";
 import ModalForm from "./ModalForm";
 import ModalActions from "./ModalActions";
 import "./style.css";
@@ -18,13 +14,25 @@ function Modal({
   cartQuantity,
   handleAddToCart,
 }) {
-  const coverStyle = {
-    backgroundImage: `url(${item.imgModal})`,
+  const {
+    itemCover,
+    itemPrice,
+    itemQuantity,
+    options,
+    setItemQuantity,
+    handleOptionsChange,
+  } = useItem(item);
+
+  const modalRef = useRef();
+  const closeModal = (e) => {
+    if (modalRef.current === e.target || e.key === "Escape") toggleModal();
   };
 
-  const [totalPrice, setTotalPrice] = useState(item.price);
-  const [itemQuantity, setItemQuantity] = useState(1);
-  const [options, setOptions] = useState(defaultOptions);
+  const handleSubmit = () => {
+    appendOptionsAndQuantity(item, options, itemPrice);
+    handleAddToCart(item, itemQuantity);
+    toggleModal();
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -32,36 +40,6 @@ function Modal({
       document.body.style.overflow = "unset";
     };
   }, []);
-
-  useEffect(() => {
-    const newPrice = calculateItemPrice(item, options);
-    setTotalPrice(newPrice);
-  }, [options, itemQuantity, item]);
-
-  const handleOptionsChange = (groupIndex, limit, selectedIndex) => {
-    const newOptions = cloneDeep(options);
-    const optionGroup = newOptions[groupIndex].opts;
-
-    if (!limit) {
-      let selected = optionGroup[selectedIndex].selected;
-      optionGroup[selectedIndex].selected = !selected;
-    } else {
-      optionGroup.forEach((opt) => (opt.selected = false));
-      optionGroup[selectedIndex].selected = true;
-    }
-    setOptions(newOptions);
-  };
-
-  const handleClick = () => {
-    appendOptionsAndQuantity(item, options, totalPrice);
-    handleAddToCart(item, itemQuantity);
-    toggleModal();
-  };
-
-  const modalRef = useRef();
-  const closeModal = (e) => {
-    if (modalRef.current === e.target || e.key === "Escape") toggleModal();
-  };
 
   return (
     <div
@@ -74,7 +52,7 @@ function Modal({
         className={`modal-content ${smallDisplay ? "modal-content--sm" : ""}`}
       >
         <div className="flex-col">
-          <div id="item-cover" className="flex" style={coverStyle} />
+          <div id="item-cover" className="flex" style={itemCover} />
           <h2 id="item-name">{item.name}</h2>
           <p id="item-description">{item.description}</p>
           <ModalForm
@@ -90,9 +68,9 @@ function Modal({
           cartLimit={cartLimit}
           cartQuantity={cartQuantity}
           itemQuantity={itemQuantity}
-          totalPrice={totalPrice}
+          itemPrice={itemPrice}
           toggleModal={toggleModal}
-          handleClick={handleClick}
+          handleSubmit={handleSubmit}
         />
       </div>
     </div>

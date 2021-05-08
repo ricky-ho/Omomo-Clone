@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import { FaTimes } from "react-icons/fa";
 
 import CartItems from "./CartItems";
-import { FaTimes } from "react-icons/fa";
 import { calculateTotalCartPrice } from "../../utils/cart";
 import "./style.css";
 
@@ -15,6 +15,16 @@ const Cart = ({
   setShowCart,
 }) => {
   const [totalCartPrice, setTotalCartPrice] = useState(0);
+  const wrapperRef = useRef();
+
+  const closeCart = (e) => {
+    if (wrapperRef.current === e.target) setShowCart(!showCart);
+  };
+
+  useEffect(() => {
+    const totalPrice = calculateTotalCartPrice(cart);
+    setTotalCartPrice(totalPrice);
+  }, [cart]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -22,16 +32,6 @@ const Cart = ({
       document.body.style.overflow = "unset";
     };
   }, []);
-
-  useEffect(() => {
-    const totalPrice = calculateTotalCartPrice(cart);
-    setTotalCartPrice(totalPrice);
-  }, [cart]);
-
-  const wrapperRef = useRef();
-  const closeCart = (e) => {
-    if (wrapperRef.current === e.target) setShowCart(!showCart);
-  };
 
   return (
     <div

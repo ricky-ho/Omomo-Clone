@@ -7,7 +7,7 @@ const Home = ({ smallDisplay }) => {
   return (
     <main id="home">
       <section className="home-banner">
-        {smallDisplay ? <div className="overlay"></div> : null}
+        <div className="overlay"></div>
         <div className="home-banner-content">
           <h1>PURE, HONEST, AND SIMPLE!</h1>
           <Link to="/locations" className="link link-brown">
@@ -27,7 +27,7 @@ const Home = ({ smallDisplay }) => {
         <img
           src="https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1440w.jpg"
           alt="Coconut Matcha Tea banner"
-          srcSet="https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1440w.jpg 1440w, https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-500w.jpg 500w"
+          srcSet="https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1618871513/Omomo/Home/Omomo-banner2-1440w.jpg 1440w, https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-500w.jpg 500w"
           sizes="100vw"
           loading="lazy"
         />
@@ -48,7 +48,7 @@ const Home = ({ smallDisplay }) => {
 
       <div id="menu-link-container">
         <h3>VIEW OUR FULL MENU</h3>
-        <Link to="/menu" className="link link-black">
+        <Link to="/menu" className="link link-brown">
           <p>Menu</p>
         </Link>
       </div>

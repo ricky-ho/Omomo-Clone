@@ -1,6 +1,6 @@
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 
-import storeLocations from "../../utils/storeLocations";
+import storeLocations from "../../models/storeLocations";
 import "./style.css";
 
 function Footer({ smallDisplay }) {

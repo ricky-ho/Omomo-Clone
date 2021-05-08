@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-import { barmenuLinks } from "../../../utils/menuLinks";
+import { barmenuLinks } from "../../../models/navLinks";
 import "./style.css";
 
 const BarsMenu = () => {

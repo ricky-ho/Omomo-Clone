@@ -24,8 +24,20 @@
   font-size: var(--size-Small);
   font-weight: bold;
   letter-spacing: 2px;
+  padding: 0 25px;
 }
 
 #toggle-cart span {
   letter-spacing: 0;
+}
+
+@media screen and (max-width: 480px) {
+  #toggle-cart {
+    width: auto;
+  }
+
+  #toggle-cart p {
+    font-size: var(--size-small);
+    padding: 0 25px;
+  }
 }

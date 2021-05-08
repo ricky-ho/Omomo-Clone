@@ -1,5 +1,3 @@
-// import { useRef } from "react";import ItemOptions from "../ItemOptions";
-
 import CartItem from "../CartItem";
 
 import "./style.css";

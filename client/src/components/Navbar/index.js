@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
 import BarsMenu from "./BarsMenu";
-import { menuLinks } from "../../utils/menuLinks";
+import { menuLinks } from "../../models/navLinks";
 
 import "./style.css";
 

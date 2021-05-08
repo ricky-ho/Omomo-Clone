@@ -1,4 +1,4 @@
-import storeLocations from "../../utils/storeLocations";
+import storeLocations from "../../models/storeLocations";
 import "./style.css";
 
 const Locations = ({ smallDisplay }) => {

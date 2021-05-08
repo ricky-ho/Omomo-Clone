@@ -13,9 +13,9 @@ const storeLocations = [
       { day: "Saturday", timeString: "11AM-8PM" },
     ],
     imgSrc:
-      "https://res.cloudinary.com/ricky-ho/image/upload/v1618704316/Omomo/Locations/location-image1-1590w.jpg",
+      "https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1620430931/Omomo/Locations/location-image1_1440w_evpwhd.jpg",
     imgSrcSet:
-      "https://res.cloudinary.com/ricky-ho/image/upload/v1618709730/Omomo/Locations/location-image1-500w.jpg 500w, https://res.cloudinary.com/ricky-ho/image/upload/v1618709762/Omomo/Locations/location-image1-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/v1618704316/Omomo/Locations/location-image1-1590w.jpg 1590w",
+      "https://res.cloudinary.com/ricky-ho/image/upload/q_50/v1618709730/Omomo/Locations/location-image1-500w.jpg 500w, https://res.cloudinary.com/ricky-ho/image/upload/q_50/v1618709762/Omomo/Locations/location-image1-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1620430931/Omomo/Locations/location-image1_1440w_evpwhd.jpg 1440w",
     gmaps:
       "https://www.google.com/maps/place/OMOMO+Tea+Shoppe/@34.0103382,-117.7424176,17z/data=!3m1!4b1!4m5!3m4!1s0x80c32d5694a8c81b:0x1e21b35a236d6fe8!8m2!3d34.0103465!4d-117.7402429",
     embedSrc:
@@ -35,9 +35,9 @@ const storeLocations = [
       { day: "Saturday", timeString: "11AM-5PM" },
     ],
     imgSrc:
-      "https://res.cloudinary.com/ricky-ho/image/upload/v1618704315/Omomo/Locations/location-image2-1590w.jpg",
+      "https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1620430931/Omomo/Locations/location-image2_1440w_iyphhb.jpg",
     imgSrcSet:
-      "https://res.cloudinary.com/ricky-ho/image/upload/v1618709761/Omomo/Locations/location-image2-500w.jpg 500w, https://res.cloudinary.com/ricky-ho/image/upload/v1618709762/Omomo/Locations/location-image2-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/v1618704315/Omomo/Locations/location-image2-1590w.jpg 1590w",
+      "https://res.cloudinary.com/ricky-ho/image/upload/q_50/v1618709761/Omomo/Locations/location-image2-500w.jpg 500w, https://res.cloudinary.com/ricky-ho/image/upload/q_50/v1618709762/Omomo/Locations/location-image2-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1620430931/Omomo/Locations/location-image2_1440w_iyphhb.jpg 1440w",
     gmaps:
       "https://www.google.com/maps/place/OMOMO+Tea+Shoppe/@33.6714702,-117.791266,17z/data=!3m1!4b1!4m5!3m4!1s0x80dcdd6c3e05b253:0x7af1faa168bc037a!8m2!3d33.671458!4d-117.7890776",
     embedSrc:
@@ -57,9 +57,9 @@ const storeLocations = [
       { day: "Saturday", timeString: "11AM-8PM" },
     ],
     imgSrc:
-      "https://res.cloudinary.com/ricky-ho/image/upload/v1618704315/Omomo/Locations/location-image3-1590w.jpg",
+      "https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1618704315/Omomo/Locations/location-image3-1590w.jpg",
     imgSrcSet:
-      "https://res.cloudinary.com/ricky-ho/image/upload/v1618709796/Omomo/Locations/location-image3-500w.jpg 500w, https://res.cloudinary.com/ricky-ho/image/upload/v1618709708/Omomo/Locations/location-image3-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/v1618704315/Omomo/Locations/location-image3-1590w.jpg 1590w",
+      "https://res.cloudinary.com/ricky-ho/image/upload/q_50/v1618709796/Omomo/Locations/location-image3-500w.jpg 500w, https://res.cloudinary.com/ricky-ho/image/upload/q_50/v1618709708/Omomo/Locations/location-image3-1080w.jpg 1080w, https://res.cloudinary.com/ricky-ho/image/upload/q_60/v1620430932/Omomo/Locations/location-image3_1440w_zwknwg.jpg 1440w",
     gmaps:
       "https://www.google.com/maps/place/Omomo+Tea+Shoppe/@33.7064824,-117.788591,19z/data=!3m1!4b1!4m5!3m4!1s0x80dcdd80a27f962b:0x8c47a3fa21092ac7!8m2!3d33.7064721!4d-117.788036",
     embedSrc:

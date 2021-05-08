@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 
 import MenuItem from "./MenuItem/";
 import Modal from "../../components/Modal";
-import menu from "../../utils/menu";
+import menu from "../../models/menu";
 import "./style.css";
 
 const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {

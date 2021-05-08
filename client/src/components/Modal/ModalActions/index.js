@@ -5,9 +5,9 @@ const ModalActions = ({
   cartLimit,
   cartQuantity,
   itemQuantity,
-  totalPrice,
+  itemPrice,
   toggleModal,
-  handleClick,
+  handleSubmit,
 }) => {
   return (
     <div id="modal-actions">
@@ -22,7 +22,7 @@ const ModalActions = ({
       <button
         id="add-to-cart-btn"
         type="button"
-        onClick={() => handleClick()}
+        onClick={() => handleSubmit()}
         className={`${cartQuantity >= cartLimit ? "add-btn--disabled" : ""}`}
         disabled={cartQuantity >= cartLimit}
       >
@@ -31,7 +31,7 @@ const ModalActions = ({
         ) : (
           <p>
             Add to Cart -{" "}
-            <span>{`$${(itemQuantity * totalPrice).toFixed(2)}`}</span>
+            <span>{`$${(itemQuantity * itemPrice).toFixed(2)}`}</span>
           </p>
         )}
       </button>

@@ -1,7 +1,7 @@
 import ItemOptions from "./ItemOptions";
 import "./style.css";
 
-const CartItem = ({ smallDisplay, index, item, handleRemoveFromCart }) => {
+const CartItem = ({ index, item, handleRemoveFromCart }) => {
   return (
     <article className="product-card">
       <img src={item.imgMenu} alt={item.name} className="product-image" />
@@ -23,12 +23,7 @@ const CartItem = ({ smallDisplay, index, item, handleRemoveFromCart }) => {
           <ItemOptions item={item} />
         </div>
       </section>
-      <button
-        id="remove-btn"
-        onClick={() => {
-          handleRemoveFromCart(index);
-        }}
-      >
+      <button id="remove-btn" onClick={() => handleRemoveFromCart(index)}>
         <p>Remove</p>
       </button>
     </article>
