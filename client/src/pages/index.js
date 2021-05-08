@@ -1,6 +1,6 @@
 import Home from "./Home";
 import Locations from "./Locations";
 import Menu from "./Menu";
-import Error from "./Error";
+import ErrorPage from "./Error";
 
-export { Home, Locations, Menu, Error };
+export { Home, Locations, Menu, ErrorPage };
