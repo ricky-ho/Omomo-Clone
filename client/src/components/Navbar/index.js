@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import { FiShoppingCart } from "react-icons/fi";
 
 import BarsMenu from "./BarsMenu";
 import { menuLinks } from "../../models/navLinks";
@@ -21,30 +21,33 @@ const Navbar = ({ smallDisplay, cartQuantity, setShowCart }) => {
         {smallDisplay ? (
           <BarsMenu />
         ) : (
-          <ul>
-            {menuLinks.map((item, index) => {
-              return (
-                <li key={index}>
-                  <Link key={index} to={item.path} className="link link-brown">
-                    <p>{item.title}</p>
-                  </Link>
-                </li>
-              );
-            })}
-            <li id="cart-toggle" onClick={() => setShowCart(true)}>
-              <FaShoppingCart
-                size="25px"
-                aria-label="Icon to open shopping cart"
-              />
-              <div className="nav-quantity-icon">
-                <p>{cartQuantity}</p>
-              </div>
-            </li>
-          </ul>
+          <DefaultNavMenu cartQuantity={cartQuantity} setShowCart={setShowCart}/>
         )}
       </nav>
     </header>
   );
 };
+
+const DefaultNavMenu = ({cartQuantity, setShowCart}) => {
+  return (
+    <ul>
+      {menuLinks.map((item, index) => {
+        return (
+          <li key={index}>
+            <Link key={index} to={item.path} className="link link-brown">
+              <p>{item.title}</p>
+            </Link>
+          </li>
+          );
+      })}
+      <li id="cart-toggle" onClick={() => setShowCart(true)}>
+        <FiShoppingCart size={30} aria-label="Icon to open shopping cart"/>
+        <div className="nav-quantity-icon">
+          <p>{cartQuantity}</p>
+        </div>
+      </li>
+    </ul>
+  )
+}
 
 export default Navbar;

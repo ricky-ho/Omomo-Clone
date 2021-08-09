@@ -1,24 +1,24 @@
 #home {
-  display: flex-col;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1440px;
   text-align: center;
   font-family: var(--font-primary), monospace;
 }
 
 .home-banner {
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
   height: 100vh;
-  max-height: 850px;
+  max-height: 1080px;
   margin-top: -100px;
   background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/v1620429065/Omomo/Home/OmomoHeroBanner_1440w_frc61f.jpg");
   background-position-x: 25%;
-  background-position-y: -100%;
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 0;
@@ -40,14 +40,16 @@
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  margin-left: 3rem;
-  width: 375px;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 50px;
 }
 
 .home-banner-content h1 {
-  font-size: var(--size-xlarge);
-  margin-bottom: 1rem;
+  font-size: clamp(var(--size-xlarge), 5vw, 4rem);
+  margin-bottom: 2rem;
   text-shadow: 0 0 10px #fff;
+  max-width: 13ch;
 }
 
 .home-banner-content .link {
@@ -134,15 +136,14 @@
 
 @media screen and (max-width: 480px) {
   .home-banner {
-    margin-top: -75px;
     justify-content: center;
     align-items: center;
-    background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/q_70/v1620429065/Omomo/Home/OmomoHeroBanner_1080w_rgxbsz.jpg");
+    background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/q_80/v1620429065/Omomo/Home/OmomoHeroBanner_1080w_rgxbsz.jpg");
     background-position: center;
   }
 
   .overlay {
-    background: rgba(255, 255, 255, 60%);
+    background: rgba(255, 255, 255, 50%);
   }
 
   .home-banner-content {

@@ -8,6 +8,7 @@
 /* CART-ITEMS SCROLLBAR */
 #cart-items::-webkit-scrollbar {
   background: inherit;
+  width: 13px;
 }
 
 #cart-items::-webkit-scrollbar-track {
@@ -15,7 +16,7 @@
 }
 
 #cart-items::-webkit-scrollbar-thumb {
-  background: rgb(207, 207, 207);
+  background: rgb(189, 189, 189);
   border-radius: 15px;
 }
 /************************/

@@ -3,7 +3,7 @@
 :root {
   --color-primary: rgb(0, 0, 0);
   --color-secondary: rgb(255, 255, 255);
-  --color-3: rgb(219, 151, 104);
+  --color-3: rgb(225, 134, 69);
   --color-4: rgb(95, 117, 97);
   --font-primary: Commissioner;
   --size-xlarge: 3rem;
@@ -15,6 +15,7 @@
   --size-small: 1rem;
   --size-smaller: 0.9rem;
   --size-xsmall: 0.75rem;
+  --header-height: 100px;
 }
 
 * {
@@ -67,7 +68,8 @@ button {
 .link-brown {
   background: var(--color-3);
   color: var(--color-secondary);
-  border: 1px solid #ca7d45;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .link-brown:hover {

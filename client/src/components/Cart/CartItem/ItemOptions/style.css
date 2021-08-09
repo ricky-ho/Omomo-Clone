@@ -4,7 +4,6 @@
 
 #product-options li {
   display: flex;
-  flex-direction: row;
 }
 
 #product-options li p {
@@ -17,10 +16,16 @@
 }
 
 #product-options .price {
-  color: var(--color-3);
+  color:   rgb(225, 134, 69);
+
 }
 
 @media screen and (max-width: 480px) {
+
+  #product-options li {
+  justify-content: space-between;
+  max-width: 200px;
+}
   #product-options {
     padding-bottom: 10px;
   }

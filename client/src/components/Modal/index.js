@@ -7,7 +7,6 @@ import ModalActions from "./ModalActions";
 import "./style.css";
 
 function Modal({
-  smallDisplay,
   toggleModal,
   item,
   cartLimit,
@@ -49,9 +48,7 @@ function Modal({
       className="modal"
     >
       <div
-        className={`${
-          smallDisplay ? "modal-content-sm--wrapper" : "modal-content--wrapper "
-        }`}
+        className="modal-content--wrapper"
       >
         <div className="modal-content">
           <div className="flex-col">

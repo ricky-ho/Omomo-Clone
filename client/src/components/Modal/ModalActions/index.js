@@ -27,7 +27,7 @@ const ModalActions = ({
         disabled={cartQuantity >= cartLimit}
       >
         {cartQuantity >= cartLimit ? (
-          <p>{`Your cart already contains ${cartLimit} items`}</p>
+          <p>{`Online cart has a limit of ${cartLimit} items`}</p>
         ) : (
           <p>
             Add to Cart -{" "}

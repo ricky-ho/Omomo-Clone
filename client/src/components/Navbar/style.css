@@ -12,11 +12,14 @@ header {
   align-items: center;
   width: 100%;
   max-width: 1440px;
-  height: clamp(75px, 10vw, 100px);
+  height: var(--header-height);
+}
+
+#navbar > a {
+  margin-left: 50px;
 }
 
 .nav-logo {
-  margin-left: 50px;
   width: 40px;
   height: 40px;
 }
@@ -48,19 +51,18 @@ header {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--color-primary);
+  top: -3px;
+  right: 0;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  font-size: var(--size-xsmall);
-  color: var(--color-primary);
-  background: #fff;
+  font-size: var(--size-small);
+  color: var(--color-secondary);
+  background: rgb(230, 4, 4);
 }
 
 @media screen and (max-width: 480px) {
-  .nav-logo {
+  #navbar > a {
     margin-left: 25px;
   }
 

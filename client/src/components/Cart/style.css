@@ -52,11 +52,13 @@
 #cart-actions > div {
   display: flex;
   justify-content: space-between;
-  margin: 5px 0 10px 0;
+  margin: 10px 0 15px 0;
 }
 
 #cart-actions h3 + p {
   font-size: var(--size-Small);
+  font-weight: bold;
+
 }
 
 #cart-checkout {

@@ -41,7 +41,6 @@ const Menu = ({ smallDisplay, cartLimit, cartQuantity, handleAddToCart }) => {
         unmountOnExit
       >
         <Modal
-          smallDisplay={smallDisplay}
           toggleModal={toggleModal}
           item={clickedItem}
           cartLimit={cartLimit}
