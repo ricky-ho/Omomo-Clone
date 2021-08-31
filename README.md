@@ -8,7 +8,7 @@ This project is only for my personal educational purposes.
 
 ## Description 
 This web application was created to simulate an online retailer for boba milk tea. Users will be able to browse a menu of beverages, modify
-the drink options & add-ons, and add or remove items from their shopping cart. The website is fully-responsive and can be viewed on mobile, tablet, or desktop screen sizes.
+the drink options & add-ons, and add or remove items from their shopping cart. A user's shopping cart state is persisted between browser sessions by utilizing the browser's LocalStorage. The website is also fully-responsive and can be viewed on mobile, tablet, or desktop screen sizes.
 
 ## External Dependencies
 - [lodash](https://lodash.com/)
