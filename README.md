@@ -7,9 +7,14 @@ All of the images and major designs were replicated from their official site. Al
 This project is only for my personal educational purposes.
 
 ## Description 
-This website project was created to simulate an online retailer. Users will be able to browse a menu of beverages, modify
-the ice level, sweetness, dairy options, and toppings for each beverage, and add or remove them from the shopping cart.
-The website can be viewed on any screen and is mobile responsive.
+This web application was created to simulate an online retailer for boba milk tea. Users will be able to browse a menu of beverages, modify
+the drink options & add-ons, and add or remove items from their shopping cart. The website is fully-responsive and can be viewed on mobile, tablet, or desktop screen sizes.
+
+## External Dependencies
+- [lodash](https://lodash.com/)
+- [react-router-dom](https://reactrouter.com)
+- [react-transition=group](https://www.npmjs.com/package/react-transition-group)
+- [react-icons](https://react-icons.github.io/react-icons)
 
 ### Screenshots
 ![Home page](https://res.cloudinary.com/ricky-ho/image/upload/v1619137362/Omomo/msedge_mEV58FsfnN_ru9jvh.png)
