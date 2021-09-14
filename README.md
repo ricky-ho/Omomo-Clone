@@ -10,6 +10,11 @@ This project is only for my personal educational purposes.
 This web application was created to simulate an online retailer for boba milk tea. Users will be able to browse a menu of beverages, modify
 the drink options & add-ons, and add or remove items from their shopping cart. A user's shopping cart state is persisted between browser sessions by utilizing the browser's LocalStorage. The website is also fully-responsive and can be viewed on mobile, tablet, or desktop screen sizes.
 
+## Future Improvements
+- Implement the backend to handle shopping cart functionalities
+- Implement a checkout workflow and payment system using third-party services (i.e. PayPal, Stripe, etc)
+- Add a database to store product information and user orders
+
 ## Dependencies
 - [lodash](https://lodash.com/)
 - [react-router-dom](https://reactrouter.com)
@@ -24,3 +29,4 @@ the drink options & add-ons, and add or remove items from their shopping cart. A
 ![Locations page](https://res.cloudinary.com/ricky-ho/image/upload/v1619137361/Omomo/msedge_zJvRlxDf5v_sboouc.png)
 
 ![Cart](https://res.cloudinary.com/ricky-ho/image/upload/v1619137360/Omomo/msedge_ymSBUXwlNW_gjyxj2.png)
+
