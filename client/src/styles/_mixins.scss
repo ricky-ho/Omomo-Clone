@@ -1,0 +1,29 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin links {
+  @include flex(row, center, center);
+  text-decoration: none;
+  margin: 0 15px;
+  width: 150px;
+  height: 50px;
+}
+
+@mixin link-brown {
+  @include links;
+
+  background: var(--brown);
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  &:hover,
+  &:focus {
+    background: var(--green);
+    border: 1px solid var(--dark-green);
+  }
+}

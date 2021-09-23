@@ -1,0 +1,90 @@
+@import "./mixins";
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 100;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  height: var(--header-height);
+
+  & > a {
+    margin-left: 50px;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  ul {
+    display: flex;
+    font-family: var(--font-primary), monospace;
+    font-size: var(--size-small);
+    list-style: none;
+    margin-right: 50px;
+
+    & > :last-child {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.navlink {
+  @include link-brown;
+}
+
+.navlink__cart {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  width: 50px;
+  color: var(--color-primary);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  span {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 3px;
+    border-radius: 50%;
+    font-size: var(--size-small);
+    color: rgb(255, 255, 255);
+    background: rgb(230, 4, 4);
+  }
+}
+
+.nav-quantity-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: var(--size-small);
+  color: var(--color-secondary);
+  background: rgb(230, 4, 4);
+}
+
+@media screen and (max-width: 480px) {
+  #navbar > a {
+    margin-left: 25px;
+  }
+
+  .menu-icon {
+    margin-right: 25px;
+  }
+}

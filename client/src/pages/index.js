@@ -1,6 +1,7 @@
-import Home from "./Home";
-import Locations from "./Locations";
-import Menu from "./Menu";
-import ErrorPage from "./Error";
+import HomePage from "./HomePage";
+import LocationsPage from "./LocationsPage";
+import MenuPage from "./MenuPage";
+import ErrorPage from "./ErrorPage";
+import CartPage from "./CartPage";
 
-export { Home, Locations, Menu, ErrorPage };
+export { HomePage, LocationsPage, MenuPage, CartPage, ErrorPage };

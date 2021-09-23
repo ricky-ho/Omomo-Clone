@@ -1,7 +1,7 @@
-import storeLocations from "../../models/storeLocations";
+import { storeLocations } from "../../config";
 import "./style.css";
 
-const Locations = ({ smallDisplay }) => {
+const LocationsPage = () => {
   return (
     <main id="locations">
       <h1>LOCATIONS</h1>
@@ -55,4 +55,4 @@ const Locations = ({ smallDisplay }) => {
   );
 };
 
-export default Locations;
+export default LocationsPage;

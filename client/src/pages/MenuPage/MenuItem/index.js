@@ -5,7 +5,7 @@ const MenuItem = ({ smallDisplay, item, toggleModal, handleClick }) => {
   return (
     <div className={`${smallDisplay ? "menu-item--sm" : "menu-item"}`}>
       <img
-        src={item.imgMenu}
+        src={item.imageURL}
         alt={`Open ${item.name} pop-up`}
         onClick={() => {
           toggleModal();

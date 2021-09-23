@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner&display=swap");
+@import "./mixins";
+
+:root {
+  --brown: rgb(225, 134, 69);
+  --green: rgb(95, 117, 97);
+  --dark-green: rgb(72, 88, 73);
+  --font-primary: Commissioner;
+  --font-xxl: 3rem;
+  --font-xl: 2.5rem;
+  --font-l: 2rem;
+  --font-m: 1.5rem;
+  --font-sm: 0.9rem;
+  --font-xs: 0.75rem;
+  --header-height: 100px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.App {
+  @include flex(column, flex-start, center);
+}
+
+.link {
+  @include links;
+}
+
+.link-brown {
+  @include link-brown;
+}
