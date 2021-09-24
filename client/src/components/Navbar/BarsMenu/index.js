@@ -2,8 +2,7 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-import { barmenuLinks } from "../../../models/navLinks";
-import "./style.css";
+import "./style.scss";
 
 const BarsMenu = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -32,7 +31,7 @@ const BarsMenu = () => {
             <FaTimes size="45px" aria-label="Close navigation menu" />
           </div>
           <ul>
-            {barmenuLinks.map((item, index) => {
+            {/* {barmenuLinks.map((item, index) => {
               return (
                 <li key={index} className="nav-menu-link">
                   <Link
@@ -43,7 +42,7 @@ const BarsMenu = () => {
                   </Link>
                 </li>
               );
-            })}
+            })} */}
           </ul>
         </nav>
       </div>

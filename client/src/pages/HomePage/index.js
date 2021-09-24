@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import Gallery from "../../components/Gallery";
-import "./style.css";
+import "./style.scss";
 
 const Home = ({ smallDisplay }) => {
   return (

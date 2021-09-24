@@ -1,5 +1,5 @@
 import { storeLocations } from "../../config";
-import "./style.css";
+import "./style.scss";
 
 const LocationsPage = () => {
   return (

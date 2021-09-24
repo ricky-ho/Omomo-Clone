@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import CartContext from "../../contexts/Cart/cart-context";
 import MenuItem from "./MenuItem/";
 import Modal from "../../components/Modal";
-import "./style.css";
+import "./style.scss";
 
 const MenuPage = () => {
   const { cartLimit, cartQuantity, handleAddToCart } = useContext(CartContext);

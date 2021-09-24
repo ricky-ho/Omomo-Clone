@@ -1,7 +1,7 @@
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 
-import storeLocations from "../../models/storeLocations";
-import "./style.css";
+import { storeLocations } from "../../config";
+import "./style.scss";
 
 function Footer({ smallDisplay }) {
   return (
