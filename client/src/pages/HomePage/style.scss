@@ -1,164 +1,174 @@
+@import "../../mixins";
+
 #home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex(column, center, center);
   width: 100%;
   text-align: center;
-  font-family: var(--font-primary), monospace;
-}
+  font-family: var(--font-family);
 
-.home-banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  max-height: 1080px;
-  margin-top: -100px;
-  background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/v1620429065/Omomo/Home/OmomoHeroBanner_1440w_frc61f.jpg");
-  background-position-x: 25%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 0;
+  #home__hero {
+    @include flex(row, center, center);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-height: 1080px;
+    margin-top: calc(-1 * var(--header-height));
+    background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/v1620429065/Omomo/Home/OmomoHeroBanner_1440w_frc61f.jpg");
+    background-position-x: 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
 }
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 40%);
-  z-index: -100;
+  inset: 0;
+  background-color: hsla(0, 0%, 100%, 0.25);
+  z-index: -10;
 }
 
-.home-banner-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+.hero__content {
+  @include flex(column, center, flex-start);
   text-align: left;
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--width-max);
   padding: 0 50px;
+
+  h1 {
+    font-size: clamp(var(--font-xl), 5vw, 4rem);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px white;
+    max-width: 13ch;
+  }
+
+  a {
+    @include link-brown;
+    padding: 0 15px;
+  }
 }
 
-.home-banner-content h1 {
-  font-size: clamp(var(--size-xlarge), 5vw, 4rem);
-  margin-bottom: 2rem;
-  text-shadow: 0 0 10px #fff;
-  max-width: 13ch;
-}
-
-.home-banner-content .link {
-  margin: 0;
-  width: 175px;
-}
-
-#home-text-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#home__text-banner {
+  @include flex(row, center, center);
   width: 100%;
-  text-align: center;
-  font-weight: bold;
-  line-height: 1.6;
-  letter-spacing: 1px;
   padding: 50px 0;
-  color: rgb(255, 255, 255);
-  background: var(--color-4);
+  background: var(--green);
+
+  p {
+    font-size: var(--font-l);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: bold;
+    line-height: 2;
+    letter-spacing: 1px;
+    margin: 0 125px;
+    max-width: var(--width-max);
+  }
 }
 
-.home-text-m {
-  max-width: 1440px;
-  font-size: var(--size-large);
-  margin: 0 125px;
-}
-
-.home-text-sm {
-  font-size: clamp(var(--size-small), 3vw, var(--size-medium));
-  margin: 0 50px;
-}
-
-#home-banner2,
-#home-banner2 img {
+#home__img-banner img {
   width: 100%;
 }
 
-#home-about {
+#home__about {
   width: 100%;
-  padding: 25px 0;
+  padding: 50px 0;
+
+  h2 {
+    margin: 50px;
+    font-size: var(--font-xl);
+    letter-spacing: 0.25em;
+    color: black;
+  }
+
+  p {
+    margin: 0 150px 50px 150px;
+    font-size: var(--font-m);
+    font-weight: bold;
+    line-height: 2;
+  }
 }
 
-.about-header {
-  margin: 50px;
-  font-size: var(--size-Large);
-  letter-spacing: 0.3rem;
-  color: var(--color-3);
+#home__menu-link {
+  @include flex(column, center, center);
+  width: 100%;
+  height: 30vh;
+
+  h2 {
+    font-size: clamp(1rem, 5vw, var(--font-l));
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    color: black;
+  }
 }
 
-.about-text {
-  margin: 0 150px 50px 150px;
-  font-size: var(--size-Medium);
-  font-weight: bold;
-  line-height: 2;
-}
+#home__gallery {
+  @include flex(column, center, center);
+  width: 100%;
 
-.about-header-sm {
-  margin: 30px 50px !important;
-  font-size: clamp(var(--size-medium), 5vw, var(--size-Large));
-}
+  .gallery-item {
+    width: 100%;
+    max-width: 350px;
 
-.about-text-sm {
-  margin: 0 50px 0 50px !important;
-  font-size: clamp(var(--size-small), 3vw, var(--size-Small));
-}
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
 
-#menu-link-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 25px;
-  margin-bottom: 100px;
-}
-
-#menu-link-container h3 {
-  font-size: clamp(var(--size-medium), 5vw, var(--size-Large));
-  letter-spacing: 3px;
-  margin-bottom: 25px;
-  color: var(--color-1);
+    img {
+      width: 100%;
+    }
+  }
 }
 
 /********************************************/
 
+@media screen and (max-width: 960px) {
+  #home__text-banner p {
+    font-size: clamp(var(--font-sm), 3vw, var(--font-m));
+    margin: 0 50px;
+  }
+
+  #home__about {
+    h2 {
+      margin: 30px 50px;
+      font-size: clamp(var(--font-m), 5vw, var(--font-l));
+    }
+
+    p {
+      margin: 0 50px;
+      font-size: clamp(var(--font-sm), 3vw, 1rem);
+    }
+  }
+}
+
 @media screen and (max-width: 480px) {
-  .home-banner {
-    justify-content: center;
-    align-items: center;
+  #home #home__hero {
     background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/q_80/v1620429065/Omomo/Home/OmomoHeroBanner_1080w_rgxbsz.jpg");
     background-position: center;
   }
 
   .overlay {
-    background: rgba(255, 255, 255, 50%);
+    background: hsla(0, 0%, 100%, 0.65);
   }
 
-  .home-banner-content {
+  .hero__content {
     margin: 0;
     width: 100%;
     text-align: center;
     justify-content: center;
     align-items: center;
-  }
 
-  .home-banner-content h1 {
-    font-size: var(--size-Medium);
+    h1 {
+      font-size: var(--font-l);
+    }
   }
 
   #home-about {
     padding: 0;
+  }
+
+  .gallery-item {
+    padding: 0 50px;
+    margin-bottom: 25px;
   }
 }

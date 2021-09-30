@@ -1,29 +1,29 @@
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 
-import { storeLocations } from "../../config";
+import { metadata } from "../../config";
 import "./style.scss";
 
-function Footer({ smallDisplay }) {
+const Footer = () => {
   return (
     <footer>
-      <div className="footer-content-container">
-        <div className="footer-logo">
+      <div className="footer__content-wrapper">
+        <div className="footer__logo">
           <img
             src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-footer-logo_diiygs.svg"
             alt="Omomo footer logo"
           />
         </div>
-        <div className={`footer-content ${smallDisplay ? "flex-col" : ""}`}>
-          <section className={`${smallDisplay ? "" : "border-right"}`}>
-            <h2 className="footer-section-title">CONTACT</h2>
-            <p>info@omomoteashoppe.com</p>
+        <div className="footer__content">
+          <section>
+            <h2>CONTACT</h2>
+            <p>{metadata.company_email}</p>
           </section>
 
-          <section className={`${smallDisplay ? "" : "border-right"}`}>
-            <h2 className="footer-section-title">VISIT</h2>
-            {storeLocations.map((location, index) => (
-              <div key={index} className="footer-location-item">
-                <h4>{location.title}</h4>
+          <section>
+            <h2>VISIT</h2>
+            {metadata.locations.map((location, index) => (
+              <div key={index} className="footer__location">
+                <p>{location.title}</p>
                 <a
                   href={location.gmaps}
                   target="_blank"
@@ -36,36 +36,35 @@ function Footer({ smallDisplay }) {
           </section>
 
           <section>
-            <h2 className="footer-section-title">FOLLOW</h2>
-            <a
-              className="social-icon"
-              href="https://www.instagram.com/omomoteashoppe/?hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Icon link to Omomo's Instagram page"
-            >
-              <FaInstagram size="40px" aria-hidden="true" />
-            </a>
-            <a
-              className="social-icon"
-              href="https://www.facebook.com/omomoteashop/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Icon link to Omomo's Facebook page"
-            >
-              <FaFacebook size="40px" aria-hidden="true" />
-            </a>
+            <h2>FOLLOW</h2>
+            {metadata.socials.map((social, index) => {
+              return (
+                <div key={index}>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Link to Omomo's ${social.name} page`}
+                  >
+                    {social.name === "Instagram" ? (
+                      <FaInstagram className="social-icon" size={40} />
+                    ) : (
+                      <FaFacebook className="social-icon" size={40} />
+                    )}
+                  </a>
+                </div>
+              );
+            })}
           </section>
         </div>
-        <div>
-          <p id="copyright">
-            All Copyrights go to © OMOMO Tea Shoppe 2021. This project is merely
-            for personal educational purposes.
-          </p>
-        </div>
+
+        <p id="copyright">
+          All Copyrights go to © OMOMO Tea Shoppe 2021. This project is merely
+          for personal educational purposes.
+        </p>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

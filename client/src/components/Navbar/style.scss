@@ -1,19 +1,15 @@
-@import "./mixins";
+@import "../../mixins";
 
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(row, center, center);
   width: 100%;
   z-index: 100;
 }
 
 #navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(row, space-between, center);
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--width-max);
   height: var(--header-height);
 
   & > a {
@@ -27,20 +23,19 @@ header {
 
   ul {
     display: flex;
-    font-family: var(--font-primary), monospace;
-    font-size: var(--size-small);
+    font-family: var(--font-family);
     list-style: none;
     margin-right: 50px;
 
     & > :last-child {
-      display: flex;
-      align-items: center;
+      @include flex(row, flex-start, center);
     }
   }
 }
 
 .navlink {
   @include link-brown;
+  margin-right: 35px;
 }
 
 .navlink__cart {
@@ -48,43 +43,34 @@ header {
   position: relative;
   display: flex;
   width: 50px;
-  color: var(--color-primary);
+  color: black;
 
-  &:hover {
-    transform: scale(1.05);
+  &:hover,
+  &:focus {
+    opacity: 0.65;
   }
 
   span {
+    @include flex(row, center, center);
     position: absolute;
-    top: -10px;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
+    top: -0.7em;
+    right: 0.5em;
     padding: 3px;
     border-radius: 50%;
-    font-size: var(--size-small);
-    color: rgb(255, 255, 255);
-    background: rgb(230, 4, 4);
+    font-size: var(--font-sm);
+    color: white;
+    background: var(--red);
   }
-}
-
-.nav-quantity-icon {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  font-size: var(--size-small);
-  color: var(--color-secondary);
-  background: rgb(230, 4, 4);
 }
 
 @media screen and (max-width: 480px) {
-  #navbar > a {
-    margin-left: 25px;
-  }
+  #navbar {
+    & > :first-child {
+      margin-left: 25px;
+    }
 
-  .menu-icon {
-    margin-right: 25px;
+    & > :last-child {
+      margin-right: 25px;
+    }
   }
 }

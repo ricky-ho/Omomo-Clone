@@ -1,29 +1,28 @@
 import { Link } from "react-router-dom";
 
-import Gallery from "../../components/Gallery";
 import "./style.scss";
 
-const Home = ({ smallDisplay }) => {
+const Home = () => {
   return (
     <main id="home">
-      <section className="home-banner">
+      <section id="home__hero">
         <div className="overlay"></div>
-        <div className="home-banner-content">
+        <div className="hero__content">
           <h1>PURE, HONEST, AND SIMPLE!</h1>
-          <Link to="/locations" className="link link-brown">
+          <Link to="/locations">
             <p>FIND LOCATIONS</p>
           </Link>
         </div>
       </section>
 
-      <section id="home-text-container">
-        <p className={`${smallDisplay ? "home-text-sm" : "home-text-m"}`}>
-          {`We're a tea shop specializing in bringing you the best quality teas,
-          creating memorable experiences with every sip.`}
+      <section id="home__text-banner">
+        <p>
+          We're a tea shop specializing in bringing you the best quality teas,
+          creating memorable experiences with every sip.
         </p>
       </section>
 
-      <section id="home-banner2">
+      <section id="home__img-banner">
         <img
           src="https://res.cloudinary.com/ricky-ho/image/upload/v1618871513/Omomo/Home/Omomo-banner2-1440w.jpg"
           alt="Coconut Matcha Tea banner"
@@ -33,26 +32,68 @@ const Home = ({ smallDisplay }) => {
         />
       </section>
 
-      <section id="home-about">
-        <h2 className={`about-header ${smallDisplay ? "about-header-sm" : ""}`}>
-          ABOUT OMOMO
-        </h2>
-        <p className={`about-text ${smallDisplay ? "about-text-sm" : ""}`}>
+      <section id="home__about">
+        <h2>ABOUT OMOMO</h2>
+        <p>
           Our mission is to create high quality drinks without compromising
           quality. All of our drinks come with a guarantee that the finest
           ingredients are being used. Pure, honest, and simple.
         </p>
       </section>
 
-      <Gallery />
+      <section id="home__gallery">
+        <HomeGallery />
+      </section>
 
-      <div id="menu-link-container">
-        <h3>VIEW OUR FULL MENU</h3>
+      <div id="home__menu-link">
+        <h2>VIEW OUR FULL MENU</h2>
         <Link to="/menu" className="link link-brown">
           <p>Menu</p>
         </Link>
       </div>
     </main>
+  );
+};
+
+const HomeGallery = () => {
+  return (
+    <>
+      <div className="gallery-item">
+        <img
+          src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147142/Omomo/Oreo_Brulee_GMT-500.jpg"
+          alt="OREO BRULEE GREEN MILK TEA"
+          loading="lazy"
+        />
+      </div>
+      <div className="gallery-item">
+        <img
+          src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147141/Omomo/Jasmine_C-500.jpg"
+          alt="Jasmine Creamomo"
+          loading="lazy"
+        />
+      </div>
+      <div className="gallery-item">
+        <img
+          src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147142/Omomo/Uji_GMT-500.jpg"
+          alt="Uji Green Milk Tea"
+          loading="lazy"
+        />
+      </div>
+      <div className="gallery-item">
+        <img
+          src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147114/Omomo/Cafe_Latte-500.jpg"
+          alt="Cafe Latte"
+          loading="lazy"
+        />
+      </div>
+      <div className="gallery-item">
+        <img
+          src="https://res.cloudinary.com/ricky-ho/image/upload/q_auto:best/v1617147147/Omomo/Strawberry_Green_Tea-500.jpg"
+          alt="Strawberry Green Tea"
+          loading="lazy"
+        />
+      </div>
+    </>
   );
 };
 

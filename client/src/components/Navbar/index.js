@@ -1,53 +1,56 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 
 import BarsMenu from "./BarsMenu";
-import { menuLinks } from "../../models/navLinks";
+import { navlinks } from "../../config";
+import CartContext from "../../contexts/Cart/cart-context";
 
-import "./style.css";
+import "./style.scss";
 
-const Navbar = ({ smallDisplay, cartQuantity, setShowCart }) => {
+const Navbar = () => {
+  const { cartQuantity, showCart, setShowCart } = useContext(CartContext);
+
   return (
     <header>
       <nav id="navbar">
         <Link to="/">
           <img
             src="https://res.cloudinary.com/ricky-ho/image/upload/v1617152074/Omomo/omomo-logo-blk_no0dln.svg"
-            alt="Go to Home page"
+            alt="Omomo Logo"
             className="nav-logo"
           />
         </Link>
-
-        {smallDisplay ? (
-          <BarsMenu />
-        ) : (
-          <DefaultNavMenu cartQuantity={cartQuantity} setShowCart={setShowCart}/>
-        )}
+        <NavMenu
+          cartQuantity={cartQuantity}
+          showCart={showCart}
+          setShowCart={setShowCart}
+        />
       </nav>
     </header>
   );
 };
 
-const DefaultNavMenu = ({cartQuantity, setShowCart}) => {
+const NavMenu = ({ cartQuantity }) => {
   return (
     <ul>
-      {menuLinks.map((item, index) => {
+      {navlinks.map((item, index) => {
         return (
           <li key={index}>
-            <Link key={index} to={item.path} className="link link-brown">
+            <Link key={index} to={item.path} className="navlink">
               <p>{item.title}</p>
             </Link>
           </li>
-          );
+        );
       })}
-      <li id="cart-toggle" onClick={() => setShowCart(true)}>
-        <FiShoppingCart size={30} aria-label="Icon to open shopping cart"/>
-        <div className="nav-quantity-icon">
-          <p>{cartQuantity}</p>
-        </div>
+      <li>
+        <Link to="/cart" className="navlink__cart">
+          <FiShoppingCart size={30} aria-label="Shopping Cart Page" />
+          <span>{cartQuantity}</span>
+        </Link>
       </li>
     </ul>
-  )
-}
+  );
+};
 
 export default Navbar;
