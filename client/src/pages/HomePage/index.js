@@ -47,7 +47,7 @@ const Home = () => {
 
       <div id="home__menu-link">
         <h2>VIEW OUR FULL MENU</h2>
-        <Link to="/menu" className="link link-brown">
+        <Link to="/menu">
           <p>Menu</p>
         </Link>
       </div>

@@ -38,7 +38,7 @@
   h1 {
     font-size: clamp(var(--font-xl), 5vw, 4rem);
     margin-bottom: 2rem;
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 20px white;
     max-width: 13ch;
   }
 
@@ -100,6 +100,10 @@
     margin-bottom: 25px;
     color: black;
   }
+
+  a {
+    @include link-brown;
+  }
 }
 
 #home__gallery {
@@ -144,27 +148,15 @@
 @media screen and (max-width: 480px) {
   #home #home__hero {
     background-image: url("https://res.cloudinary.com/ricky-ho/image/upload/q_80/v1620429065/Omomo/Home/OmomoHeroBanner_1080w_rgxbsz.jpg");
-    background-position: center;
+    background-position-x: 35%;
   }
 
   .overlay {
-    background: hsla(0, 0%, 100%, 0.65);
+    background: hsla(0, 0%, 100%, 0.35);
   }
 
-  .hero__content {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-      font-size: var(--font-l);
-    }
-  }
-
-  #home-about {
-    padding: 0;
+  .hero__content h1 {
+    font-size: var(--font-l);
   }
 
   .gallery-item {
