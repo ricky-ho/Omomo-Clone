@@ -1,12 +1,12 @@
-import { storeLocations } from "../../config";
+import { locations } from "../../config";
 import "./style.scss";
 
 const LocationsPage = () => {
   return (
     <main id="locations">
       <h1>LOCATIONS</h1>
-      {storeLocations.map((location, index) => (
-        <section key={index} className="location-section">
+      {locations.map((location, index) => (
+        <section key={index}>
           <img
             src={location.imgSrc}
             alt={`OMOMO ${location.title}`}
@@ -14,44 +14,63 @@ const LocationsPage = () => {
             sizes="100vw"
             loading="lazy"
           />
-          <div className="location-container">
-            <h2 className="location-title">{location.title}</h2>
-            <div className="location-content">
-              <div className="location-item first">
-                <h3>Address</h3>
-                <p>{location.address}</p>
-                <h3>Phone</h3>
-                <p>{location.phone}</p>
-              </div>
-              <div className="location-item">
-                <h3>Hours</h3>
-                <table>
-                  <tbody>
-                    {location.hours.map((time, index) => (
-                      <tr key={index} className="t-row">
-                        <th>{time.day.toUpperCase()}</th>
-                        <td>{time.timeString}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="location-item last">
-                <h3>Map</h3>
-                <div className="map-responsive">
-                  <iframe
-                    title={location.address}
-                    src={location.embedSrc}
-                    allowFullScreen=""
-                    loading="lazy"
-                  ></iframe>
-                </div>
-              </div>
+          <div className="location__wrapper">
+            <h2>{location.title}</h2>
+            <div className="location__content">
+              <LocationContact
+                address={location.address}
+                phone={location.phone}
+              />
+              <LocationHours hours={location.hours} />
+              <LocationMap
+                address={location.address}
+                embedSrc={location.embedSrc}
+              />
             </div>
           </div>
         </section>
       ))}
     </main>
+  );
+};
+
+const LocationContact = ({ address, phone }) => {
+  return (
+    <div>
+      <h3>Address</h3>
+      <p>{address}</p>
+      <h3>Phone</h3>
+      <p>{phone}</p>
+    </div>
+  );
+};
+
+const LocationHours = ({ hours }) => {
+  return (
+    <div>
+      <h3>Hours</h3>
+      <table>
+        <tbody>
+          {hours.map((time, index) => (
+            <tr key={index}>
+              <th>{time.day.toUpperCase()}</th>
+              <td>{time.timeString}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const LocationMap = ({ address, embedSrc }) => {
+  return (
+    <div>
+      <h3>Map</h3>
+      <div className="location__map">
+        <iframe title={address} src={embedSrc} loading="lazy"></iframe>
+      </div>
+    </div>
   );
 };
 
