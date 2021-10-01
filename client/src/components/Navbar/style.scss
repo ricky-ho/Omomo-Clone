@@ -3,6 +3,8 @@
 header {
   @include flex(row, center, center);
   width: 100%;
+  font-family: var(--font-family);
+  padding: 0 50px;
   z-index: 100;
 }
 
@@ -12,20 +14,18 @@ header {
   max-width: var(--width-max);
   height: var(--header-height);
 
-  & > a {
-    margin-left: 50px;
-  }
-
   img {
     width: 40px;
     height: 40px;
   }
+}
+
+#nav-content__wrapper {
+  @include flex(row, flex-end, center);
 
   ul {
     display: flex;
-    font-family: var(--font-family);
     list-style: none;
-    margin-right: 50px;
 
     & > :last-child {
       @include flex(row, flex-start, center);
@@ -42,35 +42,40 @@ header {
   cursor: pointer;
   position: relative;
   display: flex;
-  width: 50px;
   color: black;
 
   &:hover,
   &:focus {
-    opacity: 0.65;
+    opacity: 0.5;
   }
 
   span {
     @include flex(row, center, center);
     position: absolute;
-    top: -0.7em;
-    right: 0.5em;
+    top: -0.6em;
+    right: -0.5em;
     padding: 3px;
-    border-radius: 50%;
-    font-size: var(--font-sm);
+    border-radius: 45%;
+    font-size: var(--font-xs);
     color: white;
     background: var(--red);
   }
 }
 
-@media screen and (max-width: 480px) {
-  #navbar {
-    & > :first-child {
-      margin-left: 25px;
-    }
+/* MEDIA QUERIES */
 
-    & > :last-child {
-      margin-right: 25px;
+@media screen and (max-width: 960px) {
+  #nav-content__wrapper {
+    flex-direction: row-reverse;
+
+    & > ul {
+      display: none;
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    padding: 0 20px;
   }
 }

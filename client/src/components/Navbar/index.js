@@ -9,7 +9,7 @@ import CartContext from "../../contexts/Cart/cart-context";
 import "./style.scss";
 
 const Navbar = () => {
-  const { cartQuantity, showCart, setShowCart } = useContext(CartContext);
+  const { cartQuantity } = useContext(CartContext);
 
   return (
     <header>
@@ -21,17 +21,20 @@ const Navbar = () => {
             className="nav-logo"
           />
         </Link>
-        <NavMenu
-          cartQuantity={cartQuantity}
-          showCart={showCart}
-          setShowCart={setShowCart}
-        />
+        <div id="nav-content__wrapper">
+          <NavMenu />
+          <BarsMenu />
+          <Link to="/cart" className="navlink__cart">
+            <FiShoppingCart size={30} aria-label="Shopping Cart Page" />
+            <span>{cartQuantity}</span>
+          </Link>
+        </div>
       </nav>
     </header>
   );
 };
 
-const NavMenu = ({ cartQuantity }) => {
+const NavMenu = () => {
   return (
     <ul>
       {navlinks.map((item, index) => {
@@ -43,12 +46,6 @@ const NavMenu = ({ cartQuantity }) => {
           </li>
         );
       })}
-      <li>
-        <Link to="/cart" className="navlink__cart">
-          <FiShoppingCart size={30} aria-label="Shopping Cart Page" />
-          <span>{cartQuantity}</span>
-        </Link>
-      </li>
     </ul>
   );
 };

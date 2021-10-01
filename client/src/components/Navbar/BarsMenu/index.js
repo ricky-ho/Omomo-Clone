@@ -2,47 +2,50 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
+import { navlinks } from "../../../config";
+
 import "./style.scss";
 
 const BarsMenu = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-
   const menuWrapper = useRef();
-  const closeSidebar = (e) => {
+
+  const handleClickOutside = (e) => {
     if (menuWrapper.current === e.target) setShowSidebar(!showSidebar);
   };
 
   return (
     <>
-      <div className="menu-icon" onClick={() => setShowSidebar(!showSidebar)}>
-        <FaBars className="fa-bars" aria-label="Icon to open navigation menu" />
-      </div>
+      <button
+        type="button"
+        className="burger-menu"
+        onClick={() => setShowSidebar(!showSidebar)}
+      >
+        <FaBars className="fa-bars" />
+      </button>
 
       <div
         ref={menuWrapper}
-        className={`nav-menu-wrapper ${showSidebar ? "active" : ""}`}
-        onClick={(e) => closeSidebar(e)}
+        className={`nav-menu__wrapper ${showSidebar ? "side__active" : ""}`}
+        onClick={(e) => handleClickOutside(e)}
       >
-        <nav id="nav-menu">
-          <div
-            id="nav-menu-toggle"
-            onClick={() => setShowSidebar(!showSidebar)}
-          >
+        <nav id="nav__menu">
+          <button type="button" onClick={() => setShowSidebar(!showSidebar)}>
             <FaTimes size="45px" aria-label="Close navigation menu" />
-          </div>
+          </button>
           <ul>
-            {/* {barmenuLinks.map((item, index) => {
+            {navlinks.map((item, index) => {
               return (
-                <li key={index} className="nav-menu-link">
+                <li key={index} className="menu__link">
                   <Link
                     to={item.path}
                     onClick={() => setShowSidebar(!showSidebar)}
                   >
-                    <p>{item.title}</p>
+                    <span>{item.title}</span>
                   </Link>
                 </li>
               );
-            })} */}
+            })}
           </ul>
         </nav>
       </div>
