@@ -68,7 +68,7 @@ const LocationMap = ({ address, embedSrc }) => {
     <div>
       <h3>Map</h3>
       <div className="location__map">
-        <iframe title={address} src={embedSrc} loading="lazy"></iframe>
+        <iframe title={address} src={embedSrc}></iframe>
       </div>
     </div>
   );
