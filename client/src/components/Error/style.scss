@@ -1,0 +1,12 @@
+@import "../../mixins";
+
+.fetch-error {
+  @include flex(column, center, center);
+  width: 100%;
+  height: 75vh;
+  font-size: clamp(1rem, 3vw, var(--font-m));
+
+  h2 {
+    margin-bottom: 0.5em;
+  }
+}
