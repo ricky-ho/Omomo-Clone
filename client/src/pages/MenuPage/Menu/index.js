@@ -1,8 +1,8 @@
-import MenuItem from "../MenuItem";
+import Product from "../Product";
 
 import "./style.scss";
 
-const Menu = ({ menuData }) => {
+const Menu = ({ menuData, toggleModal, clickedMenuItem }) => {
   return (
     <div className="menu-container">
       {menuData.map((category, index) => (
@@ -16,11 +16,11 @@ const Menu = ({ menuData }) => {
             {category.products.map(
               (product) =>
                 product.inStock && (
-                  <MenuItem
+                  <Product
                     key={product._id}
-                    item={product}
-                    // toggleModal={toggleModal}
-                    // handleClick={clickedMenuItem}
+                    productInfo={product}
+                    toggleModal={toggleModal}
+                    handleClick={clickedMenuItem}
                   />
                 )
             )}
