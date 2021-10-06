@@ -1,24 +1,44 @@
-import { useState } from "react";
-import useCart from "../../hooks/useCart";
+import { useReducer } from "react";
+
+import { ADD_ITEM, REMOVE_ITEM, EDIT_ITEM } from "./cart-actions";
 import CartContext from "./cart-context";
+import cartReducer from "./cart-reducer";
 
 const CartState = ({ children }) => {
-  const CART_LIMIT = 10;
-  const [showCart, setShowCart] = useState(false);
+  const initialState = {
+    cart: [], // { id, quantity, modifications }
+  };
 
-  const { cart, cartQuantity, handleAddToCart, handleRemoveFromCart } =
-    useCart();
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  const addToCart = (item) => {
+    dispatch({
+      type: ADD_ITEM,
+      payload: item,
+    });
+  };
+
+  const editCartItem = (product_id) => {
+    dispatch({
+      type: EDIT_ITEM,
+      payload: product_id,
+    });
+  };
+
+  const removeFromCart = (index) => {
+    dispatch({
+      type: REMOVE_ITEM,
+      payload: index,
+    });
+  };
 
   return (
     <CartContext.Provider
       value={{
-        CART_LIMIT,
-        cart,
-        cartQuantity,
-        showCart,
-        setShowCart,
-        handleAddToCart,
-        handleRemoveFromCart,
+        cart: state.cart,
+        addToCart,
+        editCartItem,
+        removeFromCart,
       }}
     >
       {children}
