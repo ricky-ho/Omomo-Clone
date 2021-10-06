@@ -4,32 +4,34 @@ import "./style.scss";
 const LocationsPage = () => {
   return (
     <main id="locations">
-      <h1>LOCATIONS</h1>
-      {locations.map((location, index) => (
-        <section key={index}>
-          <img
-            src={location.imgSrc}
-            alt={`OMOMO ${location.title}`}
-            srcSet={location.imgSrcSet}
-            sizes="100vw"
-            loading="lazy"
-          />
-          <div className="location__wrapper">
-            <h2>{location.title}</h2>
-            <div className="location__content">
-              <LocationContact
-                address={location.address}
-                phone={location.phone}
-              />
-              <LocationHours hours={location.hours} />
-              <LocationMap
-                address={location.address}
-                embedSrc={location.embedSrc}
-              />
+      <div className="locations__wrapper">
+        <h1>LOCATIONS</h1>
+        {locations.map((location, index) => (
+          <section key={index}>
+            <img
+              src={location.imgSrc}
+              alt={`OMOMO ${location.title}`}
+              srcSet={location.imgSrcSet}
+              sizes="100vw"
+              loading="lazy"
+            />
+            <div className="location__content-wrap">
+              <h2>{location.title}</h2>
+              <div className="location__content">
+                <LocationContact
+                  address={location.address}
+                  phone={location.phone}
+                />
+                <LocationHours hours={location.hours} />
+                <LocationMap
+                  address={location.address}
+                  embedSrc={location.embedSrc}
+                />
+              </div>
             </div>
-          </div>
-        </section>
-      ))}
+          </section>
+        ))}
+      </div>
     </main>
   );
 };
