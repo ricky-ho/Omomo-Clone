@@ -1,0 +1,30 @@
+@import "../../mixins";
+
+#cart {
+  @include flex(column, flex-start, center);
+  width: 100%;
+  padding: 0 50px;
+
+  h1 {
+    width: 100%;
+  }
+}
+
+#cart__wrapper {
+  @include flex(row, space-between);
+  width: 100%;
+  max-width: var(--width-max);
+}
+
+#cart__summary {
+  width: 300px;
+  border: 1px solid black;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 480px) {
+  #cart {
+    padding: 0 25px;
+  }
+}
