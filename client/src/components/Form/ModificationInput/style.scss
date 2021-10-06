@@ -1,0 +1,15 @@
+@import "../../../mixins";
+
+.checkbox__fieldset {
+  @include flex(column);
+}
+
+.checkbox__option {
+  @include flex(row);
+  width: 100%;
+
+  & > div {
+    @include flex(row, space-between);
+    width: 100%;
+  }
+}
