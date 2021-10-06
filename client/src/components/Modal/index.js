@@ -1,81 +1,30 @@
-import React, { useEffect, useRef } from "react";
+import ReactDom from "react-dom";
 
-import useItem from "../../hooks/useItem";
-import { appendOptionsAndQuantity } from "../../utils/options";
-import ModalForm from "./ModalForm";
-import ModalActions from "./ModalActions";
-import "./style.css";
+import Form from "../Form";
+import ModalLayout from "./ModalLayout";
 
-function Modal({
-  toggleModal,
-  item,
-  cartLimit,
-  cartQuantity,
-  handleAddToCart,
-}) {
-  const {
-    itemCover,
-    itemPrice,
-    itemQuantity,
-    options,
-    setItemQuantity,
-    handleOptionsChange,
-  } = useItem(item);
+import "./style.scss";
 
-  const modalRef = useRef();
-  const closeModal = (e) => {
-    if (modalRef.current === e.target || e.key === "Escape") toggleModal();
-  };
+const Modal = ({ showModal, toggleModal, options, product }) => {
+  if (!showModal) return null;
 
-  const handleSubmit = () => {
-    appendOptionsAndQuantity(item, options, itemPrice);
-    handleAddToCart(item, itemQuantity);
-    toggleModal();
-  };
-
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, []);
-
-  return (
-    <div
-      ref={modalRef}
-      onClick={closeModal}
-      onKeyDown={closeModal}
-      className="modal"
-    >
-      <div
-        className="modal-content--wrapper"
-      >
-        <div className="modal-content">
-          <div className="flex-col">
-            <div id="item-cover" className="flex" style={itemCover} />
-            <h2 id="item-name">{item.name}</h2>
-            <p id="item-description">{item.description}</p>
-            <ModalForm
-              cartLimit={cartLimit}
-              cartQuantity={cartQuantity}
-              itemQuantity={itemQuantity}
-              handleQuantityChange={setItemQuantity}
-              options={options}
-              handleOptionsChange={handleOptionsChange}
-            />
-          </div>
+  return ReactDom.createPortal(
+    <ModalLayout {...{ toggleModal }}>
+      <img src={product.imageURL} alt={product.name} />
+      <section>
+        <button type="button" onClick={toggleModal}>
+          X
+        </button>{" "}
+        <div className="modal__product-details">
+          <h2>{product.name}</h2>
+          <p>{product.price}</p>
+          <p>{product.description}</p>
         </div>
-        <ModalActions
-          cartLimit={cartLimit}
-          cartQuantity={cartQuantity}
-          itemQuantity={itemQuantity}
-          itemPrice={itemPrice}
-          toggleModal={toggleModal}
-          handleSubmit={handleSubmit}
-        />
-      </div>
-    </div>
+        <Form {...{ toggleModal, options, product }} />
+      </section>
+    </ModalLayout>,
+    document.getElementById("modal")
   );
-}
+};
 
 export default Modal;
