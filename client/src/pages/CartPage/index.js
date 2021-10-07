@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
 import CartContext from "../../contexts/Cart/cart-context";
+import Card from "../../components/Card";
 
 import "./style.scss";
 
@@ -13,31 +14,36 @@ const CartPage = () => {
 
   return (
     <main id="cart">
-      <div id="cart__wrapper">
+      <div className="cart__wrapper">
         <div className="cart__list">
-          <h1>Shopping Cart</h1>
-          {cart.map((cartItem) => {
-            const { product } = cartItem;
-            return (
-              <div key={product._id}>
-                <img src={product.imageURL} alt={product.name} />
-                <p>{product.name}</p>
-                <p>{cartItem.quantity}</p>
+          <h1>SHOPPING CART</h1>
+          <div className="cart__items">
+            {cart.length > 0 ? (
+              cart.map((cartItem, index) => {
+                return <Card key={index} item={cartItem} />;
+              })
+            ) : (
+              <div className="cart__empty">
+                <h2>Your cart is currently empty</h2>
               </div>
-            );
-          })}
+            )}
+          </div>
         </div>
 
-        <div id="cart__summary">
-          <h2>Order Summary</h2>
+        <div className="cart__summary">
+          <h2>ORDER SUMMARY</h2>
           <div>
             <p>Total Items</p>
+            <p>{cart.length}</p>
           </div>
           <div>
-            <p>Total Price</p>
+            <p>Subtotal</p>
+            <p>$10.00</p>
           </div>
-          <form action="">
-            <button type="button">Checkout</button>
+          <form action="" onSubmit={(e) => e.preventDefault()}>
+            <button type="submit" disabled={cart.length === 0}>
+              Checkout
+            </button>
           </form>
         </div>
       </div>
