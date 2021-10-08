@@ -17,8 +17,8 @@
     margin-right: 20px;
 
     img {
-      min-width: 110px;
-      max-width: 110px;
+      min-width: 100px;
+      max-width: 100px;
     }
   }
 }
@@ -26,8 +26,47 @@
 .card__details {
   @include flex(column, space-between, space-between);
   width: 100%;
+}
+
+.details__header {
+  @include flex(row, space-between);
+  width: 100%;
 
   h3 {
-    font-size: var(--font-m);
+    flex: 1.25;
+    font-size: clamp(1rem, 2vw, var(--font-m));
+  }
+
+  :nth-child(2) {
+    flex: 0.75;
+    text-align: right;
+  }
+}
+
+.details__content {
+  :nth-child(2) {
+    @include flex(row);
+
+    :first-child {
+      margin-right: 0.5em;
+    }
+
+    :nth-child(2) {
+      font-weight: bold;
+    }
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 500px) {
+  .card__image {
+    display: none;
+  }
+
+  .details__header {
+    button {
+      font-size: var(--font-xs);
+    }
   }
 }
