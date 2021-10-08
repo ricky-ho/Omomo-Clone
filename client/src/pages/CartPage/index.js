@@ -31,7 +31,9 @@ const CartList = ({ cart }) => {
       {cart.length > 0 ? (
         <div className="cart__items">
           {cart.map((cartItem, index) => {
-            return <Card key={index} item={cartItem} />;
+            return (
+              <Card key={cartItem.product.id} index={index} item={cartItem} />
+            );
           })}
         </div>
       ) : (

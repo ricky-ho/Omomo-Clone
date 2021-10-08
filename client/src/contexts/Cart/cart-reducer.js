@@ -9,12 +9,12 @@ const cartReducer = (state, action) => {
         cart: [...state.cart, newItem],
       };
 
-    // case REMOVE_ITEM:
-    //   const indexToRemove = action.payload;
-    //   return {
-    //     ...state,
-    //     cart: [...state.cart.filter((item, index) => index !== indexToRemove)],
-    //   };
+    case REMOVE_ITEM:
+      const indexToRemove = action.payload;
+      return {
+        ...state,
+        cart: [...state.cart.filter((item, index) => index !== indexToRemove)],
+      };
 
     // case EDIT_ITEM:
     //   return {};
