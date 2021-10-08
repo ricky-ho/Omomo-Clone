@@ -77,8 +77,12 @@
 }
 
 .cart__empty {
+  width: 100%;
+  height: 100%;
+
   h2 {
     font-weight: normal;
+    font-size: var(--font-m);
   }
 }
 
@@ -86,7 +90,7 @@
 
 @media screen and (max-width: 960px) {
   .cart__wrapper h1 {
-    font-size: var(--font-l);
+    font-size: clamp(var(--font-m), 5vw, var(--font-l));
   }
 
   .cart__inner {
