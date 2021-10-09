@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 
 import CartContext from "../../contexts/cart-context";
-import FormGroup from "./FormGroup";
+import formReducer from "../../reducers/form-reducer";
+import OptionGroup from "./OptionGroup";
 import QuantityGroup from "./QuantityGroup";
 
 import "./style.scss";
@@ -19,44 +20,32 @@ const Form = ({ toggleModal, options, product }) => {
     [options[2].label]: options[2].options[0],
     [options[3].label]: [],
   };
-
-  const [quantity, setQuantity] = useState(1);
-  const [selectedOptions, setSelectedOptions] = useState(defaultOptions);
-
-  const addSelectedOptions = (group, newOption) => {
-    const newSelectedOptions = {
-      ...selectedOptions,
-      [group]: newOption,
-    };
-
-    setSelectedOptions(newSelectedOptions);
+  const initialState = {
+    selectedOptions: defaultOptions,
+    quantity: 1,
   };
+
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const newCartItem = {
       product: product,
-      quantity: quantity,
-      modifications: selectedOptions,
+      quantity: state.quantity,
+      modifications: state.selectedOptions,
     };
 
     addToCart(newCartItem);
     toggleModal();
   };
 
-  /* DELETE THIS BEFORE PRODUCTION */
-  useEffect(() => {
-    console.log(selectedOptions);
-  }, [selectedOptions]);
-
   return (
     <form className="modal__form" onSubmit={(e) => handleSubmit(e)}>
-      <QuantityGroup {...{ quantity, setQuantity }} />
+      <QuantityGroup quantity={state.quantity} dispatch={dispatch} />
 
       {options &&
         options.map((group, index) => {
-          return <FormGroup key={index} {...{ group, addSelectedOptions }} />;
+          return <OptionGroup key={index} {...{ group, dispatch }} />;
         })}
 
       <div>
