@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 
-import CartState from "./contexts/Cart/CartState";
+import CartState from "./contexts/CartState";
 import {
   HomePage,
   MenuPage,
@@ -8,7 +8,6 @@ import {
   CartPage,
   ErrorPage,
 } from "./pages";
-import useSmallDisplay from "./hooks/useSmallDisplay";
 import ScrollToTop from "./utils/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/";
@@ -16,8 +15,6 @@ import Footer from "./components/Footer/";
 import "./App.scss";
 
 const App = () => {
-  const smallDisplay = useSmallDisplay();
-
   return (
     <div className="App">
       <ScrollToTop />
@@ -28,10 +25,11 @@ const App = () => {
           <Route path="/menu" component={MenuPage} />
           <Route path="/locations" component={LocationsPage} />
           <Route path="/cart" component={CartPage} />
+          <Route path="/checkout" component={null} />
           <Route to="*" component={ErrorPage} />
         </Switch>
       </CartState>
-      <Footer smallDisplay={smallDisplay} />
+      <Footer />
     </div>
   );
 };

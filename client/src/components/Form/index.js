@@ -1,26 +1,35 @@
 import { useContext, useEffect, useState } from "react";
 
-import { getOptions } from "../../utils/menuUtils";
-import CartContext from "../../contexts/Cart/cart-context";
-import ModificationInput from "./ModificationInput";
-import QuantityInput from "./QuantityInput";
+import CartContext from "../../contexts/cart-context";
+import FormGroup from "./FormGroup";
+import QuantityGroup from "./QuantityGroup";
 
 import "./style.scss";
 
 /*
   TODO: 
-  - Handle logic to append selected options to the product to insert into cart
   - Add indicator that item has been added to cart
 */
 
 const Form = ({ toggleModal, options, product }) => {
   const { addToCart } = useContext(CartContext);
+  const defaultOptions = {
+    [options[0].label]: options[0].options[0],
+    [options[1].label]: options[1].options[0],
+    [options[2].label]: options[2].options[0],
+    [options[3].label]: [],
+  };
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(defaultOptions);
 
-  const addSelectedOptions = (newOption) => {
-    setSelectedOptions([...selectedOptions, newOption]);
+  const addSelectedOptions = (group, newOption) => {
+    const newSelectedOptions = {
+      ...selectedOptions,
+      [group]: newOption,
+    };
+
+    setSelectedOptions(newSelectedOptions);
   };
 
   const handleSubmit = (e) => {
@@ -32,25 +41,24 @@ const Form = ({ toggleModal, options, product }) => {
       modifications: selectedOptions,
     };
 
-    console.log(`Adding item to cart`, newCartItem);
-
     addToCart(newCartItem);
     toggleModal();
   };
 
+  /* DELETE THIS BEFORE PRODUCTION */
+  useEffect(() => {
+    console.log(selectedOptions);
+  }, [selectedOptions]);
+
   return (
-    <form action="" className="modal__form" onSubmit={(e) => handleSubmit(e)}>
-      <QuantityInput {...{ quantity, setQuantity }} />
+    <form className="modal__form" onSubmit={(e) => handleSubmit(e)}>
+      <QuantityGroup {...{ quantity, setQuantity }} />
+
       {options &&
         options.map((group, index) => {
-          return (
-            <ModificationInput
-              key={index}
-              limit={group.limit}
-              {...{ group, addSelectedOptions }}
-            />
-          );
+          return <FormGroup key={index} {...{ group, addSelectedOptions }} />;
         })}
+
       <div>
         <button type="button" onClick={toggleModal}>
           Cancel

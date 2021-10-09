@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CartContext from "../../contexts/Cart/cart-context";
+import CartContext from "../../contexts/cart-context";
 import "./style.scss";
 
 const Card = ({ index, item }) => {

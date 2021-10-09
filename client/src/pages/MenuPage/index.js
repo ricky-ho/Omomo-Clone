@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 
-import CartContext from "../../contexts/Cart/cart-context";
+import CartContext from "../../contexts/cart-context";
 import Menu from "./Menu";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";

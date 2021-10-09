@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import CartContext from "../../contexts/Cart/cart-context";
+import CartContext from "../../contexts/cart-context";
 import Card from "../../components/Card";
 
 import "./style.scss";
@@ -31,9 +31,7 @@ const CartList = ({ cart }) => {
       {cart.length > 0 ? (
         <div className="cart__items">
           {cart.map((cartItem, index) => {
-            return (
-              <Card key={cartItem.product.id} index={index} item={cartItem} />
-            );
+            return <Card key={index} index={index} item={cartItem} />;
           })}
         </div>
       ) : (

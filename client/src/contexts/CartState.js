@@ -1,8 +1,8 @@
 import { useReducer } from "react";
 
-import { ADD_ITEM, REMOVE_ITEM, EDIT_ITEM } from "./cart-actions";
 import CartContext from "./cart-context";
-import cartReducer from "./cart-reducer";
+import cartReducer from "../reducers/cart-reducer";
+import { ADD_ITEM, REMOVE_ITEM, EDIT_ITEM } from "../reducers/cart-actions";
 
 const CartState = ({ children }) => {
   const initialState = {

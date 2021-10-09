@@ -1,6 +1,6 @@
 import "./style.scss";
 
-const QuantityInput = ({ quantity, setQuantity }) => {
+const QuantityGroup = ({ quantity, setQuantity }) => {
   return (
     <fieldset name="quantity">
       <input
@@ -12,4 +12,4 @@ const QuantityInput = ({ quantity, setQuantity }) => {
   );
 };
 
-export default QuantityInput;
+export default QuantityGroup;
