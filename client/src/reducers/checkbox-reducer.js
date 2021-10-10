@@ -1,14 +1,18 @@
-const checkboxReducer = (state, action) => {
-  if (state.checkedIDs.includes(action.id)) {
+import { isCheckboxOptionSelected } from "../utils/formUtils";
+
+const checkboxReducer = (state, payload) => {
+  const isChecked = isCheckboxOptionSelected(state.checked, payload._id);
+
+  if (isChecked) {
     return {
       ...state,
-      checkedIDs: state.checkedIDs.filter((id) => id !== action.id),
+      checked: state.checked.filter((option) => option._id !== payload._id),
     };
   }
 
   return {
     ...state,
-    checkedIDs: [...state.checkedIDs, action.id],
+    checked: [...state.checked, payload],
   };
 };
 

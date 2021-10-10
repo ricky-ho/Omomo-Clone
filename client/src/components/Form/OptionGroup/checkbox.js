@@ -1,18 +1,21 @@
 import { useReducer, useEffect } from "react";
 
 import checkboxReducer from "../../../reducers/checkbox-reducer";
+import { isCheckboxOptionSelected } from "../../../utils/formUtils";
 
 const CheckboxGroup = ({ group, addSelectedOptions }) => {
-  const initialState = { checkedIDs: [] };
+  const initialState = { checked: [] };
+
   const [state, dispatch] = useReducer(checkboxReducer, initialState);
 
-  useEffect(() => {
-    addSelectedOptions(group.label, state.checkedIDs);
-  }, [state.checkedIDs]);
+  useEffect(
+    () => addSelectedOptions(group.label, state.checked),
+    [state.checked]
+  );
 
   const Checkbox = ({ option }) => {
     const handleChange = () => {
-      dispatch({ id: option._id });
+      dispatch(option);
     };
 
     return (
@@ -21,7 +24,7 @@ const CheckboxGroup = ({ group, addSelectedOptions }) => {
           type="checkbox"
           id={option._id}
           onChange={handleChange}
-          checked={state.checkedIDs.includes(option._id)}
+          checked={isCheckboxOptionSelected(state.checked, option._id)}
         />
         <div>
           <label htmlFor={option._id}>{option.label}</label>
