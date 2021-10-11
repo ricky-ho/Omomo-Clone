@@ -36,7 +36,7 @@
 
   h3 {
     width: 100%;
-    font-size: clamp(1rem, 2vw, var(--font-rm));
+    font-size: var(--font-rm);
   }
 
   :nth-child(2) {
@@ -89,5 +89,9 @@
 @media screen and (max-width: 550px) {
   .card__image {
     display: none;
+  }
+
+  .details__header {
+    margin-bottom: 1.5em;
   }
 }

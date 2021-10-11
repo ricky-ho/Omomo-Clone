@@ -28,14 +28,6 @@
   margin-top: 35px;
 }
 
-.cart__list {
-  width: 100%;
-
-  h1 {
-    margin-bottom: 1em;
-  }
-}
-
 .cart__items {
   padding: 20px;
   border: 1px solid var(--lightgray);
@@ -48,6 +40,7 @@
 
   & > div {
     @include flex(row, space-between);
+    font-size: var(--font-rm);
     padding: var(--spacing) 0;
     border-bottom: 1px solid var(--lightgray);
   }
@@ -73,6 +66,11 @@
     &:disabled {
       display: none;
     }
+  }
+
+  .order__total {
+    letter-spacing: 1px;
+    font-weight: bold;
   }
 }
 

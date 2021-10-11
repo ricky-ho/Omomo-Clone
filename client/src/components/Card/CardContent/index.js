@@ -6,7 +6,13 @@ const CardContent = ({ item }) => {
   return (
     <div className="details__content">
       <div>
-        <input type="number" value={quantity} />
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => {
+            e.preventDefault();
+          }}
+        />
         <div className="price">
           <span>Price:</span>
           <span>{`$${product.price.toFixed(2)}`}</span>
@@ -21,7 +27,7 @@ const CardContent = ({ item }) => {
             return selection.map((opt, index) => {
               return (
                 <li key={index} data-group={group}>
-                  <span>{opt.label}</span>
+                  <span>{`${opt.label} (+$${opt.price.toFixed(2)})`}</span>
                 </li>
               );
             });
