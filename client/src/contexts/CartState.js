@@ -1,12 +1,18 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 
 import CartContext from "./cart-context";
 import cartReducer from "../reducers/cart-reducer";
-import { ADD_ITEM, REMOVE_ITEM, EDIT_ITEM } from "../reducers/cart-actions";
+import {
+  ADD_ITEM,
+  REMOVE_ITEM,
+  EDIT_ITEM,
+  CALCULATE_TOTALS,
+} from "../reducers/cart-actions";
 
 const CartState = ({ children }) => {
   const initialState = {
-    cart: [], // { id, quantity, modifications }
+    cart: [],
+    totalPrice: 0,
   };
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
@@ -32,10 +38,21 @@ const CartState = ({ children }) => {
     });
   };
 
+  const calculateTotalPrice = () => {
+    dispatch({
+      type: CALCULATE_TOTALS,
+    });
+  };
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [state.cart]);
+
   return (
     <CartContext.Provider
       value={{
         cart: state.cart,
+        totalPrice: state.totalPrice,
         addToCart,
         editCartItem,
         removeFromCart,
