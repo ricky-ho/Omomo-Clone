@@ -1,4 +1,10 @@
-import { ADD_ITEM, REMOVE_ITEM, EDIT_ITEM } from "./cart-actions";
+import { calculateTotalCartPrice } from "../utils/cartUtils";
+import {
+  ADD_ITEM,
+  REMOVE_ITEM,
+  EDIT_ITEM,
+  CALCULATE_TOTALS,
+} from "./cart-actions";
 
 const cartReducer = (state, action) => {
   switch (action.type) {
@@ -18,6 +24,14 @@ const cartReducer = (state, action) => {
 
     // case EDIT_ITEM:
     //   return {};
+
+    case CALCULATE_TOTALS:
+      let totalPrice = calculateTotalCartPrice(state.cart);
+      return {
+        ...state,
+        totalPrice,
+      };
+
     default:
       return state;
   }

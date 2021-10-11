@@ -9,14 +9,7 @@ import "./style.scss";
 /* Check that adding item to cart functions properly */
 
 const CartPage = () => {
-  const { cart } = useContext(CartContext);
-
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    const total = calculateTotalCartPrice(cart);
-    setTotalPrice(total);
-  }, [cart]);
+  const { cart, totalPrice } = useContext(CartContext);
 
   const CartList = () => {
     return (
