@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 import SelectionGroup from "./select";
 import CheckboxGroup from "./checkbox";
 import { SET_OPTIONS } from "../../../reducers/form-actions";
@@ -5,12 +7,15 @@ import { SET_OPTIONS } from "../../../reducers/form-actions";
 import "./style.scss";
 
 const OptionGroup = ({ group, dispatch }) => {
-  const addSelectedOptions = (group, newOption) => {
-    dispatch({
-      type: SET_OPTIONS,
-      payload: { group, newOption },
-    });
-  };
+  const addSelectedOptions = useCallback(
+    (group, newOption) => {
+      dispatch({
+        type: SET_OPTIONS,
+        payload: { group, newOption },
+      });
+    },
+    [dispatch]
+  );
 
   if (group.limit === -1) {
     return <CheckboxGroup {...{ group, addSelectedOptions }} />;

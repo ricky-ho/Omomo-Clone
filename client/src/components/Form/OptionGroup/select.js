@@ -10,7 +10,7 @@ const SelectionGroup = ({ group, addSelectedOptions }) => {
 
   useEffect(() => {
     addSelectedOptions(group.label, selected);
-  }, [selected]);
+  }, [selected, addSelectedOptions, group]);
 
   return (
     <fieldset className="selection__fieldset">

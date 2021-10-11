@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from "react";
+import { useContext, useReducer } from "react";
 
 import CartContext from "../../contexts/cart-context";
 import formReducer from "../../reducers/form-reducer";

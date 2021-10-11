@@ -10,13 +10,11 @@ const CheckboxGroup = ({ group, addSelectedOptions }) => {
 
   useEffect(
     () => addSelectedOptions(group.label, state.checked),
-    [state.checked]
+    [state.checked, addSelectedOptions, group]
   );
 
   const Checkbox = ({ option }) => {
-    const handleChange = () => {
-      dispatch(option);
-    };
+    const handleChange = () => dispatch(option);
 
     return (
       <div key={option._id} className="checkbox__option">

@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import CartContext from "../../contexts/cart-context";
 import Card from "../../components/Card";
-import { calculateTotalCartPrice } from "../../utils/cartUtils";
 
 import "./style.scss";
 
