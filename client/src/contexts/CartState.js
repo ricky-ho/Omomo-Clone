@@ -9,15 +9,25 @@ import {
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
 } from "./actions/cart-actions";
+import { getLocalStorage } from "../utils/cartUtils";
 
 const CartState = ({ children }) => {
-  const initialState = {
-    cart: [],
+  let initialState = {
+    cart: getLocalStorage(),
     totalPrice: 0,
     totalItems: 0,
   };
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    calculateTotalPrice();
+    calculateTotalItems();
+  }, [state.cart]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  }, [state.cart]);
 
   const addToCart = (item) => {
     dispatch({
@@ -51,11 +61,6 @@ const CartState = ({ children }) => {
       type: CALCULATE_TOTAL_ITEMS,
     });
   };
-
-  useEffect(() => {
-    calculateTotalPrice();
-    calculateTotalItems();
-  }, [state.cart]);
 
   return (
     <CartContext.Provider

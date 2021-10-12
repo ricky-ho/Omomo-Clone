@@ -1,4 +1,16 @@
 /**
+ * Retrieve the user's most recent cart state from previous sessions
+ * @returns {Object} cart
+ */
+export const getLocalStorage = () => {
+  let prevCart = localStorage.getItem("cart");
+
+  if (!prevCart) return [];
+
+  return JSON.parse(prevCart);
+};
+
+/**
  * Calculate the total price of the shopping cart
  * @param {Object[]} cart
  * @returns {Number} totalPrice
@@ -6,6 +18,7 @@
 export const calculateTotalCartPrice = (cart) => {
   if (!cart || cart.length === 0) return 0;
 
+  console.log(typeof cart);
   let totalPrice = cart.reduce((sum, item) => {
     let itemPrice = calculateTotalItemPrice(item);
     return (sum += itemPrice);
