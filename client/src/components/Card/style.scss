@@ -29,14 +29,14 @@
 }
 
 .details__header {
-  @include flex(row, space-between, center);
+  @include flex(row, space-between, flex-start);
   width: 100%;
   gap: 2em;
   margin-bottom: 1em;
 
   h3 {
     width: 100%;
-    font-size: var(--font-rm);
+    font-size: clamp(1rem, 2vw, var(--font-rm));
   }
 
   :nth-child(2) {

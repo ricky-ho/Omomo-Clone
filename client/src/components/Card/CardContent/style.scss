@@ -30,7 +30,7 @@
   li {
     display: inline;
     color: var(--gray);
-    font-size: var(--font-sm);
+    font-size: clamp(var(--font-xs), 2vw, var(--font-sm));
 
     & + li::before {
       content: ", ";
@@ -40,7 +40,7 @@
 
   .price {
     @include flex(row);
-    margin-top: 0.75em;
+    margin-top: 1.25em;
 
     span {
       font-weight: bold;

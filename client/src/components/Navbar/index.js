@@ -9,7 +9,7 @@ import CartContext from "../../contexts/cart-context";
 import "./style.scss";
 
 const Navbar = () => {
-  const { cart, totalItems } = useContext(CartContext);
+  const { totalItems } = useContext(CartContext);
 
   return (
     <header>

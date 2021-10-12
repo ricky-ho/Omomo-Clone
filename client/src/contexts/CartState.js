@@ -9,7 +9,6 @@ import {
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
 } from "../reducers/cart-actions";
-import { calculateTotalCartItems } from "../utils/cartUtils";
 
 const CartState = ({ children }) => {
   const initialState = {
