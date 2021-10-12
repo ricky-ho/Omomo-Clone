@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
-import CartContext from "../../contexts/cart-context";
 import Menu from "./Menu";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
@@ -9,14 +8,7 @@ import { getMenu, getOptions } from "../../utils/menuUtils";
 
 import "./style.scss";
 
-/* 
-  TO DO:
-  - Create new modal popup with drink options
-*/
-
 const MenuPage = () => {
-  const { cartLimit, cartQuantity, handleAddToCart } = useContext(CartContext);
-
   const [menuData, setMenuData] = useState();
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(true);

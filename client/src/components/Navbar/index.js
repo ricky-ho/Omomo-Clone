@@ -9,7 +9,7 @@ import CartContext from "../../contexts/cart-context";
 import "./style.scss";
 
 const Navbar = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, totalItems } = useContext(CartContext);
 
   return (
     <header>
@@ -26,7 +26,7 @@ const Navbar = () => {
           <BarsMenu />
           <Link to="/cart" className="navlink__cart">
             <FiShoppingCart size={30} aria-label="Shopping Cart Page" />
-            {cart.length > 0 ? <span>{cart.length}</span> : null}
+            {totalItems > 0 ? <span>{totalItems}</span> : null}
           </Link>
         </div>
       </nav>

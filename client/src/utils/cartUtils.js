@@ -4,35 +4,46 @@
  * @returns {Number} totalPrice
  */
 export const calculateTotalCartPrice = (cart) => {
-  let totalPrice = 0;
+  if (!cart || cart.length === 0) return 0;
 
-  if (!cart || cart.length === 0) return totalPrice;
-
-  cart.forEach((item) => {
+  let totalPrice = cart.reduce((sum, item) => {
     let itemPrice = calculateTotalItemPrice(item);
-    totalPrice += itemPrice;
-  });
+    return (sum += itemPrice);
+  }, 0);
 
   return totalPrice;
 };
 
 /**
- * Calculate the total price of the item (includes base price plus all modification prices i.e. toppings)
+ * Calculate the total price of the cart item (includes base price plus all modification prices i.e. toppings multiplied by the quantity)
  * @param {Object} item
  * @returns {Number} itemPrice
  */
 export const calculateTotalItemPrice = (item) => {
-  let itemPrice = item.product.price;
+  let basePrice = item.product.price;
+  let extraCharges = 0;
 
   const modifications = Object.entries(item.modifications);
   modifications.forEach((group) => {
     const [, selected] = group;
 
     if (Array.isArray(selected)) {
-      selected.forEach((option) => (itemPrice += option.price));
+      selected.forEach((option) => (extraCharges += option.price));
     } else {
-      itemPrice += selected.price;
+      extraCharges += selected.price;
     }
   });
-  return itemPrice;
+
+  return (basePrice + extraCharges) * item.quantity;
+};
+
+/**
+ * Calculate the total number of items in the shopping cart
+ * @param {Object[]} cart
+ * @returns {Number} totalItems
+ */
+export const calculateTotalCartItems = (cart) => {
+  let totalItems = cart.reduce((sum, item) => (sum += item.quantity), 0);
+
+  return totalItems;
 };

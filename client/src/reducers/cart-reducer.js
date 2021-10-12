@@ -1,9 +1,13 @@
-import { calculateTotalCartPrice } from "../utils/cartUtils";
+import {
+  calculateTotalCartPrice,
+  calculateTotalCartItems,
+} from "../utils/cartUtils";
 import {
   ADD_ITEM,
   REMOVE_ITEM,
   EDIT_ITEM,
-  CALCULATE_TOTALS,
+  CALCULATE_TOTAL_PRICE,
+  CALCULATE_TOTAL_ITEMS,
 } from "./cart-actions";
 
 const cartReducer = (state, action) => {
@@ -25,11 +29,18 @@ const cartReducer = (state, action) => {
     // case EDIT_ITEM:
     //   return {};
 
-    case CALCULATE_TOTALS:
+    case CALCULATE_TOTAL_PRICE:
       let totalPrice = calculateTotalCartPrice(state.cart);
       return {
         ...state,
         totalPrice,
+      };
+
+    case CALCULATE_TOTAL_ITEMS:
+      let totalItems = calculateTotalCartItems(state.cart);
+      return {
+        ...state,
+        totalItems,
       };
 
     default:

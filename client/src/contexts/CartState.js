@@ -6,13 +6,16 @@ import {
   ADD_ITEM,
   REMOVE_ITEM,
   EDIT_ITEM,
-  CALCULATE_TOTALS,
+  CALCULATE_TOTAL_PRICE,
+  CALCULATE_TOTAL_ITEMS,
 } from "../reducers/cart-actions";
+import { calculateTotalCartItems } from "../utils/cartUtils";
 
 const CartState = ({ children }) => {
   const initialState = {
     cart: [],
     totalPrice: 0,
+    totalItems: 0,
   };
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
@@ -40,12 +43,19 @@ const CartState = ({ children }) => {
 
   const calculateTotalPrice = () => {
     dispatch({
-      type: CALCULATE_TOTALS,
+      type: CALCULATE_TOTAL_PRICE,
+    });
+  };
+
+  const calculateTotalItems = () => {
+    dispatch({
+      type: CALCULATE_TOTAL_ITEMS,
     });
   };
 
   useEffect(() => {
     calculateTotalPrice();
+    calculateTotalItems();
   }, [state.cart]);
 
   return (
@@ -53,6 +63,7 @@ const CartState = ({ children }) => {
       value={{
         cart: state.cart,
         totalPrice: state.totalPrice,
+        totalItems: state.totalItems,
         addToCart,
         editCartItem,
         removeFromCart,

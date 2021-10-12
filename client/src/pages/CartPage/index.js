@@ -5,10 +5,14 @@ import Card from "../../components/Card";
 
 import "./style.scss";
 
-/* Check that adding item to cart functions properly */
+/* 
+  TODO: 
+  - Add edit cart item functionality
+  - Add edit cart item quantity functionality
+*/
 
 const CartPage = () => {
-  const { cart, totalPrice } = useContext(CartContext);
+  const { cart, totalPrice, totalItems } = useContext(CartContext);
 
   const CartList = () => {
     return (
@@ -29,12 +33,12 @@ const CartPage = () => {
   };
 
   const CartSummary = () => {
-    return cart.length > 0 ? (
+    return totalItems > 0 ? (
       <section className="cart__summary">
         <h2>ORDER SUMMARY</h2>
         <div>
           <p>Total Items</p>
-          <p>{cart.length}</p>
+          <p>{totalItems}</p>
         </div>
         <div>
           <p>Order Total</p>
