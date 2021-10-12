@@ -1,4 +1,4 @@
-import { isCheckboxOptionSelected } from "../utils/formUtils";
+import { isCheckboxOptionSelected } from "../../utils/formUtils";
 
 const checkboxReducer = (state, payload) => {
   const isChecked = isCheckboxOptionSelected(state.checked, payload._id);

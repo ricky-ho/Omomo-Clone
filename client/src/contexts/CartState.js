@@ -1,14 +1,14 @@
 import { useEffect, useReducer } from "react";
 
 import CartContext from "./cart-context";
-import cartReducer from "../reducers/cart-reducer";
+import cartReducer from "./reducers/cart-reducer";
 import {
   ADD_ITEM,
   REMOVE_ITEM,
   EDIT_ITEM,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
-} from "../reducers/cart-actions";
+} from "./actions/cart-actions";
 
 const CartState = ({ children }) => {
   const initialState = {

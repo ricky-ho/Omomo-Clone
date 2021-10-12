@@ -1,7 +1,7 @@
 import { useContext, useReducer } from "react";
 
 import CartContext from "../../contexts/cart-context";
-import formReducer from "../../reducers/form-reducer";
+import formReducer from "../../contexts/reducers/form-reducer";
 import OptionGroup from "./OptionGroup";
 import QuantityGroup from "./QuantityGroup";
 

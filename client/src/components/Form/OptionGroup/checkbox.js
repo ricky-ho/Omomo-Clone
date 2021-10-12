@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from "react";
 
-import checkboxReducer from "../../../reducers/checkbox-reducer";
+import checkboxReducer from "../../../contexts/reducers/checkbox-reducer";
 import { isCheckboxOptionSelected } from "../../../utils/formUtils";
 
 const CheckboxGroup = ({ group, addSelectedOptions }) => {

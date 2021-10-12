@@ -1,14 +1,14 @@
 import {
   calculateTotalCartPrice,
   calculateTotalCartItems,
-} from "../utils/cartUtils";
+} from "../../utils/cartUtils";
 import {
   ADD_ITEM,
   REMOVE_ITEM,
   EDIT_ITEM,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
-} from "./cart-actions";
+} from "../actions/cart-actions";
 
 const cartReducer = (state, action) => {
   switch (action.type) {

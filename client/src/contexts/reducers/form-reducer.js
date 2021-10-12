@@ -2,7 +2,7 @@ import {
   DECREMENT_QUANTITY,
   INCREMENT_QUANTITY,
   SET_OPTIONS,
-} from "./form-actions";
+} from "../actions/form-actions";
 
 const formReducer = (state, action) => {
   switch (action.type) {

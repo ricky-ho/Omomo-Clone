@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import SelectionGroup from "./select";
 import CheckboxGroup from "./checkbox";
-import { SET_OPTIONS } from "../../../reducers/form-actions";
+import { SET_OPTIONS } from "../../../contexts/actions/form-actions";
 
 import "./style.scss";
 

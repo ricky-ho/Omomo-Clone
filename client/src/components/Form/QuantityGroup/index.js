@@ -1,7 +1,7 @@
 import {
   DECREMENT_QUANTITY,
   INCREMENT_QUANTITY,
-} from "../../../reducers/form-actions";
+} from "../../../contexts/actions/form-actions";
 import "./style.scss";
 
 const QuantityGroup = ({ quantity, dispatch }) => {
