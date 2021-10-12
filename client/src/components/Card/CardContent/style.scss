@@ -1,10 +1,12 @@
 @import "../../../mixins";
 
 .details__content {
-  @include flex(row, space-between);
+  @include flex(row);
   width: 100%;
 
   & > div {
+    @include flex(column);
+    gap: 1.5em;
     width: 100%;
 
     input {
@@ -40,10 +42,10 @@
 
   .price {
     @include flex(row);
-    margin-top: 1.25em;
 
     span {
       font-weight: bold;
+      font-size: clamp(var(--font-sm), 2vw, 1rem);
     }
 
     :nth-child(2) {

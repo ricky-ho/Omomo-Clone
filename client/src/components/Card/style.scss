@@ -24,15 +24,15 @@
 }
 
 .card__details {
-  @include flex(column, space-between, space-between);
+  @include flex(column);
   width: 100%;
+  gap: 1.5em;
 }
 
 .details__header {
-  @include flex(row, space-between, flex-start);
+  @include flex(row, space-between, center);
   width: 100%;
   gap: 2em;
-  margin-bottom: 1em;
 
   h3 {
     width: 100%;
@@ -41,7 +41,7 @@
 
   :nth-child(2) {
     @include flex(row, flex-end, center);
-    width: 50%;
+    width: fit-content;
     text-align: right;
   }
 
@@ -55,6 +55,8 @@
   }
 
   .item__edit {
+    min-width: 50px;
+    text-align: right;
     text-decoration: underline;
   }
 
@@ -71,7 +73,6 @@
 .details__footer {
   @include flex(row, flex-end);
   width: 100%;
-  margin-top: 1.5em;
 
   span {
     font-weight: bold;
@@ -92,6 +93,6 @@
   }
 
   .details__header {
-    margin-bottom: 1.5em;
+    align-items: center;
   }
 }
