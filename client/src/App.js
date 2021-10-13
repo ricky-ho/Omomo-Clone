@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 
-import CartState from "./contexts/CartState";
+import { CartState } from "./contexts/CartState";
+import { ItemState } from "./contexts/ItemState";
 import {
   HomePage,
   MenuPage,
@@ -22,10 +23,12 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/menu" component={MenuPage} />
           <Route path="/locations" component={LocationsPage} />
-          <Route path="/cart" component={CartPage} />
-          <Route path="/checkout" component={null} />
+          <ItemState>
+            <Route path="/menu" component={MenuPage} />
+            <Route path="/cart" component={CartPage} />
+            <Route path="/checkout" component={null} />
+          </ItemState>
           <Route to="*" component={ErrorPage} />
         </Switch>
       </CartState>

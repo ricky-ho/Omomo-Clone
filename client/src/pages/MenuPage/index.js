@@ -4,13 +4,12 @@ import Menu from "./Menu";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 import Modal from "../../components/Modal";
-import { getMenu, getOptions } from "../../utils/menuUtils";
+import { getMenu } from "../../utils/menuUtils";
 
 import "./style.scss";
 
 const MenuPage = () => {
   const [menuData, setMenuData] = useState();
-  const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -34,19 +33,6 @@ const MenuPage = () => {
     fetchMenuData();
   }, []);
 
-  useEffect(() => {
-    const getDefaultOptions = async () => {
-      try {
-        const defaultOptions = await getOptions();
-        setOptions(defaultOptions);
-      } catch (error) {
-        setIsError(true);
-      }
-    };
-
-    getDefaultOptions();
-  }, []);
-
   const content = isError ? (
     <Error />
   ) : isLoading ? (
@@ -62,10 +48,7 @@ const MenuPage = () => {
   return (
     <main id="menu">
       {content}
-      <Modal
-        {...{ showModal, toggleModal, options }}
-        product={currentProduct}
-      />
+      <Modal {...{ showModal, toggleModal }} product={currentProduct} />
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
-import CartContext from "../../contexts/cart-context";
+import { CartContext } from "../../contexts/CartState";
 import { calculateTotalItemPrice } from "../../utils/cartUtils";
 import CardContent from "./CardContent";
 import "./style.scss";
@@ -49,7 +49,7 @@ const Card = ({ index, item }) => {
       </div>
       <div className="card__details">
         <CardHeader />
-        <CardContent {...{ item }} />
+        <CardContent {...{ index, item }} />
         <CardFooter />
       </div>
     </div>

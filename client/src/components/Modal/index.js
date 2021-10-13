@@ -5,8 +5,10 @@ import ModalLayout from "./ModalLayout";
 
 import "./style.scss";
 
-const Modal = ({ showModal, toggleModal, options, product }) => {
-  if (!showModal) return null;
+const Modal = ({ showModal, toggleModal, product }) => {
+  if (!showModal) {
+    return null;
+  }
 
   return ReactDom.createPortal(
     <ModalLayout {...{ toggleModal }}>
@@ -20,7 +22,7 @@ const Modal = ({ showModal, toggleModal, options, product }) => {
           <p>{product.price}</p>
           <p>{product.description}</p>
         </div>
-        <Form {...{ toggleModal, options, product }} />
+        <Form {...{ toggleModal, product }} />
       </section>
     </ModalLayout>,
     document.getElementById("modal")

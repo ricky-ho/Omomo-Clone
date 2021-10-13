@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import CartContext from "../../contexts/cart-context";
+import { CartContext } from "../../contexts/CartState";
 import Card from "../../components/Card";
 
 import "./style.scss";

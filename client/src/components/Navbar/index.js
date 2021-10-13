@@ -4,7 +4,7 @@ import { FiShoppingCart } from "react-icons/fi";
 
 import BarsMenu from "./BarsMenu";
 import { navlinks } from "../../config";
-import CartContext from "../../contexts/cart-context";
+import { CartContext } from "../../contexts/CartState";
 
 import "./style.scss";
 

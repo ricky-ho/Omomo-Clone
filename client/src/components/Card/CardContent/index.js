@@ -1,18 +1,16 @@
+import { useState, useContext } from "react";
+import { CartContext } from "../../../contexts/CartState";
+
 import "./style.scss";
 
-const CardContent = ({ item }) => {
+const CardContent = ({ index, item }) => {
+  const { changeQuantity } = useContext(CartContext);
   const { product, quantity } = item;
 
   return (
     <div className="details__content">
       <div>
-        <input
-          type="number"
-          value={quantity}
-          onChange={(e) => {
-            e.preventDefault();
-          }}
-        />
+        <input type="number" value={quantity} disabled />
         <div className="price">
           <span>Price:</span>
           <span>{`$${product.price.toFixed(2)}`}</span>
