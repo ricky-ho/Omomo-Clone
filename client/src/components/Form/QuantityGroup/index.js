@@ -1,29 +1,35 @@
-import {
-  DECREMENT_QUANTITY,
-  INCREMENT_QUANTITY,
-} from "../../../contexts/actions/form-actions";
+import { useState, useContext, useEffect } from "react";
+
+import { ItemContext } from "../../../contexts/ItemState";
+
 import "./style.scss";
 
-const QuantityGroup = ({ quantity, dispatch }) => {
-  const increment = () => {
-    dispatch({
-      type: INCREMENT_QUANTITY,
-    });
+const QuantityGroup = () => {
+  const { setItemQuantity } = useContext(ItemContext);
+
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    setItemQuantity(quantity);
+  }, [quantity]);
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
   };
 
-  const decrement = () => {
-    dispatch({
-      type: DECREMENT_QUANTITY,
-    });
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
     <fieldset name="quantity">
-      <button type="button" onClick={decrement} disabled={quantity <= 1}>
+      <button type="button" onClick={handleDecrement} disabled={quantity < 2}>
         -
       </button>
       <input type="number" value={quantity} readOnly />
-      <button type="button" onClick={increment}>
+      <button type="button" onClick={handleIncrement}>
         +
       </button>
     </fieldset>
