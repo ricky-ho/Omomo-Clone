@@ -1,13 +1,12 @@
-import { createContext, useState, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 import itemReducer from "./reducers/item-reducer";
 import { getOptions } from "../utils/menuUtils";
 import {
-  DECREMENT_QUANTITY,
-  INCREMENT_QUANTITY,
   INITIALIZE_OPTIONS,
   SET_DEFAULT_SELECTED_OPTIONS,
   SET_OPTION_GROUP,
+  SET_QUANTITY,
 } from "./actions/item-actions";
 
 export const ItemContext = createContext();
@@ -69,15 +68,10 @@ export const ItemState = ({ children }) => {
     });
   };
 
-  const incrementQuantity = () => {
+  const setItemQuantity = (quantity) => {
     dispatch({
-      type: INCREMENT_QUANTITY,
-    });
-  };
-
-  const decrementQuantity = () => {
-    dispatch({
-      type: DECREMENT_QUANTITY,
+      type: SET_QUANTITY,
+      payload: quantity,
     });
   };
 
@@ -87,8 +81,7 @@ export const ItemState = ({ children }) => {
         options: state.options,
         selectedOptions: state.selectedOptions,
         quantity: state.quantity,
-        incrementQuantity,
-        decrementQuantity,
+        setItemQuantity,
         setSelectedOptions,
       }}
     >

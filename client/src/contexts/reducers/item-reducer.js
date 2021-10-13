@@ -1,15 +1,13 @@
 import {
-  DECREMENT_QUANTITY,
-  INCREMENT_QUANTITY,
+  INITIALIZE_OPTIONS,
   SET_DEFAULT_SELECTED_OPTIONS,
   SET_OPTION_GROUP,
-  INITIALIZE_OPTIONS,
+  SET_QUANTITY,
 } from "../actions/item-actions";
 
 const itemReducer = (state, action) => {
   switch (action.type) {
     case INITIALIZE_OPTIONS:
-      console.log("initializing options state");
       return {
         ...state,
         options: action.payload,
@@ -32,19 +30,10 @@ const itemReducer = (state, action) => {
         },
       };
 
-    case DECREMENT_QUANTITY:
-      if (state.quantity > 1) {
-        return {
-          ...state,
-          quantity: state.quantity - 1,
-        };
-      }
-      return state;
-
-    case INCREMENT_QUANTITY:
+    case SET_QUANTITY:
       return {
         ...state,
-        quantity: state.quantity + 1,
+        quantity: action.payload,
       };
 
     default:
