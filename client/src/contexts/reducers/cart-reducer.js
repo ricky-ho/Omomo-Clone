@@ -6,6 +6,7 @@ import {
   ADD_ITEM,
   REMOVE_ITEM,
   EDIT_ITEM,
+  EDIT_ITEM_QUANTITY,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
 } from "../actions/cart-actions";
@@ -28,6 +29,12 @@ const cartReducer = (state, action) => {
 
     // case EDIT_ITEM:
     //   return {};
+    case EDIT_ITEM_QUANTITY:
+      const { index, quantity } = action.payload;
+      const itemToModify = state.cart[index];
+      itemToModify.quantity = quantity;
+
+      return { ...state };
 
     case CALCULATE_TOTAL_PRICE:
       let totalPrice = calculateTotalCartPrice(state.cart);

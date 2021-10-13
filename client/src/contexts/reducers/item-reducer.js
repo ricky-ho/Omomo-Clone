@@ -1,12 +1,27 @@
 import {
   DECREMENT_QUANTITY,
   INCREMENT_QUANTITY,
-  SET_OPTIONS,
-} from "../actions/form-actions";
+  SET_DEFAULT_SELECTED_OPTIONS,
+  SET_OPTION_GROUP,
+  INITIALIZE_OPTIONS,
+} from "../actions/item-actions";
 
-const formReducer = (state, action) => {
+const itemReducer = (state, action) => {
   switch (action.type) {
-    case SET_OPTIONS:
+    case INITIALIZE_OPTIONS:
+      console.log("initializing options state");
+      return {
+        ...state,
+        options: action.payload,
+      };
+
+    case SET_DEFAULT_SELECTED_OPTIONS:
+      return {
+        ...state,
+        selectedOptions: action.payload,
+      };
+
+    case SET_OPTION_GROUP:
       const { group, newOption } = action.payload;
 
       return {
@@ -24,7 +39,6 @@ const formReducer = (state, action) => {
           quantity: state.quantity - 1,
         };
       }
-
       return state;
 
     case INCREMENT_QUANTITY:
@@ -38,4 +52,4 @@ const formReducer = (state, action) => {
   }
 };
 
-export default formReducer;
+export default itemReducer;

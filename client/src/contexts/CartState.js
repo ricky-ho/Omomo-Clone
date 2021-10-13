@@ -1,6 +1,4 @@
-import { useEffect, useReducer } from "react";
-
-import CartContext from "./cart-context";
+import { useEffect, useReducer, createContext } from "react";
 import cartReducer from "./reducers/cart-reducer";
 import {
   ADD_ITEM,
@@ -8,10 +6,13 @@ import {
   EDIT_ITEM,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
+  EDIT_ITEM_QUANTITY,
 } from "./actions/cart-actions";
 import { getLocalStorage } from "../utils/cartUtils";
 
-const CartState = ({ children }) => {
+export const CartContext = createContext();
+
+export const CartState = ({ children }) => {
   let initialState = {
     cart: getLocalStorage(),
     totalPrice: 0,
@@ -27,7 +28,7 @@ const CartState = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
-  }, [state.cart]);
+  }, [state]);
 
   const addToCart = (item) => {
     dispatch({
@@ -47,6 +48,13 @@ const CartState = ({ children }) => {
     dispatch({
       type: REMOVE_ITEM,
       payload: index,
+    });
+  };
+
+  const changeQuantity = (index, quantity) => {
+    dispatch({
+      type: EDIT_ITEM_QUANTITY,
+      payload: { index, quantity },
     });
   };
 
@@ -71,6 +79,7 @@ const CartState = ({ children }) => {
         addToCart,
         editCartItem,
         removeFromCart,
+        changeQuantity,
       }}
     >
       {children}
