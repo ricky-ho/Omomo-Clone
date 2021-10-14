@@ -20,13 +20,13 @@ const itemReducer = (state, action) => {
       };
 
     case SET_OPTION_GROUP:
-      const { group, newOption } = action.payload;
+      const { groupLabel, newOption } = action.payload;
 
       return {
         ...state,
         selectedOptions: {
           ...state.selectedOptions,
-          [group]: newOption,
+          [groupLabel]: newOption,
         },
       };
 

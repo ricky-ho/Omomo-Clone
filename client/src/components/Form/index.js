@@ -13,41 +13,51 @@ import "./style.scss";
   - Add indicator that item has been added to cart
 */
 
-const Form = ({ toggleModal, product }) => {
-  const { addToCart } = useContext(CartContext);
+const Form = ({ toggleModal, cartIndex, item, isEdit }) => {
+  const { addToCart, editCartItem } = useContext(CartContext);
   const { quantity, options, selectedOptions } = useContext(ItemContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newCartItem = {
-      product: product,
-      quantity: quantity,
-      modifications: selectedOptions,
-    };
+    if (isEdit) {
+      const edittedCartItem = {
+        product: item.product,
+        quantity: quantity,
+        modifications: selectedOptions,
+      };
+      editCartItem(cartIndex, edittedCartItem);
+    } else {
+      const newCartItem = {
+        product: item.product,
+        quantity: quantity,
+        modifications: selectedOptions,
+      };
+      console.log("ADD ITEM", newCartItem);
+      addToCart(newCartItem);
+    }
 
-    addToCart(newCartItem);
     toggleModal();
   };
 
   return (
     <form className="modal__form" onSubmit={(e) => handleSubmit(e)}>
-      <QuantityGroup quantity={quantity} />
+      <QuantityGroup {...{ item, quantity }} />
 
       {options &&
         options.map((group, index) => {
           if (group.limit === -1) {
-            return <CheckboxGroup key={index} {...{ group }} />;
+            return <CheckboxGroup key={index} {...{ item, group }} />;
           }
 
-          return <SelectionGroup key={index} {...{ group }} />;
+          return <SelectionGroup key={index} {...{ item, group }} />;
         })}
 
       <div>
         <button type="button" onClick={toggleModal}>
           Cancel
         </button>
-        <button type="submit">Add To Cart</button>
+        <button type="submit">{isEdit ? "Update Item" : "Add To Cart"}</button>
       </div>
     </form>
   );

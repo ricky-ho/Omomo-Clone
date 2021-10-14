@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 
 import { CartContext } from "../../contexts/CartState";
 import Card from "../../components/Card";
 
 import "./style.scss";
+import Modal from "../../components/Modal";
 
 /* 
   TODO: 
@@ -14,13 +15,25 @@ import "./style.scss";
 const CartPage = () => {
   const { cart, totalPrice, totalItems } = useContext(CartContext);
 
+  const [showModal, setShowModal] = useState(false);
+  const [cartIndex, setCartIndex] = useState(null);
+
+  const toggleModal = () => setShowModal(!showModal);
+  const editCartItem = (index) => setCartIndex(index);
+
   const CartList = () => {
     return (
       <section className="cart__list">
         {cart.length > 0 ? (
           <div className="cart__items">
             {cart.map((cartItem, index) => {
-              return <Card key={index} index={index} item={cartItem} />;
+              return (
+                <Card
+                  key={index}
+                  item={cartItem}
+                  {...{ index, toggleModal, editCartItem }}
+                />
+              );
             })}
           </div>
         ) : (
@@ -60,6 +73,11 @@ const CartPage = () => {
           <CartSummary />
         </div>
       </div>
+      <Modal
+        {...{ showModal, toggleModal, cartIndex }}
+        item={cart[cartIndex]}
+        isEdit={true}
+      />
     </main>
   );
 };

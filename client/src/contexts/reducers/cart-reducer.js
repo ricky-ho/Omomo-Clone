@@ -27,8 +27,12 @@ const cartReducer = (state, action) => {
         cart: [...state.cart.filter((item, index) => index !== indexToRemove)],
       };
 
-    // case EDIT_ITEM:
-    //   return {};
+    case EDIT_ITEM:
+      const { cartIndex, item } = action.payload;
+      state.cart[cartIndex] = item;
+
+      return { ...state };
+
     case EDIT_ITEM_QUANTITY:
       const { index, quantity } = action.payload;
       const itemToModify = state.cart[index];

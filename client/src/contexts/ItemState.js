@@ -61,10 +61,10 @@ export const ItemState = ({ children }) => {
     });
   };
 
-  const setSelectedOptions = (group, newOption) => {
+  const setSelectedOptions = (groupLabel, newOption) => {
     dispatch({
       type: SET_OPTION_GROUP,
-      payload: { group, newOption },
+      payload: { groupLabel, newOption },
     });
   };
 

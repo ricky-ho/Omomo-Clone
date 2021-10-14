@@ -6,8 +6,13 @@ import { calculateTotalItemPrice } from "../../utils/cartUtils";
 import CardContent from "./CardContent";
 import "./style.scss";
 
-const Card = ({ index, item }) => {
+const Card = ({ index, item, toggleModal, editCartItem }) => {
   const { removeFromCart } = useContext(CartContext);
+
+  const handleClick = () => {
+    editCartItem(index);
+    toggleModal();
+  };
 
   const CardHeader = () => {
     return (
@@ -18,6 +23,7 @@ const Card = ({ index, item }) => {
             type="button"
             className="item__edit"
             title={item.product.name}
+            onClick={handleClick}
           >
             Edit Item
           </button>

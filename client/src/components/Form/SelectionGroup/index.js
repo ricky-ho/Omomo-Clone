@@ -1,20 +1,21 @@
 import { useState, useEffect, useContext } from "react";
 import { ItemContext } from "../../../contexts/ItemState";
+import { getOptionByID } from "../../../utils/formUtils";
 
-const SelectionGroup = ({ group }) => {
+const SelectionGroup = ({ item, group }) => {
   const { setSelectedOptions } = useContext(ItemContext);
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selected, setSelected] = useState(
+    item?.modifications?.[group.label] || group.options[0]
+  );
 
   useEffect(() => {
-    const option = group.options[selectedIndex];
-
-    setSelectedOptions(group.label, option);
-  }, [selectedIndex]);
+    setSelectedOptions(group.label, selected);
+  }, [selected]);
 
   const handleChange = (e) => {
-    const selected = +e.target.value;
-    setSelectedIndex(selected);
+    const option = getOptionByID(group.options, e.target.value);
+    setSelected(option);
   };
 
   return (
@@ -24,11 +25,11 @@ const SelectionGroup = ({ group }) => {
         name={group.label}
         id={group.label}
         onChange={handleChange}
-        defaultValue={0}
+        defaultValue={selected?._id || group.options[0]._id}
       >
         {group.options.map((opt, index) => {
           return (
-            <option key={index} value={index}>
+            <option key={index} value={opt._id}>
               {opt.label}
             </option>
           );

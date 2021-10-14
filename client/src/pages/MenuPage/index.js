@@ -14,10 +14,10 @@ const MenuPage = () => {
   const [isError, setIsError] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState(null);
+  const [currentProduct, setCurrentProduct] = useState();
 
-  const handleClick = (product) => setCurrentProduct(product);
   const toggleModal = () => setShowModal(!showModal);
+  const handleClick = (product) => setCurrentProduct({ product });
 
   useEffect(() => {
     const fetchMenuData = async () => {
@@ -48,7 +48,7 @@ const MenuPage = () => {
   return (
     <main id="menu">
       {content}
-      <Modal {...{ showModal, toggleModal }} product={currentProduct} />
+      <Modal {...{ showModal, toggleModal }} item={currentProduct} />
     </main>
   );
 };

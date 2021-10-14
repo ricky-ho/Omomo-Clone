@@ -37,10 +37,10 @@ export const CartState = ({ children }) => {
     });
   };
 
-  const editCartItem = (product_id) => {
+  const editCartItem = (cartIndex, item) => {
     dispatch({
       type: EDIT_ITEM,
-      payload: product_id,
+      payload: { cartIndex, item },
     });
   };
 
