@@ -26,3 +26,14 @@ export const isCheckboxSelected = (checkedOptions, target) => {
     ? true
     : false;
 };
+
+/**
+ * Given the array of options and a target id, return the option
+ * with the matching id
+ * @param {Object[]} options
+ * @param {String} id
+ * @returns {Object} option
+ */
+export const getOptionByID = (options, id) => {
+  return options.find((opt) => opt._id === id);
+};
