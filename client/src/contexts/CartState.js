@@ -6,7 +6,6 @@ import {
   EDIT_ITEM,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
-  EDIT_ITEM_QUANTITY,
 } from "./actions/cart-actions";
 import { getLocalStorage } from "../utils/cartUtils";
 

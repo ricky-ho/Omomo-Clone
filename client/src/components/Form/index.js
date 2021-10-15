@@ -20,20 +20,15 @@ const Form = ({ toggleModal, cartIndex, item, isEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newCartItem = {
+      product: item.product,
+      quantity: quantity,
+      modifications: selectedOptions,
+    };
+
     if (isEdit) {
-      const edittedCartItem = {
-        product: item.product,
-        quantity: quantity,
-        modifications: selectedOptions,
-      };
-      editCartItem(cartIndex, edittedCartItem);
+      editCartItem(cartIndex, newCartItem);
     } else {
-      const newCartItem = {
-        product: item.product,
-        quantity: quantity,
-        modifications: selectedOptions,
-      };
-      console.log("ADD ITEM", newCartItem);
       addToCart(newCartItem);
     }
 

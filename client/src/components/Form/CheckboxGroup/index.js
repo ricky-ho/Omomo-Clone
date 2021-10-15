@@ -8,10 +8,12 @@ import {
 
 import "./style.scss";
 
-const CheckboxGroup = ({ group }) => {
+const CheckboxGroup = ({ item, group }) => {
   const { setSelectedOptions } = useContext(ItemContext);
 
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState(
+    item?.modifications?.[group.label] || []
+  );
 
   useEffect(() => {
     setSelectedOptions(group.label, selectedCheckboxes);
