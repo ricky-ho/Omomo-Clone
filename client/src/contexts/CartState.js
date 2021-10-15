@@ -22,6 +22,18 @@ export const CartState = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
+    const calculateTotalPrice = () => {
+      dispatch({
+        type: CALCULATE_TOTAL_PRICE,
+      });
+    };
+
+    const calculateTotalItems = () => {
+      dispatch({
+        type: CALCULATE_TOTAL_ITEMS,
+      });
+    };
+
     calculateTotalPrice();
     calculateTotalItems();
   }, [state.cart]);
@@ -51,25 +63,6 @@ export const CartState = ({ children }) => {
     });
   };
 
-  const changeQuantity = (index, quantity) => {
-    dispatch({
-      type: EDIT_ITEM_QUANTITY,
-      payload: { index, quantity },
-    });
-  };
-
-  const calculateTotalPrice = () => {
-    dispatch({
-      type: CALCULATE_TOTAL_PRICE,
-    });
-  };
-
-  const calculateTotalItems = () => {
-    dispatch({
-      type: CALCULATE_TOTAL_ITEMS,
-    });
-  };
-
   return (
     <CartContext.Provider
       value={{
@@ -79,7 +72,6 @@ export const CartState = ({ children }) => {
         addToCart,
         editCartItem,
         removeFromCart,
-        changeQuantity,
       }}
     >
       {children}

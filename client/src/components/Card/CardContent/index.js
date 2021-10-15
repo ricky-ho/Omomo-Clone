@@ -1,10 +1,6 @@
-import { useState, useContext } from "react";
-import { CartContext } from "../../../contexts/CartState";
-
 import "./style.scss";
 
 const CardContent = ({ index, item }) => {
-  const { changeQuantity } = useContext(CartContext);
   const { product, quantity } = item;
 
   return (

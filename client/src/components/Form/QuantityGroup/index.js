@@ -4,10 +4,10 @@ import { ItemContext } from "../../../contexts/ItemState";
 
 import "./style.scss";
 
-const QuantityGroup = () => {
+const QuantityGroup = ({ item }) => {
   const { setItemQuantity } = useContext(ItemContext);
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(item.quantity || 1);
 
   useEffect(() => {
     setItemQuantity(quantity);
