@@ -1,0 +1,48 @@
+@import "../../../mixins";
+
+.quantity__fieldset {
+  display: flex;
+  align-items: center;
+
+  :not(:last-child) {
+    margin-right: 25px;
+  }
+
+  input,
+  button {
+    font-size: var(--font-rm);
+  }
+
+  input {
+    @include flex(row, center);
+    text-align: center;
+    width: 75px;
+    padding: 8px 4px;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid var(--gray);
+  }
+
+  button {
+    @include flex(row, center, center);
+    padding: 8px;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid var(--green);
+    color: white;
+    background: var(--green);
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 0.75;
+    }
+
+    &:disabled {
+      cursor: default;
+      border: 1px solid var(--lightgray);
+      background: inherit;
+      color: var(--lightgray);
+    }
+  }
+}

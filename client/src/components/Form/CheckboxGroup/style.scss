@@ -2,14 +2,35 @@
 
 .checkbox__fieldset {
   @include flex(column);
+  width: 100%;
 }
 
 .checkbox__option {
-  @include flex(row);
+  @include flex(row, flex-start, center);
+  cursor: pointer;
   width: 100%;
+  padding: 0.5em 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--lightgray);
+  }
+
+  input {
+    cursor: inherit;
+    margin-right: 1.25em;
+  }
 
   & > div {
-    @include flex(row, space-between);
+    @include flex(row, space-between, center);
+    cursor: inherit;
     width: 100%;
+
+    label {
+      cursor: inherit;
+    }
+
+    span {
+      color: var(--gray);
+    }
   }
 }

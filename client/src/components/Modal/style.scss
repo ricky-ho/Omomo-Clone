@@ -7,23 +7,75 @@
   left: 0;
   width: 100%;
   height: 100%;
+  font-family: var(--font-family);
   background: hsla(0, 0%, 0%, 0.75);
   z-index: 999;
 }
 
 .modal__content {
   @include flex(row);
-  min-width: 600px;
-  max-height: 500px;
+  width: 100%;
+  max-width: 750px;
+  max-height: 85%;
+  height: fit-content;
   background: white;
 
   section {
-    max-height: 500px;
+    --spacing: 20px;
+
+    position: relative;
+    height: 100%;
+    padding: var(--spacing);
     overflow-y: auto;
+
+    & > button {
+      @include flex(row, center, center);
+      position: absolute;
+      top: var(--spacing);
+      right: var(--spacing);
+      padding: 2px;
+      border: none;
+      border-radius: 50%;
+      background: inherit;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        background: var(--lightgray);
+      }
+    }
   }
 }
 
 .modal__product-details {
   width: 100%;
-  max-width: 500px;
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+
+  h2 {
+    width: 90%;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-size: var(--font-m);
+  }
+
+  h3 {
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-size: var(--font-rm);
+    color: var(--brown);
+  }
+
+  p {
+    color: var(--gray);
+    font-size: 1rem;
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 500px) {
+  .modal__content {
+    width: 100%;
+  }
 }

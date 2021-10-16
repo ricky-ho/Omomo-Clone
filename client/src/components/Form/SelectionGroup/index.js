@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { ItemContext } from "../../../contexts/ItemState";
 import { getOptionByID } from "../../../utils/formUtils";
 
+import "./style.scss";
+
 const SelectionGroup = ({ item, group }) => {
   const { setSelectedOptions } = useContext(ItemContext);
 

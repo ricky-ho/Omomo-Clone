@@ -1,0 +1,26 @@
+@import "../../../mixins";
+
+.selection__fieldset {
+  @include flex(column);
+  width: 100%;
+
+  select {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    padding: 8px 10px;
+    outline: none;
+    border: 1px solid var(--lightgray);
+    font-size: 1rem;
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--gray);
+    }
+  }
+
+  option {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}

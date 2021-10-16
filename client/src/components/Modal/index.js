@@ -1,4 +1,5 @@
 import ReactDom from "react-dom";
+import { GrFormClose } from "react-icons/gr";
 
 import Form from "../Form";
 import ModalLayout from "./ModalLayout";
@@ -15,11 +16,11 @@ const Modal = ({ showModal, toggleModal, cartIndex, item, isEdit }) => {
       <img src={item.product.imageURL} alt={item.product.name} />
       <section>
         <button type="button" onClick={toggleModal}>
-          X
-        </button>{" "}
+          <GrFormClose size={25} />
+        </button>
         <div className="modal__product-details">
           <h2>{item.product.name}</h2>
-          <p>{item.product.price}</p>
+          <h3>{item.product.price}</h3>
           <p>{item.product.description}</p>
         </div>
         <Form {...{ toggleModal, cartIndex, item, isEdit }} />
