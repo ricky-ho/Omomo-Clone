@@ -5,6 +5,7 @@ import Card from "../../components/Card";
 
 import "./style.scss";
 import Modal from "../../components/Modal";
+import { Link } from "react-router-dom";
 
 /* 
   TODO: 
@@ -59,6 +60,7 @@ const CartPage = () => {
         </div>
         <form action="" onSubmit={(e) => e.preventDefault()}>
           <button type="submit">Checkout</button>
+          <Link to="/menu">Continue shopping</Link>
         </form>
       </section>
     ) : null;
