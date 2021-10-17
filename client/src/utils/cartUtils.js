@@ -19,7 +19,11 @@ export const calculateTotalCartPrice = (cart) => {
   if (!cart || cart.length === 0) return 0;
 
   let totalPrice = cart.reduce((sum, item) => {
-    let itemPrice = calculateTotalItemPrice(item);
+    let itemPrice = calculateTotalItemPrice(
+      item,
+      item.quantity,
+      item.modifications
+    );
     return (sum += itemPrice);
   }, 0);
 
@@ -31,22 +35,24 @@ export const calculateTotalCartPrice = (cart) => {
  * @param {Object} item
  * @returns {Number} itemPrice
  */
-export const calculateTotalItemPrice = (item) => {
+export const calculateTotalItemPrice = (item, quantity, modifications) => {
   let basePrice = item.product.price;
   let extraCharges = 0;
 
-  const modifications = Object.entries(item.modifications);
-  modifications.forEach((group) => {
-    const [, selected] = group;
+  if (modifications) {
+    const modType = Object.entries(modifications);
+    modType.forEach((group) => {
+      const [, selected] = group;
 
-    if (Array.isArray(selected)) {
-      selected.forEach((option) => (extraCharges += option.price));
-    } else {
-      extraCharges += selected.price;
-    }
-  });
+      if (Array.isArray(selected)) {
+        selected.forEach((option) => (extraCharges += option.price));
+      } else {
+        extraCharges += selected.price;
+      }
+    });
+  }
 
-  return (basePrice + extraCharges) * item.quantity;
+  return (basePrice + extraCharges) * quantity;
 };
 
 /**

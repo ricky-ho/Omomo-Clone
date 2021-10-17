@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
+import CardContent from "./CardContent";
 import { CartContext } from "../../contexts/CartState";
 import { calculateTotalItemPrice } from "../../utils/cartUtils";
-import CardContent from "./CardContent";
+
 import "./style.scss";
 
 const Card = ({ index, item, toggleModal, editCartItem }) => {
@@ -43,7 +44,11 @@ const Card = ({ index, item, toggleModal, editCartItem }) => {
     return (
       <div className="details__footer">
         <span>Subtotal:</span>
-        <span>{`$${calculateTotalItemPrice(item).toFixed(2)}`}</span>
+        <span>{`$${calculateTotalItemPrice(
+          item,
+          item.quantity,
+          item.modifications
+        ).toFixed(2)}`}</span>
       </div>
     );
   };

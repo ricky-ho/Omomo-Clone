@@ -1,6 +1,10 @@
 import { useRef } from "react";
 
-const ModalLayout = ({ toggleModal, children }) => {
+import ModalFooter from "../ModalFooter";
+
+import "./style.scss";
+
+const ModalLayout = ({ toggleModal, item, cartIndex, isEdit, children }) => {
   const modalRef = useRef();
 
   const handleClickOutside = (e) => {
@@ -10,12 +14,11 @@ const ModalLayout = ({ toggleModal, children }) => {
   };
 
   return (
-    <div
-      className="modal__container"
-      ref={modalRef}
-      onClick={handleClickOutside}
-    >
-      <div className="modal__content">{children}</div>
+    <div className="modal__wrapper" ref={modalRef} onClick={handleClickOutside}>
+      <div className="modal__container">
+        <section className="modal__content">{children}</section>
+        <ModalFooter {...{ toggleModal, item, cartIndex, isEdit }} />
+      </div>
     </div>
   );
 };

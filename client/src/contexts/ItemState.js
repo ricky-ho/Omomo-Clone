@@ -1,13 +1,13 @@
 import { createContext, useEffect, useReducer } from "react";
 
 import itemReducer from "./reducers/item-reducer";
-import { getOptions } from "../utils/menuUtils";
 import {
   INITIALIZE_OPTIONS,
   SET_DEFAULT_SELECTED_OPTIONS,
   SET_OPTION_GROUP,
   SET_QUANTITY,
 } from "./actions/item-actions";
+import { getOptions } from "../utils/menuUtils";
 
 export const ItemContext = createContext();
 

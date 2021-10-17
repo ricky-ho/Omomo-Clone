@@ -17,7 +17,7 @@ const MenuPage = () => {
   const [currentProduct, setCurrentProduct] = useState();
 
   const toggleModal = () => setShowModal(!showModal);
-  const handleClick = (product) => setCurrentProduct({ product });
+  const handleClick = (product) => setCurrentProduct({ product, quantity: 1 });
 
   useEffect(() => {
     const fetchMenuData = async () => {

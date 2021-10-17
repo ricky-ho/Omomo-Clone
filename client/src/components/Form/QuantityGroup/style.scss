@@ -1,8 +1,8 @@
 @import "../../../mixins";
 
 .quantity__fieldset {
-  display: flex;
-  align-items: center;
+  @include flex(row, flex-start, center);
+  width: 100%;
 
   :not(:last-child) {
     margin-right: 25px;
@@ -35,7 +35,7 @@
     &:hover,
     &:active,
     &:focus {
-      opacity: 0.75;
+      opacity: 0.5;
     }
 
     &:disabled {
@@ -43,6 +43,10 @@
       border: 1px solid var(--lightgray);
       background: inherit;
       color: var(--lightgray);
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

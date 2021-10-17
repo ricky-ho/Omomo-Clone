@@ -2,8 +2,8 @@
 
 .modal__form {
   @include flex(column);
-  gap: 30px;
-  overflow-y: auto;
+  gap: 40px;
+  padding: var(--modal-padding);
 
   fieldset {
     border: none;
