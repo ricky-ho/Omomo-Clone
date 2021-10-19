@@ -1,7 +1,7 @@
 import ReactDom from "react-dom";
 
 import ModalLayout from "./ModalLayout";
-import Form from "../Form";
+import ModalForm from "../ModalForm";
 
 import "./style.scss";
 
@@ -20,7 +20,7 @@ const Modal = ({ showModal, toggleModal, cartIndex, item, isEdit }) => {
         <h3>{item.product.price.toFixed(2)}</h3>
         <p>{item.product.description}</p>
       </div>
-      <Form {...{ toggleModal, cartIndex, item, isEdit }} />
+      <ModalForm {...{ toggleModal, cartIndex, item, isEdit }} />
     </ModalLayout>,
     document.getElementById("modal")
   );
