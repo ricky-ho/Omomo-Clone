@@ -1,0 +1,17 @@
+@import "../../../mixins";
+
+#checkout-form {
+  @include flex(column);
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  background: lightgray;
+}
+
+.checkout__content {
+  @include flex(row);
+}
+
+#card-element {
+  width: 100%;
+}

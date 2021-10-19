@@ -40,8 +40,9 @@ export const calculateTotalItemPrice = (item, quantity, modifications) => {
   let extraCharges = 0;
 
   if (modifications) {
-    const modType = Object.entries(modifications);
-    modType.forEach((group) => {
+    const optionGroups = Object.entries(modifications);
+
+    optionGroups.forEach((group) => {
       const [, selected] = group;
 
       if (Array.isArray(selected)) {
