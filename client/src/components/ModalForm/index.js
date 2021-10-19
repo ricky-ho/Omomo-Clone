@@ -12,7 +12,7 @@ import "./style.scss";
   - Add indicator that item has been added to cart
 */
 
-const Form = ({ item }) => {
+const ModalForm = ({ item }) => {
   const { quantity, options } = useContext(ItemContext);
 
   return (
@@ -30,4 +30,4 @@ const Form = ({ item }) => {
   );
 };
 
-export default Form;
+export default ModalForm;
