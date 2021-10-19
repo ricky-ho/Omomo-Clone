@@ -43,7 +43,8 @@
   width: 50%;
   max-width: 325px;
 
-  & > div {
+  & > :nth-child(2),
+  & > :nth-child(3) {
     @include flex(row, space-between);
     font-size: var(--font-rm);
     padding: var(--spacing) 0;
@@ -59,16 +60,17 @@
     letter-spacing: 1px;
     font-weight: bold;
   }
+}
 
-  form {
-    @include flex(column, center, center);
-    width: 100%;
-    padding: calc(var(--spacing) * 2.5) 0;
-  }
+.summary__actions {
+  @include flex(column, center, center);
+  width: 100%;
+  padding: var(--spacing) 0;
 
-  button {
+  .checkout-link {
     width: 100%;
     padding: 10px 0;
+    text-align: center;
     font-size: var(--font-m);
     border: none;
     color: white;
