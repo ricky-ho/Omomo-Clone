@@ -1,8 +1,25 @@
-## Changes from react-shopping-cart
+## TO DO:
 
-- Moved images to a CDN (https://cloudinary.com/) to serve compressed images
-- Cached shopping cart state in localStorage
-- Added drink options (such as sweetness, toppings, etc)
-- Added Locations page
-- Added 404 error page
-- Removed Cart page to use a pop-up Cart modal
+### CART
+
+-- Add edit cart item functionality to cart page
+-- Edit QuantityGroup and CheckboxGroup
+
+### MODAL/FORM
+
+-- Update modal and form layout & styles for both desktop/mobile
+
+### MENU
+
+- Add a pop-up to indicate an item was added to cart
+
+### CHECKOUT
+
+- Add Stripe elements to handle card info
+- Add success/failure pages for checkout
+- Add edit cart item functionality to checkout page
+- Integrate Stripe PaymentIntent with Checkout page
+
+### NICE TO HAVES
+
+- Blurry/placeholder images to display while regular image is loading

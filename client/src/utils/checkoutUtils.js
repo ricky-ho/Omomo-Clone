@@ -1,7 +1,7 @@
 const SALES_TAX = 0.095;
 
 /**
- *
+ * Create a POST request to the server to handle validating and calculating the total price of the shopping cart
  * @param {Object[]} cart
  * @returns {Object}
  */
@@ -22,27 +22,28 @@ export const validateCartTotal = async (cart) => {
 };
 
 /**
- *
- * @param {*} subtotal
- * @returns
+ * Given the subtotal of the shopping cart, calculate and return the total tax amount to be added
+ * @param {Number} subtotal
+ * @returns {Number}
  */
 export const calculateTaxAmount = (subtotal) => {
   return +(subtotal * SALES_TAX).toFixed(2);
 };
 
 /**
- *
- * @param {*} subtotal
- * @returns
+ * Calculate the total cost of the order including tax
+ * @param {Number} subtotal
+ * @returns {Number}
  */
 export const calculateOrderTotal = (subtotal) => {
-  return +(subtotal + subtotal * SALES_TAX).toFixed(2);
+  const taxAmount = calculateTaxAmount(subtotal);
+  return +(subtotal + taxAmount).toFixed(2);
 };
 
 /**
- *
- * @param {*} subtotal
- * @returns
+ * Create a POST request to the server to create a Stripe PaymentIntent and return the client_secret or error object
+ * @param {Number} subtotal
+ * @returns {Object}
  */
 export const createPaymentIntent = async (subtotal) => {
   try {
@@ -63,12 +64,12 @@ export const createPaymentIntent = async (subtotal) => {
 };
 
 /**
- *
- * @param {*} stripe
- * @param {*} client_secret
- * @param {*} cardInfo
- * @param {*} userInfo
- * @returns
+ * Use the stripe API confirmCardPayment method to handle payment validation and confirmation
+ * @param {Object} stripe
+ * @param {String} client_secret
+ * @param {Object} cardInfo
+ * @param {Object} userInfo
+ * @returns {Object}
  */
 export const confirmPaymentIntent = async (
   stripe,
