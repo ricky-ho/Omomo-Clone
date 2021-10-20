@@ -1,4 +1,6 @@
 import { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { FiChevronLeft } from "react-icons/fi";
 
 import Loader from "../../components/Loader";
 import CheckoutForm from "./CheckoutForm";
@@ -28,13 +30,18 @@ const CheckoutPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <>
-          <h1>Checkout Page</h1>
+        <div className="checkout__container">
+          <div className="checkout__header">
+            <Link to="/menu">
+              <FiChevronLeft size={20} />
+              <span>Continue Shopping</span>
+            </Link>
+          </div>
           <div className="checkout__content">
             <CheckoutForm {...{ subtotal, setError }} />
             <CheckoutSummary {...{ subtotal }} />
           </div>
-        </>
+        </div>
       )}
     </main>
   );

@@ -1,16 +1,35 @@
 @import "../../mixins";
 
 #checkout {
-  @include flex(column, flex-start, center);
+  @include flex(row, center);
   width: 100%;
-  min-height: calc(100vh - var(--header-height));
+  height: 100%;
+  padding: 0 50px;
+  font-family: var(--font-family);
+  background: hsl(0, 0%, 97%);
+}
+
+.checkout__container {
+  @include flex(column);
+  width: 100%;
+  max-width: var(--width-max);
+  margin-bottom: 150px;
+}
+
+.checkout__header {
+  width: 100%;
+  margin: 50px 0;
 }
 
 .checkout__content {
   @include flex(row);
   width: 100%;
+  gap: 50px;
 }
 
-.checkout__summary {
-  width: 50%;
+/* MEDIA QUERIES */
+@media screen and (max-width: 480px) {
+  #checkout {
+    padding: 0 25px;
+  }
 }

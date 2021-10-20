@@ -1,4 +1,6 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { FaLock } from "react-icons/fa";
+
 import {
   createPaymentIntent,
   confirmPaymentIntent,
@@ -42,48 +44,50 @@ const CheckoutForm = ({ subtotal, setError }) => {
     } else {
       console.log(paymentIntent);
     }
-    // const { error: stripeError, paymentIntent } =
-    //   await stripe.confirmCardPayment(client_secret, {
-    //     payment_method: {
-    //       card: elements.getElement(CardElement),
-    //       billing_details: {
-    //         name: `${e.target.firstName.value} ${e.target.lastName.value}`,
-    //         email: e.target.email.value,
-    //       },
-    //     },
-    //   });
-
-    // if (stripeError) {
-    //   console.error(stripeError);
-    //   setError(stripeError);
-    // } else {
-    //   console.log(paymentIntent);
-    // }
   };
 
   return (
     <form id="checkout-form" onSubmit={handleSubmit}>
       <fieldset>
-        Contact
-        <div>
+        <legend>
+          <p>CONTACT INFORMATION</p>
+        </legend>
+
+        <div className="form-row">
           <label htmlFor="first-name">First Name</label>
           <input type="text" name="firstName" />
         </div>
-        <div>
+        <div className="form-row">
           <label htmlFor="first-name">Last Name</label>
           <input type="text" name="lastName" />
         </div>
-        <div>
+        <div className="form-row">
           <label htmlFor="email">Email</label>
           <input type="email" name="email" />
         </div>
       </fieldset>
 
       <fieldset>
-        Secure Payment
-        <p>All payments are processed using Stripe</p>
-        <div>
-          <label htmlFor="card-element">Card</label>
+        <legend>
+          <p>
+            SECURE PAYMENT
+            <span>
+              <FaLock size={11} />
+            </span>
+          </p>
+          <p>
+            All payments are processed using{" "}
+            <a
+              href="https://stripe.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stripe
+            </a>
+          </p>
+        </legend>
+
+        <div className="form-row">
           <CardElement id="card-element" />
         </div>
       </fieldset>

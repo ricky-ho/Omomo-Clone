@@ -3,13 +3,53 @@
 #checkout-form {
   @include flex(column);
   width: 100%;
-  height: 100%;
-  max-width: 600px;
-  background: lightgray;
-}
+  gap: 25px;
 
-.checkout__content {
-  @include flex(row);
+  fieldset {
+    @include flex(column);
+    position: relative;
+    width: 100%;
+    gap: 0.5em;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    background: white;
+    box-shadow: 0 0 3px 0 var(--lightgray);
+
+    legend {
+      float: left;
+      font-size: var(--font-sm);
+      color: var(--gray);
+      margin-bottom: 0.5em;
+
+      p + p {
+        font-size: var(--font-xs);
+        margin-top: 0.5em;
+      }
+
+      a {
+        color: var(--brown);
+      }
+
+      span {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .form-row {
+    @include flex(row);
+    width: 100%;
+
+    label {
+      min-width: 100px;
+      width: 125px;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
 }
 
 #card-element {
