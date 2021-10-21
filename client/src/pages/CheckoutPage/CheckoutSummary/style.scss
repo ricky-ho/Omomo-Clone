@@ -2,78 +2,78 @@
 
 .checkout__summary {
   @include flex(column);
-  width: 100%;
+  width: 75%;
   max-width: 450px;
-  padding: 20px;
   border-radius: 5px;
   background: white;
   box-shadow: 0 0 2px 0 var(--lightgray);
 
   h2 {
+    width: 100%;
+    padding: 25px 25px 0 25px;
     margin-bottom: 1.5em;
     font-size: var(--font-sm);
     font-weight: normal;
-    letter-spacing: 1px;
     color: var(--gray);
+
+    span + span {
+      margin-left: 0.5em;
+    }
   }
 }
 
 .checkout__summary-items {
   @include flex(column);
-  gap: 1em;
-}
-
-.summary-item {
-  @include flex(column);
   width: 100%;
-  padding-bottom: 1em;
-  border-bottom: 1px solid var(--lightgray);
-
-  .summary-item__header {
-    @include flex(row, space-between);
-    width: 100%;
-    font-size: var(--font-xs);
-    font-weight: 800;
-    margin-bottom: 0.25em;
-  }
-
-  .summary-item__modifications {
-    @include flex(row);
-    font-size: var(--font-xs);
-
-    p::after {
-      content: ": ";
-      margin-right: 0.5em;
-    }
-
-    ul {
-      @include flex(row);
-      font-size: var(--font-xs);
-      list-style: none;
-      flex-wrap: wrap;
-
-      li + li::before {
-        content: ", ";
-      }
-    }
-  }
+  gap: 1em;
+  padding: 0px 25px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .checkout__summary-totals {
   width: 100%;
+  padding: 25px;
   margin-top: 1.5em;
+  border-top: 1px solid var(--lightgray);
 
   & > div {
     @include flex(row, space-between);
-    margin-bottom: 0.75em;
+    margin-bottom: 1em;
+    font-weight: bold;
   }
 
   button {
     width: 100%;
     padding: 1em;
+    margin-top: 1em;
     border: none;
+    border-radius: 5px;
     outline: none;
+    font-size: 1rem;
     color: white;
     background: black;
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.85;
+    }
+
+    .submit-text + .submit-text {
+      margin-left: 0.75em;
+    }
+
+    .submit-loader {
+      display: none;
+      margin-left: 0.75em;
+    }
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 960px) {
+  .checkout__summary {
+    max-width: unset;
+    width: 100%;
   }
 }

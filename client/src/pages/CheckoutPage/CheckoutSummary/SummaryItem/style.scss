@@ -1,0 +1,45 @@
+@import "../../../../mixins";
+
+.summary-item {
+  @include flex(column);
+  width: 100%;
+
+  & + .summary-item {
+    padding-top: 1em;
+    border-top: 1px solid var(--lightgray);
+  }
+
+  .summary-item__header {
+    @include flex(row, space-between);
+    width: 100%;
+    font-size: var(--font-xs);
+    gap: 1em;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin-bottom: 0.75em;
+  }
+
+  .summary-item__quantity::after {
+    content: " x ";
+    padding: 0 5px;
+  }
+
+  .summary-item__modifications {
+    @include flex(row);
+    width: 100%;
+    font-size: var(--font-xs);
+
+    ul {
+      @include flex(row);
+      width: 100%;
+      font-size: var(--font-xs);
+      list-style: none;
+      flex-wrap: wrap;
+
+      li + li::before {
+        content: ", ";
+        margin-right: 2px;
+      }
+    }
+  }
+}

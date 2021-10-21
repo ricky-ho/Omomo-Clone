@@ -1,83 +1,65 @@
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/CartState";
-import { calculateTotalItemPrice } from "../../../utils/cartUtils";
 import {
   calculateOrderTotal,
   calculateTaxAmount,
 } from "../../../utils/checkoutUtils";
+import SummaryItem from "./SummaryItem";
 
 import "./style.scss";
+import { calculateTotalCartItems } from "../../../utils/cartUtils";
 
-const CheckoutSummary = ({ subtotal }) => {
+const CheckoutSummary = ({ subtotal, isProcessing }) => {
   const { cart } = useContext(CartContext);
 
   return (
     <section className="checkout__summary">
-      <h2>ORDER SUMMARY</h2>
+      <h2>
+        <span>ORDER SUMMARY</span>
+        <span>{`(${calculateTotalCartItems(cart)} ITEMS)`}</span>
+      </h2>
       <div className="checkout__summary-items">
-        {cart.map((item) => (
-          <SummaryItem {...{ item }} />
+        {cart.map((item, index) => (
+          <SummaryItem key={index} {...{ item }} />
         ))}
       </div>
       <div className="checkout__summary-totals">
         <div>
           <span>Subtotal</span>
-          <span>{subtotal.toFixed(2)}</span>
+          <span>{`$${subtotal.toFixed(2)}`}</span>
         </div>
         <div>
           <span>Tax</span>
-          <span>{calculateTaxAmount(subtotal).toFixed(2)}</span>
+          <span>{`$${calculateTaxAmount(subtotal).toFixed(2)}`}</span>
         </div>
         <div>
           <span>Order Total</span>
-          <span>{calculateOrderTotal(subtotal).toFixed(2)}</span>
+          <span>{`$${calculateOrderTotal(subtotal).toFixed(2)}`}</span>
         </div>
-        <button type="submit" form="checkout-form">
-          Place Order <span>{calculateOrderTotal(subtotal).toFixed(2)}</span>
+        <button type="submit" form="checkout-form" disabled={isProcessing}>
+          {isProcessing ? (
+            <span
+              className={`submit-loader ${isProcessing ? "active" : ""}`}
+            ></span>
+          ) : (
+            <>
+              <span className="submit-text">Place Order</span>
+              <span className="submit-text">{`$${calculateOrderTotal(
+                subtotal
+              ).toFixed(2)}`}</span>
+            </>
+          )}
         </button>
+        <div>
+          <button type="button" disabled={isProcessing}>
+            Demo - Successful Payment
+          </button>
+          <button type="button" disabled={isProcessing}>
+            Demo - Unsuccessful Payment
+          </button>
+        </div>
       </div>
     </section>
-  );
-};
-
-const SummaryItem = ({ item }) => {
-  return (
-    <div className="summary-item">
-      <div className="summary-item__header">
-        <p>{item.product.name}</p>
-        <p>
-          {calculateTotalItemPrice(
-            item,
-            item.quantity,
-            item.modifications
-          ).toFixed(2)}
-        </p>
-      </div>
-      <div className="summary-item__modifications">
-        <p>Modifications</p>
-        <ul>
-          {Object.keys(item.modifications).map((group, index) => {
-            const selection = item.modifications[group];
-
-            if (Array.isArray(selection)) {
-              return selection.map((opt, index) => {
-                return (
-                  <li key={index} data-group={group}>
-                    <span>{opt.label}</span>
-                  </li>
-                );
-              });
-            }
-
-            return (
-              <li key={index} data-group={group}>
-                <span>{selection.label}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
   );
 };
 
