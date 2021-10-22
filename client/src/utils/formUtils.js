@@ -37,3 +37,73 @@ export const isCheckboxSelected = (checkedOptions, target) => {
 export const getOptionByID = (options, id) => {
   return options.find((opt) => opt._id === id);
 };
+
+/**
+ * Format a string into the phone number format e.g. (123) 456-7890
+ * @param {String} value
+ * @returns {String} formattedPhoneNumber
+ */
+export const formatPhoneNumber = (value) => {
+  if (!value) return value;
+
+  /* Remove all non-digit characters from the string */
+  const phoneNumber = value.replace(/[^\d]/g, "");
+  const phoneNumberLength = phoneNumber.length;
+
+  if (phoneNumberLength < 4) {
+    return phoneNumber;
+  }
+
+  if (phoneNumberLength < 7) {
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+  }
+
+  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+    3,
+    6
+  )}-${phoneNumber.slice(6, 10)}`;
+};
+
+/**
+ * Validate name input to ensure it is not empty. Return true if valid, false otherwise
+ * @param {String} value
+ * @returns {Boolean}
+ */
+export const validNameInput = (value) => {
+  if (value === "") {
+    return false;
+  }
+
+  return true;
+};
+
+/**
+ * Validate the phone input to ensure it is in the intended format supplied in the regex. Return true if valid, false otherwise
+ * @param {String} value
+ * @returns {Boolean}
+ */
+export const validPhoneInput = (value) => {
+  const regex = /^\(([0-9]{3})\)[ ]?([0-9]{3})[-]?([0-9]{4})$/;
+
+  if (value === "" || !regex.test(value)) {
+    return false;
+  }
+
+  return true;
+};
+
+/**
+ * Validate the email input to ensure it is in the intended format supplied in the regex. Return true if valid, false otherwise
+ * @param {String} value
+ * @returns {Boolean}
+ */
+export const validEmailInput = (value) => {
+  const regex =
+    /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+  if (value === "" || !regex.test(value)) {
+    return false;
+  }
+
+  return true;
+};

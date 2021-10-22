@@ -1,96 +1,113 @@
+import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { FaLock } from "react-icons/fa";
 
+import { confirmValidFormInputs } from "../../../utils/checkoutUtils";
 import {
   createPaymentIntent,
   confirmPaymentIntent,
-} from "../../../utils/checkoutUtils";
+  getExistingPaymentIntent,
+  savePaymentIntent,
+} from "../../../utils/paymentUtils";
+import ContactField from "./ContactField";
+import PaymentField from "./PaymentField";
 
 import "./style.scss";
 
-const CheckoutForm = ({ subtotal, setError }) => {
+const CheckoutForm = ({
+  subtotal,
+  isProcessing,
+  setIsProcessing,
+  setError,
+}) => {
   const elements = useElements();
   const stripe = useStripe();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [formErrorMessages, setFormErrorMessages] = useState({
+    name: null,
+    phone: null,
+    email: null,
+  });
+
+  /* 
+    TODO: 
+    - Reuse PaymentIntent rather than generating a new one each time
+  */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    const { error: serverError, client_secret } = await createPaymentIntent(
-      subtotal
-    );
+    /* Confirm form inputs are valid before submitting */
+    const isValid = confirmValidFormInputs(setFormErrorMessages);
+    if (!isValid) return;
 
-    if (serverError) {
-      console.error(serverError);
-      setError(serverError);
+    setIsProcessing(true);
+
+    /* Check if the user has a PaymentIntent already in LocalStorage */
+    let paymentIntent = getExistingPaymentIntent();
+
+    /* If not, create a new Stripe PaymentIntent on the server and retrieve the client secret */
+    if (!paymentIntent) {
+      paymentIntent = await createPaymentIntent(subtotal);
+
+      if (paymentIntent.error) {
+        console.error(paymentIntent.error);
+        setError(paymentIntent.error);
+        return;
+      }
+      console.log(paymentIntent);
+      savePaymentIntent(paymentIntent);
     }
 
     const cardInfo = elements.getElement(CardElement);
     const userInfo = {
       name: `${e.target.firstName.value} ${e.target.lastName.value}`,
+      phone: e.target.phone.value,
       email: e.target.email.value,
     };
 
-    const { error: stripeError, paymentIntent } = await confirmPaymentIntent(
-      stripe,
-      client_secret,
-      cardInfo,
-      userInfo
-    );
+    /* Use Stripe to confirm the PaymentIntent */
+    const { error, paymentIntent: latestPaymentIntent } =
+      await confirmPaymentIntent(
+        stripe,
+        paymentIntent.client_secret,
+        cardInfo,
+        userInfo
+      );
 
-    if (stripeError) {
-      console.error(stripeError);
-      setError(stripeError);
+    if (error) {
+      console.error(error);
+      setError(error);
     } else {
-      console.log(paymentIntent);
+      console.log(latestPaymentIntent);
+      savePaymentIntent(latestPaymentIntent);
     }
+
+    setIsProcessing(false);
   };
 
   return (
     <form id="checkout-form" onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>
-          <p>CONTACT INFORMATION</p>
-        </legend>
-
-        <div className="form-row">
-          <label htmlFor="first-name">First Name</label>
-          <input type="text" name="firstName" />
-        </div>
-        <div className="form-row">
-          <label htmlFor="first-name">Last Name</label>
-          <input type="text" name="lastName" />
-        </div>
-        <div className="form-row">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" />
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>
-          <p>
-            SECURE PAYMENT
-            <span>
-              <FaLock size={11} />
-            </span>
-          </p>
-          <p>
-            All payments are processed using{" "}
-            <a
-              href="https://stripe.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Stripe
-            </a>
-          </p>
-        </legend>
-
-        <div className="form-row">
-          <CardElement id="card-element" />
-        </div>
-      </fieldset>
+      <ContactField
+        {...{
+          firstName,
+          lastName,
+          phone,
+          email,
+          setFirstName,
+          setLastName,
+          setPhone,
+          setEmail,
+          isProcessing,
+          formErrorMessages,
+          setFormErrorMessages,
+        }}
+      />
+      <PaymentField />
     </form>
   );
 };

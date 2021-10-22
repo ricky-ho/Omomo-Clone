@@ -1,0 +1,61 @@
+@import "../../../../mixins";
+
+.checkout-form__contact-field {
+  .error-message {
+    @include flex(row, flex-start, center);
+    color: var(--red);
+    font-size: var(--font-sm);
+
+    & > p {
+      @include flex(row, flex-start, center);
+      width: 100%;
+      padding-top: 10px;
+    }
+
+    span + span {
+      margin-left: 0.65em;
+    }
+  }
+
+  .row-inputs {
+    @include flex(row);
+    width: 100%;
+    gap: 1.25em;
+
+    & > div {
+      @include flex(column);
+      width: 100%;
+    }
+
+    label {
+      width: 100%;
+      font-size: var(--font-sm);
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: 1px solid var(--lightgray);
+      outline: none;
+      font-size: 1rem;
+      color: var(--gray);
+
+      &:hover,
+      &:focus {
+        border: 1px solid black;
+      }
+    }
+
+    .input-error {
+      border: 1px solid var(--red);
+
+      &:focus,
+      &:hover {
+        border: 1px solid var(--red);
+      }
+    }
+  }
+}

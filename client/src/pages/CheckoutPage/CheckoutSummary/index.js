@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/CartState";
 import {
-  calculateOrderTotal,
+  calculatePostTaxOrderTotal,
   calculateTaxAmount,
 } from "../../../utils/checkoutUtils";
 import SummaryItem from "./SummaryItem";
@@ -34,7 +34,7 @@ const CheckoutSummary = ({ subtotal, isProcessing }) => {
         </div>
         <div>
           <span>Order Total</span>
-          <span>{`$${calculateOrderTotal(subtotal).toFixed(2)}`}</span>
+          <span>{`$${calculatePostTaxOrderTotal(subtotal).toFixed(2)}`}</span>
         </div>
         <button type="submit" form="checkout-form" disabled={isProcessing}>
           {isProcessing ? (
@@ -44,7 +44,7 @@ const CheckoutSummary = ({ subtotal, isProcessing }) => {
           ) : (
             <>
               <span className="submit-text">Place Order</span>
-              <span className="submit-text">{`$${calculateOrderTotal(
+              <span className="submit-text">{`$${calculatePostTaxOrderTotal(
                 subtotal
               ).toFixed(2)}`}</span>
             </>
