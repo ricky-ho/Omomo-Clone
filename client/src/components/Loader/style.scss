@@ -6,20 +6,7 @@
   height: 75vh;
 
   svg {
+    @include spin-animation;
     color: var(--green);
-    animation-name: rotation;
-    animation-duration: 1.25s;
-    animation-timing-function: cubic-bezier(0.67, 0.3, 0.44, 0.84);
-    animation-iteration-count: infinite;
-  }
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }

@@ -36,35 +36,57 @@
   margin-top: 1.5em;
   border-top: 1px solid var(--lightgray);
 
-  & > div {
+  .summary-row {
     @include flex(row, space-between);
     margin-bottom: 1em;
     font-weight: bold;
   }
 
+  .summary-btn__primary {
+    @include flex(column, center, center);
+
+    button {
+      padding: 1rem;
+      font-size: 1rem;
+      color: white;
+      background: var(--green);
+
+      &:hover:not(:disabled),
+      &:focus:not(:disabled) {
+        background: var(--darkgreen);
+      }
+
+      .submit-text + .submit-text {
+        margin-left: 0.75em;
+      }
+
+      .submit-loader {
+        display: none;
+      }
+
+      .active {
+        display: block;
+        width: 100%;
+        color: black;
+
+        svg {
+          @include spin-animation;
+        }
+      }
+    }
+  }
+
   button {
     width: 100%;
-    padding: 1em;
     margin-top: 1em;
     border: none;
     border-radius: 5px;
-    outline: none;
-    font-size: 1rem;
-    color: white;
-    background: black;
 
     &:disabled {
       cursor: default;
-      opacity: 0.85;
-    }
-
-    .submit-text + .submit-text {
-      margin-left: 0.75em;
-    }
-
-    .submit-loader {
-      display: none;
-      margin-left: 0.75em;
+      color: white;
+      background: var(--lightgray);
+      border: none;
     }
   }
 }
