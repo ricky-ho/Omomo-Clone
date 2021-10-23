@@ -19,8 +19,15 @@ const Footer = () => {
           <FooterSocials />
         </div>
         <p id="copyright">
-          All Copyrights go to © OMOMO Tea Shoppe 2021. This project is merely
-          for personal educational purposes.
+          All Copyrights go to ©{" "}
+          <a
+            href="https://www.omomoteashoppe.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OMOMO Tea Shoppe
+          </a>{" "}
+          2021. This project is merely for educational purposes.
         </p>
       </div>
     </footer>

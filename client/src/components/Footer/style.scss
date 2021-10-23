@@ -78,6 +78,10 @@ footer {
   color: hsla(0, 0%, 100%, 0.75);
   font-size: var(--font-sm);
   padding: 30px 0;
+
+  a {
+    color: inherit;
+  }
 }
 
 @media screen and (max-width: 960px) {
