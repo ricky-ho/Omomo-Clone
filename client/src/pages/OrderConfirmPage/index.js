@@ -2,12 +2,17 @@ import { Link } from "react-router-dom";
 import { BsBagCheckFill } from "react-icons/bs";
 
 import "./style.scss";
+import { useEffect } from "react";
 
-const CheckoutSuccess = () => {
+const CheckoutSuccess = ({ setAppStatus }) => {
+  useEffect(() => {
+    return () => setAppStatus("ready");
+  }, []);
+
   return (
-    <main id="checkout-complete">
+    <main id="order-confirmation">
       <div>
-        <BsBagCheckFill size={50} />
+        <BsBagCheckFill className="bs-bag" size={50} />
         <h1>Order confirmed!</h1>
         <p>Thank you for checking out this demo project!</p>
         <div>

@@ -5,22 +5,18 @@ import { FiChevronLeft } from "react-icons/fi";
 import Loader from "../../components/Loader";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
-import CheckoutSuccess from "./CheckoutSuccess";
 import { CartContext } from "../../contexts/CartState";
 import { validateCartTotal } from "../../utils/checkoutUtils";
 
 import "./style.scss";
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ setAppStatus }) => {
   const { cart } = useContext(CartContext);
 
   /* TODO:
-    1. Create Demos for auto-fill contact/payment details
     2. Handle successful payments and unsuccessful payments in UI
-    3. Display error messages depending on error type under CheckoutSummary
   */
 
-  const [status, setStatus] = useState("ready");
   const [subtotal, setSubtotal] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -45,10 +41,6 @@ const CheckoutPage = () => {
     }
   };
 
-  if (status === "succeeded") {
-    return <CheckoutSuccess />;
-  }
-
   return (
     <main id="checkout">
       {isLoading ? (
@@ -68,7 +60,7 @@ const CheckoutPage = () => {
                 isProcessing,
                 setIsProcessing,
                 setPaymentError,
-                setStatus,
+                setAppStatus,
               }}
             />
             <CheckoutSummary

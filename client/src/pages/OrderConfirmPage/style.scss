@@ -1,6 +1,6 @@
-@import "../../../mixins";
+@import "../../mixins";
 
-#checkout-complete {
+#order-confirmation {
   @include flex(column, flex-start, center);
 
   width: 100%;
@@ -10,7 +10,7 @@
 
   & > div {
     @include flex(column, center, center);
-    gap: 20px;
+    gap: 25px;
     width: 100%;
     max-width: var(--width-max);
     padding: 0 50px;
@@ -28,25 +28,22 @@
         padding: 1em 1.5em;
         font-size: var(--font-sm);
         text-decoration: none;
-        border: 2px solid black;
         color: white;
-        background: black;
+        background: var(--brown);
 
         &:hover,
         &:focus {
-          color: black;
-          background: white;
+          background: var(--darkbrown);
         }
       }
 
       & > :last-child {
         font-size: var(--font-sm);
-        color: var(--gray);
         text-decoration: none;
+        color: black;
 
         &:hover,
         &:focus {
-          color: black;
           text-decoration: underline;
         }
       }
@@ -56,7 +53,7 @@
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 480px) {
-  #checkout-complete {
+  #order-confirmation {
     & > div {
       padding: 0 25px;
     }
