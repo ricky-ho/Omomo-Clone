@@ -6,6 +6,7 @@ import {
   EDIT_ITEM,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
+  CLEAR_CART,
 } from "./actions/cart-actions";
 import { getLocalStorage } from "../utils/cartUtils";
 
@@ -62,6 +63,12 @@ export const CartState = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    dispatch({
+      type: CLEAR_CART,
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -71,6 +78,7 @@ export const CartState = ({ children }) => {
         addToCart,
         editCartItem,
         removeFromCart,
+        clearCart,
       }}
     >
       {children}

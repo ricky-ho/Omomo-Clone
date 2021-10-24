@@ -1,6 +1,9 @@
 import { calculatePostTaxOrderTotal } from "./checkoutUtils";
 
-/* TODO: Check localStorage for PaymentIntent */
+/**
+ * Check the browser LocalStorage for an existing PaymentIntent and return it. Otherwise, we return null.
+ * @returns {Object} currentPaymentIntent
+ */
 export const getExistingPaymentIntent = () => {
   const paymentIntent = localStorage.getItem("payment_intent");
 
@@ -20,8 +23,13 @@ export const getExistingPaymentIntent = () => {
   return currentPaymentIntent;
 };
 
-/* TODO: After creating or successful purchase, update the status of the payment intent */
+/**
+ * Save the Stripe PaymentIntent id, status, and client_secret to LocalStorage
+ * @param {Object} paymentIntent
+ */
 export const savePaymentIntent = (paymentIntent) => {
+  if (!paymentIntent) return;
+
   console.log(
     `Saving PaymentIntent information: ${paymentIntent.id} , ${paymentIntent.status}`
   );

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
+import { CartContext } from "../../../contexts/CartState";
 import { confirmValidFormInputs } from "../../../utils/checkoutUtils";
 import {
   createPaymentIntent,
@@ -18,10 +20,13 @@ const CheckoutForm = ({
   isProcessing,
   setIsProcessing,
   setPaymentError,
-  setStatus,
+  setAppStatus,
 }) => {
+  const { clearCart } = useContext(CartContext);
+
   const elements = useElements();
   const stripe = useStripe();
+  const history = useHistory();
 
   const [formErrorMessages, setFormErrorMessages] = useState({
     name: null,
@@ -72,16 +77,18 @@ const CheckoutForm = ({
       );
 
     if (error) {
-      console.error(error);
+      console.error("Payment Error");
       setPaymentError(error);
-    } else {
-      console.log(latestPaymentIntent);
-      savePaymentIntent(latestPaymentIntent);
-      setPaymentError(null);
-      setStatus(latestPaymentIntent.status);
+      setIsProcessing(false);
+      return;
     }
 
-    setIsProcessing(false);
+    console.log("Payment Successful");
+    savePaymentIntent(latestPaymentIntent);
+    setAppStatus(latestPaymentIntent.status);
+    setPaymentError(null);
+    clearCart();
+    history.push("/order-confirmation");
   };
 
   return (

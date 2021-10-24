@@ -1,5 +1,6 @@
 export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const EDIT_ITEM = "EDIT_ITEM";
+export const CLEAR_CART = "CLEAR_CART";
 export const CALCULATE_TOTAL_PRICE = "CALCULATE_TOTAL_PRICE";
 export const CALCULATE_TOTAL_ITEMS = "CALCULATE_TOTAL_ITEMS";

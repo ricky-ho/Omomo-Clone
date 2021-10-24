@@ -8,6 +8,7 @@ import {
   EDIT_ITEM,
   CALCULATE_TOTAL_PRICE,
   CALCULATE_TOTAL_ITEMS,
+  CLEAR_CART,
 } from "../actions/cart-actions";
 
 const cartReducer = (state, action) => {
@@ -34,6 +35,13 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: newCart,
+      };
+
+    case CLEAR_CART:
+      return {
+        cart: [],
+        totalPrice: 0,
+        totalItems: 0,
       };
 
     case CALCULATE_TOTAL_PRICE:
