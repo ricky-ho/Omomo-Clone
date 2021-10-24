@@ -25,7 +25,7 @@
 .nav-menu__wrapper {
   display: none;
   position: fixed;
-  right: -100%;
+  right: -110%;
   top: 0;
   width: 100%;
   max-width: 500px;
@@ -74,30 +74,6 @@
     font-size: var(--font-m);
     margin-top: var(--header-height);
     width: 100%;
-  }
-}
-
-.menu__link {
-  width: 100%;
-  margin-bottom: 25px;
-  background: hsla(0, 0%, 100%, 0.2);
-
-  &:hover,
-  &:focus {
-    background: black;
-  }
-
-  a {
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
-
-    span {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-    }
   }
 }
 

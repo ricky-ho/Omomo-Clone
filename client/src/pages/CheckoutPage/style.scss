@@ -30,6 +30,7 @@
     &:focus > *,
     &:hover > * {
       color: black;
+      text-decoration: underline;
     }
 
     svg {
@@ -41,7 +42,7 @@
 .checkout__content {
   @include flex(row);
   width: 100%;
-  gap: 25px;
+  gap: 30px;
 }
 
 /* MEDIA QUERIES */

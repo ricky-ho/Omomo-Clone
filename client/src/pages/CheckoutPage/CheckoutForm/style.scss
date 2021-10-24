@@ -3,7 +3,7 @@
 #checkout-form {
   @include flex(column);
   width: 100%;
-  gap: 25px;
+  gap: 30px;
 
   fieldset {
     @include flex(column);
@@ -11,10 +11,9 @@
     width: 100%;
     gap: 20px;
     padding: 25px;
-    border-radius: 5px;
     border: none;
     background: white;
-    box-shadow: 0 0 3px 0 var(--lightgray);
+    box-shadow: 0 0 7px -2px var(--gray);
 
     legend {
       float: left;

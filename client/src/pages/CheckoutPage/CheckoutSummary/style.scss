@@ -4,9 +4,8 @@
   @include flex(column);
   width: 75%;
   max-width: 450px;
-  border-radius: 5px;
   background: white;
-  box-shadow: 0 0 2px 0 var(--lightgray);
+  box-shadow: 0 0 6px -2px var(--gray);
 
   h2 {
     width: 100%;
@@ -49,11 +48,11 @@
       padding: 1rem;
       font-size: 1rem;
       color: white;
-      background: var(--green);
+      background: var(--brown);
 
       &:hover:not(:disabled),
       &:focus:not(:disabled) {
-        background: var(--darkgreen);
+        background: var(--darkbrown);
       }
 
       .submit-text + .submit-text {
@@ -80,7 +79,6 @@
     width: 100%;
     margin-top: 1em;
     border: none;
-    border-radius: 5px;
 
     &:disabled {
       cursor: default;
