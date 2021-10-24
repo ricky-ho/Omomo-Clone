@@ -1,0 +1,121 @@
+@import "../../../../mixins";
+
+.checkout-form__payment-field {
+  #card-element {
+    border: 1px solid var(--lightgray);
+    padding: 0.75em 0.5em;
+  }
+
+  .payment-demo {
+    width: 100%;
+  }
+
+  .demo-info-container {
+    --demo-padding: 0.75rem 1rem;
+
+    @include flex(column);
+  }
+
+  .demo-btn {
+    @include flex(row, space-between, center);
+    cursor: pointer;
+    width: 100%;
+    padding: var(--demo-padding);
+    border: none;
+    outline: none;
+    color: white;
+    background: var(--green);
+
+    &:hover,
+    &:focus {
+      background: var(--darkgreen);
+    }
+    &:focus {
+      outline: 1px solid black;
+    }
+  }
+
+  .demo-content {
+    display: none;
+    width: 100%;
+    padding: var(--demo-padding);
+    margin-top: 10px;
+    font-size: var(--font-sm);
+    border: 1px solid var(--lightgray);
+    color: var(--gray);
+
+    .demo-instruction {
+      margin-bottom: 1em;
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+
+      li {
+        @include flex(row);
+        width: 100%;
+        margin-top: 0.75em;
+
+        .demo-item-icon {
+          @include flex(row, flex-start);
+          margin-right: 1em;
+        }
+
+        .demo-item-info {
+          @include flex(row);
+          color: black;
+
+          & > :first-child {
+            min-width: 160px;
+            margin-right: 0.75em;
+          }
+
+          & > :last-child {
+            width: 100%;
+            word-spacing: 0.15em;
+          }
+        }
+      }
+    }
+  }
+
+  .demo-expand {
+    display: block;
+  }
+
+  [data-demo-card="success"] {
+    .demo-item-icon > svg {
+      color: var(--green);
+    }
+  }
+
+  [data-demo-card="fail"] {
+    .demo-item-icon > svg {
+      color: var(--red);
+    }
+  }
+
+  [data-demo-card="3ds"] {
+    .demo-item-icon > svg {
+      color: blue;
+    }
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 550px) {
+  .checkout-form__payment-field {
+    .demo-content ul li {
+      margin-top: 1em;
+
+      .demo-item-info {
+        flex-direction: column;
+
+        & > :last-child {
+          margin-top: 0.25em;
+        }
+      }
+    }
+  }
+}
