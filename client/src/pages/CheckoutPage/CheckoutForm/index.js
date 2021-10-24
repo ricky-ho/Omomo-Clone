@@ -17,25 +17,17 @@ const CheckoutForm = ({
   subtotal,
   isProcessing,
   setIsProcessing,
-  setError,
+  setPaymentError,
+  setStatus,
 }) => {
   const elements = useElements();
   const stripe = useStripe();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [formErrorMessages, setFormErrorMessages] = useState({
     name: null,
     phone: null,
     email: null,
   });
-
-  /* 
-    TODO: 
-    - Reuse PaymentIntent rather than generating a new one each time
-  */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,7 +48,7 @@ const CheckoutForm = ({
 
       if (paymentIntent.error) {
         console.error(paymentIntent.error);
-        setError(paymentIntent.error);
+        setPaymentError(paymentIntent.error);
         return;
       }
       console.log(paymentIntent);
@@ -81,10 +73,12 @@ const CheckoutForm = ({
 
     if (error) {
       console.error(error);
-      setError(error);
+      setPaymentError(error);
     } else {
       console.log(latestPaymentIntent);
       savePaymentIntent(latestPaymentIntent);
+      setPaymentError(null);
+      setStatus(latestPaymentIntent.status);
     }
 
     setIsProcessing(false);
@@ -94,14 +88,6 @@ const CheckoutForm = ({
     <form id="checkout-form" onSubmit={handleSubmit}>
       <ContactField
         {...{
-          firstName,
-          lastName,
-          phone,
-          email,
-          setFirstName,
-          setLastName,
-          setPhone,
-          setEmail,
           isProcessing,
           formErrorMessages,
           setFormErrorMessages,

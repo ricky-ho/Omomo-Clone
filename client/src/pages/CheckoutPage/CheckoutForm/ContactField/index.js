@@ -10,14 +10,6 @@ import {
 import "./style.scss";
 
 const ContactField = ({
-  firstName,
-  lastName,
-  phone,
-  email,
-  setFirstName,
-  setLastName,
-  setPhone,
-  setEmail,
   isProcessing,
   formErrorMessages,
   setFormErrorMessages,
@@ -25,7 +17,7 @@ const ContactField = ({
   const handleAndFormatPhoneInput = (e) => {
     const userInput = e.target.value;
     const formattedPhoneNumber = formatPhoneNumber(userInput);
-    setPhone(formattedPhoneNumber);
+    e.target.value = formattedPhoneNumber;
   };
 
   const validateNameInput = (e) => {
@@ -97,8 +89,6 @@ const ContactField = ({
               id="input_firstName"
               className={`${formErrorMessages.name ? "input-error" : ""}`}
               name="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
               onBlur={validateNameInput}
               disabled={isProcessing}
             />
@@ -110,8 +100,6 @@ const ContactField = ({
               id="input_lastName"
               className={`${formErrorMessages.name ? "input-error" : ""}`}
               name="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
               onBlur={validateNameInput}
               disabled={isProcessing}
             />
@@ -137,7 +125,6 @@ const ContactField = ({
               id="input_phone"
               className={`${formErrorMessages.phone ? "input-error" : ""}`}
               name="phone"
-              value={phone}
               onChange={handleAndFormatPhoneInput}
               onBlur={validatePhoneInput}
               disabled={isProcessing}
@@ -165,8 +152,6 @@ const ContactField = ({
               id="input_email"
               className={`${formErrorMessages.email ? "input-error" : ""}`}
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               onBlur={validateEmailInput}
               disabled={isProcessing}
             />

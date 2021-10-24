@@ -1,5 +1,8 @@
 import { useContext } from "react";
+import { CgSpinner } from "react-icons/cg";
+
 import { CartContext } from "../../../contexts/CartState";
+import { calculateTotalCartItems } from "../../../utils/cartUtils";
 import {
   calculatePostTaxOrderTotal,
   calculateTaxAmount,
@@ -7,9 +10,13 @@ import {
 import SummaryItem from "./SummaryItem";
 
 import "./style.scss";
-import { calculateTotalCartItems } from "../../../utils/cartUtils";
 
-const CheckoutSummary = ({ subtotal, isProcessing }) => {
+const CheckoutSummary = ({
+  subtotal,
+  isProcessing,
+  paymentError,
+  handlePaymentErrorMessage,
+}) => {
   const { cart } = useContext(CartContext);
 
   return (
@@ -18,45 +25,44 @@ const CheckoutSummary = ({ subtotal, isProcessing }) => {
         <span>ORDER SUMMARY</span>
         <span>{`(${calculateTotalCartItems(cart)} ITEMS)`}</span>
       </h2>
+
       <div className="checkout__summary-items">
         {cart.map((item, index) => (
           <SummaryItem key={index} {...{ item }} />
         ))}
       </div>
+
       <div className="checkout__summary-totals">
-        <div>
+        <div className="summary-row">
           <span>Subtotal</span>
           <span>{`$${subtotal.toFixed(2)}`}</span>
         </div>
-        <div>
+        <div className="summary-row">
           <span>Tax</span>
           <span>{`$${calculateTaxAmount(subtotal).toFixed(2)}`}</span>
         </div>
-        <div>
+        <div className="summary-row">
           <span>Order Total</span>
           <span>{`$${calculatePostTaxOrderTotal(subtotal).toFixed(2)}`}</span>
         </div>
-        <button type="submit" form="checkout-form" disabled={isProcessing}>
-          {isProcessing ? (
-            <span
-              className={`submit-loader ${isProcessing ? "active" : ""}`}
-            ></span>
-          ) : (
-            <>
-              <span className="submit-text">Place Order</span>
-              <span className="submit-text">{`$${calculatePostTaxOrderTotal(
-                subtotal
-              ).toFixed(2)}`}</span>
-            </>
-          )}
-        </button>
-        <div>
-          <button type="button" disabled={isProcessing}>
-            Demo - Successful Payment
+        <div className="summary-btn__primary">
+          <button type="submit" form="checkout-form" disabled={isProcessing}>
+            {isProcessing ? (
+              <span className={`submit-loader ${isProcessing ? "active" : ""}`}>
+                <CgSpinner size={16} />
+              </span>
+            ) : (
+              <>
+                <span className="submit-text">Place Order</span>
+                <span className="submit-text">{`$${calculatePostTaxOrderTotal(
+                  subtotal
+                ).toFixed(2)}`}</span>
+              </>
+            )}
           </button>
-          <button type="button" disabled={isProcessing}>
-            Demo - Unsuccessful Payment
-          </button>
+          <div className="payment-error">
+            {paymentError ? <div>{handlePaymentErrorMessage()}</div> : null}
+          </div>
         </div>
       </div>
     </section>
