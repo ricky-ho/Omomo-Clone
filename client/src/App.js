@@ -20,7 +20,6 @@ import "./App.scss";
 
 const App = () => {
   const { cart } = useContext(CartContext);
-
   const [status, setStatus] = useState("ready");
 
   return (

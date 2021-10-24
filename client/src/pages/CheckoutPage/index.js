@@ -13,6 +13,10 @@ import "./style.scss";
 const CheckoutPage = ({ setAppStatus }) => {
   const { cart } = useContext(CartContext);
 
+  /* TODO:
+    2. Handle successful payments and unsuccessful payments in UI
+  */
+
   const [subtotal, setSubtotal] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);

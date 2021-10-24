@@ -7,6 +7,12 @@ import Modal from "../../components/Modal";
 
 import "./style.scss";
 
+/* 
+  TODO: 
+  - Add edit cart item functionality
+  - Add edit cart item quantity functionality
+*/
+
 const CartPage = () => {
   const { cart, totalPrice, totalItems } = useContext(CartContext);
 

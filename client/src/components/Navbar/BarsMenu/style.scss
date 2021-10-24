@@ -28,6 +28,7 @@
   right: -110%;
   top: 0;
   width: 100%;
+  max-width: 500px;
   height: 100vh;
   z-index: 100;
   transition: 0.3s;
@@ -66,33 +67,13 @@
     }
   }
 
-  & > ul {
+  ul {
     @include flex(column);
+    position: relative;
     list-style: none;
-    gap: 1.5rem;
-    width: 100%;
-    margin-top: var(--header-height);
     font-size: var(--font-m);
-
-    .menu__link {
-      @include flex(row, center);
-      width: 100%;
-
-      & > a {
-        text-decoration: none;
-        text-align: center;
-        width: 100%;
-        padding: 1em;
-        outline: none;
-        color: white;
-        background: var(--darkgreen);
-
-        &:hover,
-        &:focus {
-          background: black;
-        }
-      }
-    }
+    margin-top: var(--header-height);
+    width: 100%;
   }
 }
 

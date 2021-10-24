@@ -67,7 +67,7 @@ const CheckoutForm = ({
       email: e.target.email.value,
     };
 
-    /* Use Stripe to confirm the PaymentIntent on the client-side */
+    /* Use Stripe to confirm the PaymentIntent */
     const { error, paymentIntent: latestPaymentIntent } =
       await confirmPaymentIntent(
         stripe,
