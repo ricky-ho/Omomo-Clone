@@ -28,7 +28,6 @@
   right: -110%;
   top: 0;
   width: 100%;
-  max-width: 500px;
   height: 100vh;
   z-index: 100;
   transition: 0.3s;
@@ -49,7 +48,6 @@
   font-family: var(--font-family);
   padding: var(--padding);
   background: var(--green);
-  box-shadow: -5px 0 10px -5px #111111;
 
   button {
     cursor: pointer;
@@ -67,13 +65,33 @@
     }
   }
 
-  ul {
+  & > ul {
     @include flex(column);
-    position: relative;
+    gap: 35px;
     list-style: none;
     font-size: var(--font-m);
     margin-top: var(--header-height);
     width: 100%;
+
+    .menu__link {
+      @include flex(row);
+      width: 100%;
+
+      a {
+        text-decoration: none;
+        text-align: center;
+        width: 100%;
+        padding: 1em;
+        outline: none;
+        color: white;
+        background: var(--darkgreen);
+
+        &:hover,
+        &:focus {
+          background: black;
+        }
+      }
+    }
   }
 }
 
@@ -92,11 +110,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  #nav-menu {
-    width: 100%;
-    box-shadow: none;
-  }
-
   .burger-menu {
     margin-right: 0;
   }

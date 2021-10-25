@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 
-import BarsMenu from "./BarsMenu";
 import { navlinks } from "../../config";
 import { CartContext } from "../../contexts/CartState";
+import BarsMenu from "./BarsMenu";
 
 import "./style.scss";
 

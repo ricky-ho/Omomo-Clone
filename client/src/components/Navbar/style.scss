@@ -23,7 +23,7 @@ header {
 #nav-content__wrapper {
   @include flex(row, flex-end, center);
 
-  ul {
+  & > ul {
     display: flex;
     list-style: none;
 
