@@ -37,10 +37,10 @@ const ModalFooter = ({
       editCartItem(cartIndex, newCartItem);
     } else {
       addToCart(newCartItem);
+      setShowPopup(true);
     }
 
     toggleModal();
-    setShowPopup(true);
   };
 
   return (
