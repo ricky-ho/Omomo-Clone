@@ -1,0 +1,82 @@
+@import "../../mixins";
+
+.popup {
+  position: fixed;
+  top: calc(var(--header-height) * -1);
+  right: 20%;
+  width: fit-content;
+  padding: 15px;
+  border: 1px solid var(--gray);
+  background: white;
+  font-family: var(--font-family);
+  color: var(--gray);
+  transition: all ease-in-out 0.3s;
+  opacity: 0;
+  z-index: 999;
+
+  .popup__inner {
+    @include flex(column);
+    gap: 1rem;
+
+    & > div {
+      @include flex(row);
+
+      button {
+        padding: 8px 16px;
+        margin-right: 1rem;
+        outline: none;
+        border: 1px solid black;
+        font-size: var(--font-sm);
+        background: inherit;
+
+        &:hover,
+        &:focus {
+          color: white;
+          background: black;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        padding: 8px 16px;
+        font-size: var(--font-sm);
+        color: white;
+        background: var(--brown);
+
+        &:hover,
+        &:focus {
+          background: var(--darkbrown);
+        }
+      }
+    }
+  }
+}
+
+.show-popup {
+  top: var(--header-height);
+  opacity: 1;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1920px) {
+  .popup {
+    right: 15%;
+  }
+}
+
+@media screen and (max-width: 1650px) {
+  .popup {
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .popup {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .show-popup {
+    top: 1rem;
+  }
+}

@@ -8,7 +8,7 @@ import { getMenu } from "../../utils/menuUtils";
 
 import "./style.scss";
 
-const MenuPage = () => {
+const MenuPage = ({ setShowPopup }) => {
   const [menuData, setMenuData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -38,17 +38,16 @@ const MenuPage = () => {
   ) : isLoading ? (
     <Loader />
   ) : (
-    <Menu
-      menuData={menuData}
-      toggleModal={toggleModal}
-      clickedMenuItem={handleClick}
-    />
+    <Menu clickedMenuItem={handleClick} {...{ menuData, toggleModal }} />
   );
 
   return (
     <main id="menu">
       {content}
-      <Modal {...{ showModal, toggleModal }} item={currentProduct} />
+      <Modal
+        {...{ showModal, toggleModal, setShowPopup }}
+        item={currentProduct}
+      />
     </main>
   );
 };

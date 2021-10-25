@@ -5,13 +5,20 @@ import ModalForm from "../ModalForm";
 
 import "./style.scss";
 
-const Modal = ({ showModal, toggleModal, cartIndex, item, isEdit }) => {
+const Modal = ({
+  showModal,
+  toggleModal,
+  setShowPopup,
+  cartIndex,
+  item,
+  isEdit,
+}) => {
   if (!showModal) {
     return null;
   }
 
   return ReactDom.createPortal(
-    <ModalLayout {...{ toggleModal, item, cartIndex, isEdit }}>
+    <ModalLayout {...{ toggleModal, setShowPopup, item, cartIndex, isEdit }}>
       <div className="modal__img">
         <img src={`${item.product.modalImageURL}`} alt={item.product.name} />
       </div>
@@ -20,7 +27,7 @@ const Modal = ({ showModal, toggleModal, cartIndex, item, isEdit }) => {
         <h3>{item.product.price.toFixed(2)}</h3>
         <p>{item.product.description}</p>
       </div>
-      <ModalForm {...{ toggleModal, cartIndex, item, isEdit }} />
+      <ModalForm {...{ item }} />
     </ModalLayout>,
     document.getElementById("modal")
   );

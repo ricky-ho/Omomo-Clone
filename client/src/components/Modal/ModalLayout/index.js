@@ -4,7 +4,14 @@ import ModalFooter from "../ModalFooter";
 
 import "./style.scss";
 
-const ModalLayout = ({ toggleModal, item, cartIndex, isEdit, children }) => {
+const ModalLayout = ({
+  toggleModal,
+  setShowPopup,
+  item,
+  cartIndex,
+  isEdit,
+  children,
+}) => {
   const modalRef = useRef();
 
   const handleClickOutside = (e) => {
@@ -17,7 +24,9 @@ const ModalLayout = ({ toggleModal, item, cartIndex, isEdit, children }) => {
     <div className="modal__wrapper" ref={modalRef} onClick={handleClickOutside}>
       <div className="modal__container">
         <section className="modal__content">{children}</section>
-        <ModalFooter {...{ toggleModal, item, cartIndex, isEdit }} />
+        <ModalFooter
+          {...{ toggleModal, setShowPopup, item, cartIndex, isEdit }}
+        />
       </div>
     </div>
   );

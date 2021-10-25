@@ -7,7 +7,13 @@ import { calculateTotalItemPrice } from "../../../utils/cartUtils";
 
 import "./style.scss";
 
-const ModalFooter = ({ toggleModal, item, cartIndex, isEdit }) => {
+const ModalFooter = ({
+  toggleModal,
+  setShowPopup,
+  item,
+  cartIndex,
+  isEdit,
+}) => {
   const { addToCart, editCartItem } = useContext(CartContext);
   const { quantity, selectedOptions } = useContext(ItemContext);
 
@@ -34,6 +40,7 @@ const ModalFooter = ({ toggleModal, item, cartIndex, isEdit }) => {
     }
 
     toggleModal();
+    setShowPopup(true);
   };
 
   return (

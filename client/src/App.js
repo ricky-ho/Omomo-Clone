@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import {
@@ -15,22 +15,28 @@ import { ItemState } from "./contexts/ItemState";
 import ScrollToTop from "./utils/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/";
+import Popup from "./components/Popup";
 
 import "./App.scss";
 
 const App = () => {
   const { cart } = useContext(CartContext);
+
   const [status, setStatus] = useState("ready");
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <div className="App">
       <ScrollToTop />
       <Navbar />
+      <Popup {...{ showPopup, setShowPopup }} />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/locations" component={LocationsPage} />
         <ItemState>
-          <Route path="/menu" component={MenuPage} />
+          <Route path="/menu">
+            <MenuPage {...{ setShowPopup }} />{" "}
+          </Route>
           <Route path="/cart" component={CartPage} />
           <Route path="/checkout">
             {cart.length > 0 ? (
