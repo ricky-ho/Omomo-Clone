@@ -10,8 +10,10 @@ const Popup = ({ showPopup, setShowPopup }) => {
     };
 
     if (showPopup) {
-      setTimeout(toggleSelf, 4000);
+      var timeout = setTimeout(toggleSelf, 4000);
     }
+
+    return () => clearTimeout(timeout);
   }, [showPopup]);
 
   return (
