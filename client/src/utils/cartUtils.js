@@ -18,14 +18,7 @@ export const getLocalStorage = () => {
 export const calculateTotalCartPrice = (cart) => {
   if (!cart || cart.length === 0) return 0;
 
-  let totalPrice = cart.reduce((sum, item) => {
-    let itemPrice = calculateTotalItemPrice(
-      item,
-      item.quantity,
-      item.modifications
-    );
-    return (sum += itemPrice);
-  }, 0);
+  let totalPrice = cart.reduce((sum, item) => (sum += item.subtotal), 0);
 
   return totalPrice;
 };

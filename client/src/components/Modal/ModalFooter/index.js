@@ -1,9 +1,8 @@
-import { useState, useContext, useEffect } from "react";
-
+import { useContext, useEffect } from "react";
 import { GrFormClose } from "react-icons/gr";
+
 import { CartContext } from "../../../contexts/CartState";
 import { ItemContext } from "../../../contexts/ItemState";
-import { calculateTotalItemPrice } from "../../../utils/cartUtils";
 
 import "./style.scss";
 
@@ -15,22 +14,21 @@ const ModalFooter = ({
   isEdit,
 }) => {
   const { addToCart, editCartItem } = useContext(CartContext);
-  const { quantity, selectedOptions } = useContext(ItemContext);
-
-  const [itemSubtotal, setItemSubtotal] = useState(0);
+  const { quantity, selectedOptions, subtotal, calculateItemSubtotal } =
+    useContext(ItemContext);
 
   useEffect(() => {
-    const subtotal = calculateTotalItemPrice(item, quantity, selectedOptions);
-    setItemSubtotal(subtotal);
+    calculateItemSubtotal(item);
   }, [item, quantity, selectedOptions]);
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const newCartItem = {
       product: item.product,
       quantity: quantity,
       modifications: selectedOptions,
+      subtotal: subtotal,
     };
 
     if (isEdit) {
@@ -49,9 +47,9 @@ const ModalFooter = ({
         <button type="button" onClick={toggleModal}>
           <GrFormClose size={30} className="close-icon" />
         </button>
-        <button type="button" onClick={(e) => handleSubmit(e)}>
+        <button type="button" onClick={handleFormSubmit}>
           {isEdit ? `Update Item - ` : `Add To Cart - `}
-          <span>{`$${itemSubtotal.toFixed(2)}`}</span>
+          <span>{`$${subtotal.toFixed(2)}`}</span>
         </button>
       </div>
     </section>

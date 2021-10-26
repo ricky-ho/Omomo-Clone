@@ -1,25 +1,15 @@
-import { useContext } from "react";
-
-import { ItemContext } from "../../contexts/ItemState";
 import QuantityGroup from "./QuantityGroup";
 import SelectionGroup from "./SelectionGroup";
 import CheckboxGroup from "./CheckboxGroup";
 
 import "./style.scss";
 
-/*
-  TODO: 
-  - Add indicator that item has been added to cart
-*/
-
 const ModalForm = ({ item }) => {
-  const { quantity, options } = useContext(ItemContext);
-
   return (
     <form className="modal__form">
-      <QuantityGroup {...{ item, quantity }} />
+      <QuantityGroup {...{ item }} />
 
-      {options?.map((group, index) => {
+      {item.product.modifications.map((group, index) => {
         if (group.limit === -1) {
           return <CheckboxGroup key={index} {...{ item, group }} />;
         }

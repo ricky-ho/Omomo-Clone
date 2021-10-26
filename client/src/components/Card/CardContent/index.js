@@ -1,6 +1,6 @@
 import "./style.scss";
 
-const CardContent = ({ index, item }) => {
+const CardContent = ({ item }) => {
   const { product, quantity } = item;
 
   return (

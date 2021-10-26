@@ -1,5 +1,3 @@
-import { calculateTotalItemPrice } from "../../../../utils/cartUtils";
-
 import "./style.scss";
 
 const SummaryItem = ({ item }) => {
@@ -10,13 +8,7 @@ const SummaryItem = ({ item }) => {
           <span className="summary-item__quantity">{item.quantity}</span>
           <span>{item.product.name}</span>
         </p>
-        <p>
-          {`$${calculateTotalItemPrice(
-            item,
-            item.quantity,
-            item.modifications
-          ).toFixed(2)}`}
-        </p>
+        <p>{`$${item.subtotal.toFixed(2)}`}</p>
       </div>
       <div className="summary-item__modifications">
         <ul>
