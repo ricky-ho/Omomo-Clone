@@ -13,7 +13,10 @@ export const validateCartTotal = async (cart) => {
       body: JSON.stringify(cart),
     };
 
-    const response = await fetch(`/api/checkout`, options);
+    const response = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/checkout`,
+      options
+    );
 
     return response.json();
   } catch (error) {

@@ -52,15 +52,18 @@ export const savePaymentIntent = (paymentIntent) => {
 export const createPaymentIntent = async (subtotal) => {
   console.log("Creating new PaymentIntent");
   try {
-    const response = await fetch("/api/checkout/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        totalAmount: calculatePostTaxOrderTotal(subtotal),
-        currency: "usd",
-        paymentMethodTypes: ["card"],
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/checkout/create-payment-intent`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          totalAmount: calculatePostTaxOrderTotal(subtotal),
+          currency: "usd",
+          paymentMethodTypes: ["card"],
+        }),
+      }
+    );
 
     return response.json();
   } catch (error) {

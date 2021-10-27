@@ -4,7 +4,9 @@
  */
 export const getMenu = async () => {
   try {
-    const response = await fetch(`/api/products`);
+    const response = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}/products`
+    );
 
     if (!response.ok) {
       return Promise.reject(response);
