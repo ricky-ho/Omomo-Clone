@@ -8,18 +8,14 @@ export const getExistingPaymentIntent = () => {
   const paymentIntent = localStorage.getItem("payment_intent");
 
   if (!paymentIntent) {
-    console.log("PaymentIntent not found in LocalStorage");
     return null;
   }
 
   const currentPaymentIntent = JSON.parse(paymentIntent);
-  console.log("CurrentPaymentIntent:", currentPaymentIntent);
   if (currentPaymentIntent.status === "succeeded") {
-    console.log("PaymentIntent has already succeeded and cannot be used again");
     return null;
   }
 
-  console.log("Found paymentIntent in LocalStorage");
   return currentPaymentIntent;
 };
 
@@ -30,9 +26,6 @@ export const getExistingPaymentIntent = () => {
 export const savePaymentIntent = (paymentIntent) => {
   if (!paymentIntent) return;
 
-  console.log(
-    `Saving PaymentIntent information: ${paymentIntent.id} , ${paymentIntent.status}`
-  );
   localStorage.setItem(
     "payment_intent",
     JSON.stringify({
@@ -50,7 +43,6 @@ export const savePaymentIntent = (paymentIntent) => {
  */
 
 export const createPaymentIntent = async (subtotal) => {
-  console.log("Creating new PaymentIntent");
   try {
     const response = await fetch(
       `${process.env.REACT_APP_SERVER_URL}/checkout/create-payment-intent`,
@@ -86,7 +78,6 @@ export const confirmPaymentIntent = async (
   userInfo
 ) => {
   try {
-    console.log("Confirming paymentIntent");
     const response = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
         card: cardInfo,
@@ -94,7 +85,6 @@ export const confirmPaymentIntent = async (
       },
     });
 
-    console.log(response);
     return response;
   } catch (error) {
     return Promise.reject(error);

@@ -32,28 +32,34 @@ const App = () => {
       <Popup {...{ showPopup, setShowPopup }} />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/locations" component={LocationsPage} />
-        <ItemState>
-          <Route path="/menu">
+        <Route exact path="/locations" component={LocationsPage} />
+        <Route path="/menu">
+          <ItemState>
             <MenuPage {...{ setShowPopup }} />{" "}
-          </Route>
-          <Route path="/cart" component={CartPage} />
-          <Route path="/checkout">
+          </ItemState>
+        </Route>
+        <Route path="/cart">
+          <ItemState>
+            <CartPage />
+          </ItemState>
+        </Route>
+        <Route path="/checkout">
+          <ItemState>
             {cart.length > 0 ? (
               <CheckoutPage setAppStatus={setStatus} />
             ) : (
               <Redirect to="/cart" />
             )}
-          </Route>
-          <Route path="/order-confirmation">
-            {status === "succeeded" ? (
-              <OrderConfirmPage setAppStatus={setStatus} />
-            ) : (
-              <Redirect to="/cart" />
-            )}
-          </Route>
-          <Route component={NotFoundPage} />
-        </ItemState>
+          </ItemState>
+        </Route>
+        <Route path="/order-confirmation">
+          {status === "succeeded" ? (
+            <OrderConfirmPage setAppStatus={setStatus} />
+          ) : (
+            <Redirect to="/cart" />
+          )}
+        </Route>
+        <Route component={NotFoundPage} />
       </Switch>
       <Footer />
     </div>

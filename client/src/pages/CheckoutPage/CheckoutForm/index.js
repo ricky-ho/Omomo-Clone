@@ -52,11 +52,9 @@ const CheckoutForm = ({
       paymentIntent = await createPaymentIntent(subtotal);
 
       if (paymentIntent.error) {
-        console.error(paymentIntent.error);
         setPaymentError(paymentIntent.error);
         return;
       }
-      console.log(paymentIntent);
       savePaymentIntent(paymentIntent);
     }
 
@@ -77,13 +75,11 @@ const CheckoutForm = ({
       );
 
     if (error) {
-      console.error("Payment Error");
       setPaymentError(error);
       setIsProcessing(false);
       return;
     }
 
-    console.log("Payment Successful");
     savePaymentIntent(latestPaymentIntent);
     setAppStatus(latestPaymentIntent.status);
     setPaymentError(null);
