@@ -1,32 +1,34 @@
-# Omomo-Clone
-Check out the application at [https://omomoteashoppeclone.netlify.app](https://omomoteashoppeclone.netlify.app/).
+# Omomo Tea Shoppe Clone
+View the application live at [https://omomoteashoppeclone.netlify.app](https://omomoteashoppeclone.netlify.app/).
+
+View the server/backend repository at [https://github.com/ricky-ho/Omomo-Clone-Server](https://github.com/ricky-ho/Omomo-Clone-Server).
 
 ## Important Note
-This shopping cart project was designed using https://www.omomoteashoppe.com/ as inspiration. 
-All of the images and major designs were replicated from their official site. All copyrights go to OMOMO Tea Shoppe. 
-This project is only for my personal educational purposes.
+This project was inspired by https://www.omomoteashoppe.com/. All of the images and major designs were replicated 
+from their official site. All copyrights go to OMOMO Tea Shoppe. This project is only for my personal educational purposes.
 
 ## Description 
-This web application was created to simulate an online retailer for boba milk tea. Users will be able to browse a menu of beverages, modify
-the drink options & add-ons, and add or remove items from their shopping cart. A user's shopping cart state is persisted between browser sessions by utilizing the browser's LocalStorage. The website is also fully-responsive and can be viewed on mobile, tablet, or desktop screen sizes.
+This project is a full-stack ecommerce web application for boba milk tea. Users will be able to browse from a variety of beverages, modify
+the drink options & add-ons, and add, edit, or remove items from their shopping cart. A user's shopping cart is persisted between each visit by utilizing the browser's LocalStorage. All payment information is handled by [Stripe](https://stripe.com). The application is fully-responsive and can be viewed on mobile, tablet, or desktop screen sizes.
 
 ## Future Improvements
-- Implement the backend to handle shopping cart functionalities
-- Implement a checkout workflow and payment system using third-party services (i.e. PayPal, Stripe, etc)
-- Add a database to store product information and user orders
+- Implement user accounts with order history
 
 ## Dependencies
-- [lodash](https://lodash.com/)
+- [Stripe](https://stripe.com/)
+  - [@stripe/stripe-js](https://www.npmjs.com/package/@stripe/stripe-js)
+  - [@stripe/react-stripe-js](https://www.npmjs.com/package/@stripe/react-stripe-js)
 - [react-router-dom](https://reactrouter.com)
-- [react-transition=group](https://www.npmjs.com/package/react-transition-group)
 - [react-icons](https://react-icons.github.io/react-icons)
 
 ### Screenshots
-![Home page](https://res.cloudinary.com/ricky-ho/image/upload/v1619137362/Omomo/msedge_mEV58FsfnN_ru9jvh.png)
+![Home page](https://res.cloudinary.com/ricky-ho/image/upload/v1635461493/Omomo/omomo-home_vja4rt.png)
 
-![Menu page](https://res.cloudinary.com/ricky-ho/image/upload/v1619137362/Omomo/msedge_BcRmYYAR1O_cxkkr9.png)
+![Menu page](https://res.cloudinary.com/ricky-ho/image/upload/v1635461492/Omomo/omomo-menu_bpdln7.png)
 
 ![Locations page](https://res.cloudinary.com/ricky-ho/image/upload/v1619137361/Omomo/msedge_zJvRlxDf5v_sboouc.png)
 
-![Cart](https://res.cloudinary.com/ricky-ho/image/upload/v1619137360/Omomo/msedge_ymSBUXwlNW_gjyxj2.png)
+![Cart](https://res.cloudinary.com/ricky-ho/image/upload/v1635461492/Omomo/omomo-cart_yfx9dl.png)
+
+![Checkout](https://res.cloudinary.com/ricky-ho/image/upload/v1635461492/Omomo/omomo-checkout_vj6gwy.png)
 
