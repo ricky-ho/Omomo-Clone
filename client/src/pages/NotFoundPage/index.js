@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 
-const ErrorPage = () => {
+const NotFoundPage = () => {
   return (
     <main id="page-not-found">
       <img
@@ -16,4 +16,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default NotFoundPage;

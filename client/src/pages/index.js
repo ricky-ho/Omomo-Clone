@@ -1,7 +1,7 @@
 import HomePage from "./HomePage";
 import LocationsPage from "./LocationsPage";
 import MenuPage from "./MenuPage";
-import ErrorPage from "./ErrorPage";
+import NotFoundPage from "./NotFoundPage";
 import CartPage from "./CartPage";
 import CheckoutPage from "./CheckoutPage";
 import OrderConfirmPage from "./OrderConfirmPage";
@@ -13,5 +13,5 @@ export {
   CartPage,
   CheckoutPage,
   OrderConfirmPage,
-  ErrorPage,
+  NotFoundPage,
 };

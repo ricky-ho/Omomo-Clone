@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import {
@@ -8,7 +8,7 @@ import {
   CartPage,
   CheckoutPage,
   OrderConfirmPage,
-  ErrorPage,
+  NotFoundPage,
 } from "./pages";
 import { CartContext } from "./contexts/CartState";
 import { ItemState } from "./contexts/ItemState";
@@ -52,8 +52,8 @@ const App = () => {
               <Redirect to="/cart" />
             )}
           </Route>
+          <Route component={NotFoundPage} />
         </ItemState>
-        <Route to="*" component={ErrorPage} />
       </Switch>
       <Footer />
     </div>
